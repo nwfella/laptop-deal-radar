@@ -1,5 +1,5 @@
 {
- "generated_utc": "2026-10-01 18:39 UTC",
+ "generated_utc": "2026-10-01 18:44 UTC",
  "config": {
   "want_units": 3,
   "budget_usd": 700,
@@ -156,7 +156,7 @@
    "latitude_7400|10",
    "latitude_7400|11"
   ],
-  "updated_utc": "2026-10-01T18:38:10Z"
+  "updated_utc": "2026-10-01T18:42:53Z"
  },
  "family_labels": {
   "latitude_5400": "Latitude 5400-series",
@@ -198,8 +198,8 @@
    "n": 46
   },
   {
-   "line": "[ok] craigslist 'laptop lot': 1 listings",
-   "n": 1
+   "line": "[ok] craigslist 'laptop lot': 2 listings",
+   "n": 2
   },
   {
    "line": "[ok] craigslist 'latitude lot': 0 listings",
@@ -212,17 +212,17 @@
  ],
  "counts": {
   "anchor_rows": 98,
-  "craigslist_rows": 79,
+  "craigslist_rows": 80,
   "craigslist_requests": 32,
   "qualifying": 141,
   "rankable": 73
  },
  "rejects": {
-  "parts": 84,
-  "unrecognised": 194,
-  "not_a_laptop": 10,
+  "parts": 83,
+  "unrecognised": 193,
+  "not_a_laptop": 9,
   "implausible_price": 4,
-  "below_min_spec": 21,
+  "below_min_spec": 22,
   "duplicate": 15
  },
  "reject_samples": [
