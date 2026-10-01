@@ -3,3 +3,9 @@ data/_pool.json
 __pycache__/
 *.pyc
 .DS_Store
+
+# Generated artifacts — published to the gh-pages branch by
+# scripts/daily_refresh.py, not versioned on main.
+index.html
+data/deals.json
+data/anchors.json
