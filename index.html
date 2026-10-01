@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Laptop Deal Radar — used business laptops for an agent fleet</title>
+<style>
+  :root{
+    --bg:#0b0f14; --panel:#121821; --panel2:#0f151d; --line:#1e2836;
+    --fg:#e6edf6; --dim:#8b9bb0; --dim2:#5f7186;
+    --steal:#3ddc97; --good:#4ea8ff; --fair:#e8b44a; --pass:#6b7b8f; --suspect:#e0607e;
+    --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--fg);
+       font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+       -webkit-font-smoothing:antialiased}
+  .wrap{max-width:1220px;margin:0 auto;padding:28px 20px 64px}
+  header h1{margin:0;font-size:26px;letter-spacing:-.4px}
+  header .sub{color:var(--dim);font-size:13px;margin-top:6px;max-width:760px}
+  header .stamp{color:var(--dim2);font-size:12px;font-family:var(--mono);margin-top:10px}
+  .ask{margin:22px 0;padding:18px 20px;background:linear-gradient(180deg,#141c26,#101720);
+       border:1px solid var(--line);border-radius:12px}
+  .ask .line{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline}
+  .ask .big{font-size:20px;font-weight:600}
+  .ask .unit{font-family:var(--mono);color:var(--dim);font-size:13px}
+  #ask-verdict{margin-top:12px;font-size:14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+  .chip{font-family:var(--mono);font-size:12px;padding:3px 9px;border-radius:999px;
+        border:1px solid var(--line);color:var(--dim);background:var(--panel2)}
+  .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(156px,1fr));gap:12px;margin:22px 0}
+  .tile{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+  .tile .k{font-size:11px;text-transform:uppercase;letter-spacing:.7px;color:var(--dim2)}
+  .tile .v{font-size:22px;font-weight:650;margin-top:6px;font-family:var(--mono)}
+  .tile .n{font-size:12px;color:var(--dim);margin-top:3px}
+  h2{font-size:15px;text-transform:uppercase;letter-spacing:.9px;color:var(--dim);
+     margin:34px 0 12px;font-weight:600}
+  h2 .sub{text-transform:none;letter-spacing:0;color:var(--dim2);font-weight:400;font-size:12.5px}
+  table{width:100%;border-collapse:collapse;font-size:13.5px}
+  th{text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.6px;
+     color:var(--dim2);font-weight:600;padding:8px 10px;border-bottom:1px solid var(--line)}
+  td{padding:10px;border-bottom:1px solid var(--line);vertical-align:top}
+  tr:hover td{background:#101823}
+  td.num{font-family:var(--mono);white-space:nowrap}
+  a{color:var(--good);text-decoration:none} a:hover{text-decoration:underline}
+  .band{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.5px;
+        padding:3px 8px;border-radius:5px;border:1px solid}
+  .band.steal{color:var(--steal);border-color:#1d5c45;background:#0e2018}
+  .band.good{color:var(--good);border-color:#1c4c78;background:#0d1a26}
+  .band.fair{color:var(--fair);border-color:#6a5220;background:#1e1808}
+  .band.pass{color:var(--pass);border-color:#2a3644;background:#111823}
+  .band.suspect{color:var(--suspect);border-color:#6d2136;background:#1f0d13}
+  .band.unknown{color:var(--dim2);border-color:#2a3644}
+  .spec{font-family:var(--mono);font-size:11.5px;color:var(--dim)}
+  .basis{font-family:var(--mono);font-size:11px;color:var(--dim2)}
+  .lot{color:var(--steal);font-weight:700}
+  #source-health{list-style:none;padding:0;margin:0;font-family:var(--mono);font-size:12.5px}
+  #source-health li{padding:5px 0;border-bottom:1px solid #141c26;color:var(--dim)}
+  #source-health li.fail{color:var(--fair)}
+  #rejects{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+  .rj{font-family:var(--mono);font-size:12px;padding:3px 9px;border-radius:6px;
+      border:1px solid var(--line);background:var(--panel2);color:var(--dim)}
+  .note{color:var(--dim);font-size:12.5px;border-left:2px solid var(--line);
+        padding:2px 0 2px 14px;margin:10px 0}
+  footer{margin-top:44px;color:var(--dim2);font-size:12px;border-top:1px solid var(--line);padding-top:16px}
+  footer strong{color:var(--dim)}
+  .empty{color:var(--dim);padding:16px 0;font-style:italic}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Laptop Deal Radar</h1>
+    <div class="sub">Used business laptops worth buying for an agent fleet, valued against tested
+      warranted-refurb anchors — delivered cost per unit, buy band, and the do-not-exceed ceiling.</div>
+    <div class="stamp" id="stamp">loading…</div>
+  </header>
+
+  <section class="ask" id="ask">
+    <div class="line"><span class="big" id="ask-title">—</span><span class="unit" id="ask-sub"></span></div>
+    <div id="ask-verdict">—</div>
+    <div class="chips" id="ask-chips"></div>
+  </section>
+
+  <section class="tiles" id="stat-tiles"></section>
+
+  <h2>Ranked deals <span class="sub" id="deals-count"></span></h2>
+  <table>
+    <thead><tr>
+      <th>Band</th><th>Machine</th><th>Source</th><th>Spec</th><th>Ask</th>
+      <th>Lot</th><th>$/unit delivered</th><th>vs anchor</th><th>1 dead</th>
+    </tr></thead>
+    <tbody id="deals-body"></tbody>
+  </table>
+  <div class="empty" id="deals-empty" style="display:none">No listings met the min spec on this run.</div>
+  <p class="note"><strong>gen8*</strong> means the generation was inferred from the model itself — the
+    listing did not name a CPU, so the anchor is the benchmark for that model's known generation, not a
+    spec the seller verified. <strong>⚠ incomplete</strong> means the listing omitted RAM or storage, so it
+    cleared the min spec only on the fields it did state. Both are judgement calls, not confirmations;
+    the 1-dead column is what the mistake costs you.</p>
+
+  <h2>Generation benchmarks <span class="sub">what a tested, warranted machine of that generation costs</span></h2>
+  <table><thead><tr><th>Tier</th><th>Anchor</th><th>Basis</th></tr></thead>
+    <tbody id="anchor-body"></tbody></table>
+  <p class="note">A live scan only overrides one of these when at least 3 listings of that exact family and
+    generation agree, because reseller catalogues are dominated by newer stock and a catalogue-wide median
+    would make every honest listing look like a 70%-off steal. Otherwise the configured benchmark applies —
+    and an empty or failed scan never overwrites a good anchor with nothing.</p>
+
+  <h2>Live family anchors <span class="sub">observed at the scanned resellers this run</span></h2>
+  <table><thead><tr><th>Family</th><th>Gen</th><th>Anchor</th><th>Obs.</th><th>Basis</th></tr></thead>
+    <tbody id="family-body"></tbody></table>
+  <div class="empty" id="family-empty" style="display:none">No family and generation pair reached 3 agreeing
+    live observations this run, so every listing above was judged against its generation benchmark.</div>
+  <p class="note">Where a live anchor exists it is the <strong>lower</strong> of the cheapest comparable
+    warranted listing observed and the configured benchmark — the best warranted alternative you actually
+    have. It is deliberately not an average, because reseller catalogues are full of premium configs
+    (an i7 with 512GB) whose price would make every honest listing look like a 50%-off steal.</p>
+
+  <h2>Filtered out <span class="sub">so the numbers above can be argued with</span></h2>
+  <div id="rejects"></div>
+  <table><thead><tr><th>Reason</th><th>Price</th><th>Listing</th></tr></thead>
+    <tbody id="reject-body"></tbody></table>
+
+  <h2>Source health</h2>
+  <ul id="source-health"></ul>
+
+  <footer>
+    <strong>How a listing is valued.</strong> delivered&nbsp;$/unit =
+    (price ÷ lot size) + shipping share + charger cost when chargers are absent.
+    Bands against the anchor: ≤40% steal, ≤60% good, ≤80% fair, else pass.
+    A single unit under 30% of anchor is flagged <strong>suspect</strong> rather than celebrated —
+    at that price it is far more often a battery, a bare chassis or a misdescription; multi-unit lots
+    are exempt because a 3-pack at −67% is real. <strong>1 dead</strong> is the delivered cost per
+    surviving unit if exactly one machine arrives non-working: the real risk number for a no-warranty lot.
+    Craigslist prices are local pickup and carry no shipping tax.
+    <em>By the usual luck of this shop, any listing which has suffered the misfortune to be found
+    honest, cheap and immediately available is liable to be sold before you read this.</em>
+    Nothing here reserves inventory or verifies a seller's condition claim.
+  </footer>
+</div>
+
+<script>
+const DATA = {"generated_utc":"2026-10-01 18:39 UTC","config":{"want_units":3,"budget_usd":700,"shipping_inclusive":true,"charger_cost_usd":30,"min_spec":{"cpu_gen":8,"ram_gb":16,"storage_gb":256},"max_results":25,"purchase_ceiling":{"_comment":"Delivered per-unit hard ceiling from the used-laptop-agent-fleet valuation method. Listings above it are marked as breaching the ceiling.","hard_pass_above_usd":175},"anchor_fallback":{"_comment":"Benchmark = what a TESTED, WARRANTED machine of that generation costs. A live scan overrides a (family, generation) pair only when 3+ observations agree. These fallbacks are the honest answer when the resellers do not stock the model this week.","11":{"usd":204,"note":"verified Oct 2026: lowest warranted refurb, Latitude 5420 i5 16GB/256GB"},"10":{"usd":180,"note":"estimated, between the 8th and 11th gen tiers"},"8":{"usd":160,"note":"estimated from the agent-fleet lot and retail range"},"default":{"usd":175,"note":"fallback when generation is unknown"}},"shopify_hosts":[{"host":"www.greenit.ie","label":"GreenIT (IE)","pages":4},{"host":"www.refurb.io","label":"Refurb.io (US)","pages":4}],"craigslist":{"_comment":"batch=N walks US regions in sequence: 1=sfbay 2=seattle 3=newyork 4=boston 7=losangeles 8=sandiego. Only batches answering 200 are used; 400s are skipped. Keep the request count modest - this is an undocumented internal endpoint.","batches":[1,2,7,8],"queries":["latitude 5420","latitude 7490","latitude 5490","thinkpad t480","elitebook 840","laptop lot","latitude lot","thinkpad lot"],"request_delay_s":2.0,"max_requests":34}},"anchors":{"families":{"elitebook_800|10":{"family":"elitebook_800","gen":10,"label":"EliteBook 8xx","usd":180.0,"n":3,"live":true,"observed_min":399.0,"observed_median":449.0,"configured":180.0,"basis":"cheapest warranted observed $399.00 (3 listings) vs configured $180.00 - using the lower"},"elitebook_800|11":{"family":"elitebook_800","gen":11,"label":"EliteBook 8xx","usd":204.0,"n":5,"live":true,"observed_min":569.0,"observed_median":639.0,"configured":204.0,"basis":"cheapest warranted observed $569.00 (5 listings) vs configured $204.00 - using the lower"},"latitude_5400|11":{"family":"latitude_5400","gen":11,"label":"Latitude 5400-series","usd":204.0,"n":5,"live":true,"observed_min":399.0,"observed_median":629.0,"configured":204.0,"basis":"cheapest warranted observed $399.00 (5 listings) vs configured $204.00 - using the lower"},"latitude_7400|10":{"family":"latitude_7400","gen":10,"label":"Latitude 7400-series","usd":180.0,"n":3,"live":true,"observed_min":469.0,"observed_median":549.0,"configured":180.0,"basis":"cheapest warranted observed $469.00 (3 listings) vs configured $180.00 - using the lower"},"latitude_7400|11":{"family":"latitude_7400","gen":11,"label":"Latitude 7400-series","usd":204.0,"n":4,"live":true,"observed_min":469.0,"observed_median":539.0,"configured":204.0,"basis":"cheapest warranted observed $469.00 (4 listings) vs configured $204.00 - using the lower"}},"by_gen":{"11":{"usd":204.0,"note":"verified Oct 2026: lowest warranted refurb, Latitude 5420 i5 16GB/256GB"},"10":{"usd":180.0,"note":"estimated, between the 8th and 11th gen tiers"},"8":{"usd":160.0,"note":"estimated from the agent-fleet lot and retail range"},"default":{"usd":175.0,"note":"fallback when generation is unknown"}},"live_keys":["elitebook_800|10","elitebook_800|11","latitude_5400|11","latitude_7400|10","latitude_7400|11"],"updated_utc":"2026-10-01T18:38:10Z"},"family_labels":{"latitude_5400":"Latitude 5400-series","latitude_5500":"Latitude 5500-series","latitude_7400":"Latitude 7400-series","thinkpad_t":"ThinkPad T-series","thinkpad_l":"ThinkPad L-series","thinkpad_x1":"ThinkPad X1 Carbon","elitebook_800":"EliteBook 8xx","probook_400":"ProBook 4xx"},"source_health":[{"line":"[ok] GreenIT (IE): 28 comparable laptops of 33 available","n":28},{"line":"[ok] Refurb.io (US): 70 comparable laptops of 76 available","n":70},{"line":"[ok] craigslist 'latitude 5420': 18 listings","n":18},{"line":"[ok] craigslist 'latitude 7490': 7 listings","n":7},{"line":"[ok] craigslist 'latitude 5490': 4 listings","n":4},{"line":"[ok] craigslist 'thinkpad t480': 2 listings","n":2},{"line":"[ok] craigslist 'elitebook 840': 46 listings","n":46},{"line":"[ok] craigslist 'laptop lot': 1 listings","n":1},{"line":"[ok] craigslist 'latitude lot': 0 listings","n":0},{"line":"[ok] craigslist 'thinkpad lot': 1 listings","n":1}],"counts":{"anchor_rows":98,"craigslist_rows":79,"craigslist_requests":32,"qualifying":141,"rankable":73},"rejects":{"parts":84,"unrecognised":194,"not_a_laptop":10,"implausible_price":4,"below_min_spec":21,"duplicate":15},"reject_samples":[{"reason":"parts","title":"Manhattan Laptop and Tablet Stand, Adjustable (5 positions), Suitable for all tablets and ","price":25.0},{"reason":"unrecognised","title":"Manhattan London Laptop Bag 15.6\"","price":15.0},{"reason":"parts","title":"V7 J153400 33.8 cm (13.3\") Sleeve case Black","price":10.0},{"reason":"parts","title":"V7 16\" Water-resistant Neoprene Laptop Sleeve Case","price":10.0},{"reason":"unrecognised","title":"V7 CTP16-ECO2 laptop case 39.6 cm (15.6\") Briefcase Black","price":18.0},{"reason":"not_a_laptop","title":"Acer R721 Spin 311 2-in-1 Chromebook AMD A4-9120C 4GB RAM 32GB eMMC 11.6\" Touch - Refurbis","price":159.0},{"reason":"not_a_laptop","title":"🔥 Mystery Surprise! Receive a Windows 11 Laptop or Tablet A-Grade","price":189.0},{"reason":"unrecognised","title":"Dell Latitude 3190 Pentium N4100  4 GB 64 GB SSD Windows 10 Pro 11.6\" Touch- Refurbished","price":179.0},{"reason":"unrecognised","title":"Generic Laptop Bag","price":24.99},{"reason":"not_a_laptop","title":"🔥 Mystery Windows 10 Laptop or Tablet 8GB RAM 128GB SSD or 240GB HDD Windows 10","price":99.0},{"reason":"not_a_laptop","title":"Acer C740-C90X 11.6\" Chromebook Intel Celeron 3205U 1.5GHz, 2GB RAM, 16GB Solid State Driv","price":129.0},{"reason":"unrecognised","title":"Dell Latitude Laptop 5420 i5 16gb Ram 512gb NVMe Drive 2.6ghz 1145G7","price":260.0}],"solution":{"want_units":3,"budget_usd":700.0,"units_found":0,"spent_usd":0.0,"per_unit":null,"feasible":false,"picks":[]},"deals":[{"cpu_gen":8,"gen_source":"model","cpu":null,"ram_gb":null,"storage_gb":null,"lot_size":1,"model":"Dell Latitude 7490","family":"latitude_7400","source":"Craigslist sfbay","source_kind":"craigslist","title":"Lenovo Latitude 7490 Laptop","price":150.0,"region":"sfbay","url":"https://sfbay.craigslist.org/search/sss?query=Lenovo%20Latitude%207490%20Laptop","lat":36.2028,"lon":-121.1273,"shipping_usd":0.0,"shipping_known":true,"chargers_included":false,"slug":"king-city-lenovo-latitude-7490-laptop","spec_complete":false,"unit_price":150.0,"unit_shipping":0.0,"charger_cost":30,"delivered_per_unit":180.0,"anchor":160.0,"anchor_basis":"configured benchmark (8 gen)","ratio":1.125,"band":"pass","vs_anchor_pct":12.5,"doa_per_unit":null,"ceiling_breach":true},{"cpu_gen":8,"gen_source":"model","cpu":null,"ram_gb":null,"storage_gb":null,"lot_size":1,"model":"HP EliteBook 840","family":"elitebook_800","source":"Craigslist seattle","source_kind":"craigslist","title":"Hp EliteBook 840 laptop i5 / SSD / 14 in / W10","price":155.0,"region":"seattle","url":"https://seattle.craigslist.org/search/sss?query=Hp%20EliteBook%20840%20laptop%20i5%20/%20SSD%20/%2014%20in%20/%20W10","lat":49.2551,"lon":-123.0667,"shipping_usd":0.0,"shipping_known":true,"chargers_included":false,"slug":"vancouver-hp-elitebook-840-laptop-i5","spec_complete":false,"unit_price":155.0,"unit_shipping":0.0,"charger_cost":30,"delivered_per_unit":185.0,"anchor":160.0,"anchor_basis":"configured benchmark (8 gen)","ratio":1.156,"band":"pass","vs_anchor_pct":15.6,"doa_per_unit":null,"ceiling_breach":true},{"cpu_gen":8,"gen_source":"model","cpu":null,"ram_gb":null,"storage_gb":null,"lot_size":1,"model":"Dell Latitude 5490","family":"latitude_5400","source":"Craigslist seattle","source_kind":"craigslist","title":"Dell Latitude 5490 Laptop","price":160.0,"region":"seattle","url":"https://seattle.craigslist.org/search/sss?query=Dell%20Latitude%205490%20Laptop","lat":47.6673,"lon":-122.2907,"shipping_usd":0.0,"shipping_known":true,"chargers_included":false,"slug":"seattle-dell-latitude-5490-laptop","spec_complete":false,"unit_price":160.0,"unit_shipping":0.0,"charger_cost":30,"delivered_per_unit":190.0,"anchor":160.0,"anchor_basis":"configured benchmark (8 gen)","ratio":1.188,"band":"pass","vs_anchor_pct":18.8,"doa_per_unit":null,"ceiling_breach":true},{"cpu_gen":8,"gen_source":"model","cpu":null,"ram_gb":null,"storage_gb":null,"lot_size":1,"model":"Dell Latitude 7490","family":"latitude_7400","source":"Craigslist seattle","source_kind":"craigslist","title":"Dell Latitude 7490-11os","price":180.0,"region":"seattle","url":"https://seattle.craigslist.org/search/sss?query=Dell%20Latitude%207490-11os","lat":45.3099,"lon":-122.9685,"shipping_usd":0.0,"shipping_known":true,"chargers_included":false,"slug":"newberg-dell-latitude-os","spec_complete":false,"unit_price":180.0,"unit_shipping":0.0,"charger_cost":30,"delivered_per_unit":210.0,"anchor":160.0,"anchor_basis":"configured benchmark (8 gen)","ratio":1.312,"band":"pass","vs_anchor_pct":31.2,"doa_per_unit":null,"ceiling_breach":true},{"cpu_gen":8,"gen_source":"model","cpu":null,"ram_gb":null,"storage_gb":null,"lot_size":1,"model":"HP EliteBook 840","family":"elitebook_800","source":"Craigslist losangeles","source_kind":"craigslist","title":"HP EliteBook 840 Business Class Laptop","price":199.0,"region":"losangeles","url":"https://losangeles.craigslist.org/search/sss?query=HP%20EliteBook%20840%20Business%20Class%20Laptop","lat":32.8239,"lon":-117.1965,"shipping_usd":0.0,"shipping_known":true,"chargers_included":false,"slug":"san-diego-hp-elitebook-840-business","spec_complete":false,"unit_price":199.0,"unit_shipping":0.0,"charger_cost":30,"delivered_per_unit":229.0,"anchor":160.0,"anchor_basis":"configured benchmark (8 gen)","ratio":1.431,"band":"pass","vs_anchor_pct":43.1,"doa_per_unit":null,"ceiling_breach":true},{"cpu_gen":11,"gen_source":"cpu","cpu":"i7-1185G7","ram_gb":null,"storage_gb":null,"lot_size":1,"model":"Dell Latitude 5420","family":"latitude_5400","source":"Craigslist losangeles","source_kind":"craigslist","title":"Dell Latitude 5420 14\" Laptop i7-1185G7 3.0GHz 16GB 512GB HDMI Win 11","price":200.0,"region":"losangeles","url":"https://losangeles.craigslist.org/search/sss?query=Dell%20Latitude%205420%2014%22%20Laptop%20i7-1185G7%203.0GHz%2016GB%20512GB%20HD","lat":33.6647,"lon":-117.7464,"shipping_usd":0.0,"shipping_known":true,"chargers_included":false,"slug":"east-irvine-dell-latitude-laptop-i7","spec_complete":false,"unit_price":200.0,"unit_shipping":0.0,"charger_cost":30,"delivered_per_unit":230.0,"anchor":204.0,"anchor_basis":"cheapest warranted observed $399.00 (5 listings) vs configured $204.00 - using the lower","ratio":1.127,"band":"pass","vs_anchor_pct":12.7,"doa_per_unit":null,"ceiling_breach":true},{"cpu_gen":8,"gen_source":"cpu","cpu":"Core i7-8th","ram_gb":null,"storage_gb":null,"lot_size":1,"model":"Dell Latitude 7490","family":"latitude_7400","source":"Craigslist seattle","source_kind":"craigslist","title":"DELL Latitude 7490 Laptop Core i7-8th 240Gb 8Gb Win11 Office Pro","price":200.0,"region":"seattle","url":"https://seattle.craigslist.org/search/sss?query=DELL%20Latitude%207490%20Laptop%20Core%20i7-8th%20240Gb%208Gb%20Win11%20Office","lat":49.2858,"lon":-123.0581,"shipping_usd":0.0,"shipping_known":true,"chargers_included":false,"slug":"dell-latitude-7490-laptop-core-i7-8th","spec_complete":false,"unit_price":200.0,"unit_shipping":0.0,"charger_cost":30,"delivered_per_unit":230.0,"anchor":160.0,"anchor_basis":"configured benchmark (8 gen)","ratio":1.438,"band":"pass","vs_anchor_pct":43.8,"doa_per_unit":null,"ceiling_breach":true},{"cpu_gen":10,"gen_source":"model","cpu":null,"ram_gb":16,"storage_gb":null,"lot_size":1,"model":"HP EliteBook 840","family":"elitebook_800","source":"Craigslist sfbay","source_kind":"craigslist","title":"HP EliteBook 840 G7 16GB Memory WIN 11 PRO 24H2","price":200.0,"region":"sfbay","url":"https://sfbay.craigslist.org/search/sss?query=HP%20EliteBook%20840%20G7%2016GB%20Memory%20WIN%2011%20PRO%2024H2","lat":37.6574,"lon":-122.4235,"shipping_usd":0.0,"shipping_known":true,"chargers_included":false,"slug":"south-san-francisco-hp-elitebook-840-g7","spec_complete":false,"unit_price":200.0,"unit_shipping":0.0,"charger_cost":30,"delivered_per_unit":230.0,"anchor":180.0,"anchor_basis":"cheapest warranted observed $399.00 (3 listings) vs configured $180.00 - using the lower","ratio":1.278,"band":"pass","vs_anchor_pct":27.8,"doa_per_unit":null,"ceiling_breach":true},{"cpu_gen":8,"gen_source":"cpu","cpu":"i5-8350U","ram_gb":null,"storage_gb":275,"lot_size":1,"model":"Dell Latitude 5490","family":"latitude_5400","source":"Craigslist seattle","source_kind":"craigslist","title":"Dell Latitude 5490 i5-8350U 14\" Windows 11 Pro Laptop 275GB SSD 16GB","price":219.0,"region":"seattle","url":"https://seattle.craigslist.org/search/sss?query=Dell%20Latitude%205490%20i5-8350U%2014%22%20Windows%2011%20Pro%20Laptop%20275GB%20","lat":45.3514,"lon":-122.8567,"shipping_usd":0.0,"shipping_known":true,"chargers_included":false,"slug":"sherwood-dell-latitude-5490-i5-8350u-14","spec_complete":false,"unit_price":219.0,"unit_shipping":0.0,"charger_cost":30,"delivered_per_unit":249.0,"anchor":160.0,"anchor_basis":"configured benchmark (8 gen)","ratio":1.556,"band":"pass","vs_anchor_pct":55.6,"doa_per_unit":null,"ceiling_breach":true},{"cpu_gen":11,"gen_source":"model","cpu":null,"ram_gb":null,"storage_gb":null,"lot_size":1,"model":"Dell Latitude 5420","family":"latitude_5400","source":"Craigslist sfbay","source_kind":"craigslist","title":"Rare  Eye-Care Setup (400-nits ComfortView-Plus)  Dell Latitude 5420","price":220.0,"region":"sfbay","url":"https://sfbay.craigslist.org/search/sss?query=Rare%20%20Eye-Care%20Setup%20%28400-nits%20ComfortView-Plus%29%20%20Dell%20Latit","lat":37.5671,"lon":-122.3676,"shipping_usd":0.0,"shipping_known":true,"chargers_included":false,"slug":"burlingame-rare-eye-care-setup-400-nits","spec_complete":false,"unit_price":220.0,"unit_shipping":0.0,"charger_cost":30,"delivered_per_unit":250.0,"anchor":204.0,"anchor_basis":"cheapest warranted observed $399.00 (5 listings) vs configured $204.00 - using the lower","ratio":1.225,"band":"pass","vs_anchor_pct":22.5,"doa_per_unit":null,"ceiling_breach":true},{"cpu_gen":11,"gen_source":"model","cpu":null,"ram_gb":16,"storage_gb":256,"lot_size":1,"model":"Dell Latitude 5420","family":"latitude_5400","source":"Craigslist seattle","source_kind":"craigslist","title":"14\" Dell Latitude 5420 Laptop | Core i5, 16GB RAM, 256GB SSD","price":225.0,"region":"seattle","url":"https://seattle.craigslist.org/search/sss?query=14%22%20Dell%20Latitude%205420%20Laptop%20%7C%20Core%20i5%2C%2016GB%20RAM%2C%20256GB%20SSD","lat":47.6753,"lon":-122.3863,"shipping_usd":0.0,"shipping_known":true,"chargers_included":false,"slug":"seattle-14-dell-latitude-5420-laptop","spec_complete":true,"unit_price":225.0,"unit_shipping":0.0,"charger_cost":30,"delivered_per_unit":255.0,"anchor":204.0,"anchor_basis":"cheapest warranted observed $399.00 (5 listings) vs configured $204.00 - using the lower","ratio":1.25,"band":"pass","vs_anchor_pct":25.0,"doa_per_unit":null,"ceiling_breach":true},{"cpu_gen":11,"gen_source":"cpu","cpu":"i7-1185G7","ram_gb":null,"storage_gb":null,"lot_size":1,"model":"HP EliteBook 840","family":"elitebook_800","source":"Craigslist losangeles","source_kind":"craigslist","title":"HP EliteBook 840 G8 14\" Laptop i7-1185G7 3.0GHz 16GB 512GB HDMI Win11","price":230.0,"region":"losangeles","url":"https://losangeles.craigslist.org/search/sss?query=HP%20EliteBook%20840%20G8%2014%22%20Laptop%20i7-1185G7%203.0GHz%2016GB%20512GB%20H","lat":33.6647,"lon":-117.7464,"shipping_usd":0.0,"shipping_known":true,"chargers_included":false,"slug":"east-irvine-hp-elitebook-840-g8-14","spec_complete":false,"unit_price":230.0,"unit_shipping":0.0,"charger_cost":30,"delivered_per_unit":260.0,"anchor":204.0,"anchor_basis":"cheapest warranted observed $569.00 (5 listings) vs configured $204.00 - using the lower","ratio":1.275,"band":"pass","vs_anchor_pct":27.5,"doa_per_unit":null,"ceiling_breach":true},{"cpu_gen":8,"gen_source":"model","cpu":null,"ram_gb":null,"storage_gb":null,"lot_size":1,"model":"HP EliteBook 840","family":"elitebook_800","source":"Craigslist losangeles","source_kind":"craigslist","title":"HP - Elitebook 840 G5","price":240.0,"region":"losangeles","url":"https://losangeles.craigslist.org/search/sss?query=HP%20-%20Elitebook%20840%20G5","lat":34.2572,"lon":-119.208,"shipping_usd":0.0,"shipping_known":true,"chargers_included":false,"slug":"oxnard-hp-elitebook-840-g5","spec_complete":false,"unit_price":240.0,"unit_shipping":0.0,"charger_cost":30,"delivered_per_unit":270.0,"anchor":160.0,"anchor_basis":"configured benchmark (8 gen)","ratio":1.688,"band":"pass","vs_anchor_pct":68.8,"doa_per_unit":null,"ceiling_breach":true},{"cpu_gen":8,"gen_source":"model","cpu":null,"ram_gb":null,"storage_gb":null,"lot_size":1,"model":"Dell Latitude 5490","family":"latitude_5400","source":"Craigslist seattle","source_kind":"craigslist","title":"Dell Latitude 5490 laptop for sale","price":250.0,"region":"seattle","url":"https://seattle.craigslist.org/search/sss?query=Dell%20Latitude%205490%20laptop%20for%20sale","lat":48.9437,"lon":-122.4791,"shipping_usd":0.0,"shipping_known":true,"chargers_included":false,"slug":"lynden-dell-latitude-5490-laptop-for","spec_complete":false,"unit_price":250.0,"unit_shipping":0.0,"charger_cost":30,"delivered_per_unit":280.0,"anchor":160.0,"anchor_basis":"configured benchmark (8 gen)","ratio":1.75,"band":"pass","vs_anchor_pct":75.0,"doa_per_unit":null,"ceiling_breach":true},{"cpu_gen":8,"gen_source":"model","cpu":null,"ram_gb":null,"storage_gb":null,"lot_size":1,"model":"HP EliteBook 840","family":"elitebook_800","source":"Craigslist seattle","source_kind":"craigslist","title":"Hp elitebook 840g6 Intel i5","price":250.0,"region":"seattle","url":"https://seattle.craigslist.org/search/sss?query=Hp%20elitebook%20840g6%20Intel%20i5","lat":49.2475,"lon":-123.121,"shipping_usd":0.0,"shipping_known":true,"chargers_included":false,"slug":"vancouver-hp-elitebook-840g6-intel-i5","spec_complete":false,"unit_price":250.0,"unit_shipping":0.0,"charger_cost":30,"delivered_per_unit":280.0,"anchor":160.0,"anchor_basis":"configured benchmark (8 gen)","ratio":1.75,"band":"pass","vs_anchor_pct":75.0,"doa_per_unit":null,"ceiling_breach":true},{"cpu_gen":10,"gen_source":"cpu","cpu":"Core i5 10th","ram_gb":16,"storage_gb":null,"lot_size":1,"model":"HP EliteBook 840","family":"elitebook_800","source":"Craigslist seattle","source_kind":"craigslist","title":"Last one Final Sale! HP EliteBook 840 G7 Core i5 10th Gen + 16GB RAM","price":299.0,"region":"seattle","url":"https://seattle.craigslist.org/search/sss?query=Last%20one%20Final%20Sale%21%20HP%20EliteBook%20840%20G7%20Core%20i5%2010th%20Gen%20%2B%20","lat":49.1584,"lon":-122.8903,"shipping_usd":0.0,"shipping_known":true,"chargers_included":false,"slug":"surrey-last-one-final-sale-hp-elitebook","spec_complete":false,"unit_price":299.0,"unit_shipping":0.0,"charger_cost":30,"delivered_per_unit":329.0,"anchor":180.0,"anchor_basis":"cheapest warranted observed $399.00 (3 listings) vs configured $180.00 - using the lower","ratio":1.828,"band":"pass","vs_anchor_pct":82.8,"doa_per_unit":null,"ceiling_breach":true},{"cpu_gen":10,"gen_source":"cpu","cpu":"Core i5 10th","ram_gb":16,"storage_gb":256,"lot_size":1,"model":"HP EliteBook 840","family":"elitebook_800","source":"Craigslist seattle","source_kind":"craigslist","title":"HP EliteBook 840 G7 Core i5 10th Gen + 16GB RAM + 256GB SSD","price":299.0,"region":"seattle","url":"https://seattle.craigslist.org/search/sss?query=HP%20EliteBook%20840%20G7%20Core%20i5%2010th%20Gen%20%2B%2016GB%20RAM%20%2B%20256GB%20SSD","lat":49.1596,"lon":-122.8903,"shipping_usd":0.0,"shipping_known":true,"chargers_included":false,"slug":"surrey-hp-elitebook-840-g7-core-i5-10th","spec_complete":true,"unit_price":299.0,"unit_shipping":0.0,"charger_cost":30,"delivered_per_unit":329.0,"anchor":180.0,"anchor_basis":"cheapest warranted observed $399.00 (3 listings) vs configured $180.00 - using the lower","ratio":1.828,"band":"pass","vs_anchor_pct":82.8,"doa_per_unit":null,"ceiling_breach":true},{"cpu_gen":8,"gen_source":"model","cpu":null,"ram_gb":null,"storage_gb":null,"lot_size":1,"model":"Dell Latitude 7490","family":"latitude_7400","source":"Craigslist sfbay","source_kind":"craigslist","title":"DELL LATITUDE 7490 i7 512GB 32GB","price":300.0,"region":"sfbay","url":"https://sfbay.craigslist.org/search/sss?query=DELL%20LATITUDE%207490%20i7%20512GB%2032GB","lat":37.296,"lon":-121.8939,"shipping_usd":0.0,"shipping_known":true,"chargers_included":false,"slug":"san-jose-dell-latitude-7490-i7-512gb","spec_complete":false,"unit_price":300.0,"unit_shipping":0.0,"charger_cost":30,"delivered_per_unit":330.0,"anchor":160.0,"anchor_basis":"configured benchmark (8 gen)","ratio":2.062,"band":"pass","vs_anchor_pct":106.2,"doa_per_unit":null,"ceiling_breach":true},{"cpu_gen":10,"gen_source":"model","cpu":null,"ram_gb":32,"storage_gb":null,"lot_size":1,"model":"HP EliteBook 840","family":"elitebook_800","source":"Craigslist sfbay","source_kind":"craigslist","title":"HP EliteBook 840 G7 32 GB Memory","price":300.0,"region":"sfbay","url":"https://sfbay.craigslist.org/search/sss?query=HP%20EliteBook%20840%20G7%2032%20GB%20Memory","lat":37.6574,"lon":-122.4235,"shipping_usd":0.0,"shipping_known":true,"chargers_included":false,"slug":"south-san-francisco-hp-elitebook-840-g7","spec_complete":false,"unit_price":300.0,"unit_shipping":0.0,"charger_cost":30,"delivered_per_unit":330.0,"anchor":180.0,"anchor_basis":"cheapest warranted observed $399.00 (3 listings) vs configured $180.00 - using the lower","ratio":1.833,"band":"pass","vs_anchor_pct":83.3,"doa_per_unit":null,"ceiling_breach":true},{"cpu_gen":8,"gen_source":"model","cpu":null,"ram_gb":null,"storage_gb":null,"lot_size":1,"model":"HP EliteBook 840","family":"elitebook_800","source":"Craigslist seattle","source_kind":"craigslist","title":"HP EliteBook 840 G6 – Business-Class Laptop","price":300.0,"region":"seattle","url":"https://seattle.craigslist.org/search/sss?query=HP%20EliteBook%20840%20G6%20%E2%80%93%20Business-Class%20Laptop","lat":49.1444,"lon":-123.1274,"shipping_usd":0.0,"shipping_known":true,"chargers_included":false,"slug":"richmond-hp-elitebook-840-g6-business","spec_complete":false,"unit_price":300.0,"unit_shipping":0.0,"charger_cost":30,"delivered_per_unit":330.0,"anchor":160.0,"anchor_basis":"configured benchmark (8 gen)","ratio":2.062,"band":"pass","vs_anchor_pct":106.2,"doa_per_unit":null,"ceiling_breach":true},{"cpu_gen":8,"gen_source":"model","cpu":null,"ram_gb":16,"storage_gb":256,"lot_size":1,"model":"HP EliteBook 840","family":"elitebook_800","source":"Craigslist seattle","source_kind":"craigslist","title":"HP Elitebook 840 G6 i5 16GB Ram 256GB SSD Full HD Win 11","price":300.0,"region":"seattle","url":"https://seattle.craigslist.org/search/sss?query=HP%20Elitebook%20840%20G6%20i5%2016GB%20Ram%20256GB%20SSD%20Full%20HD%20Win%2011","lat":49.2786,"lon":-123.1163,"shipping_usd":0.0,"shipping_known":true,"chargers_included":false,"slug":"vancouver-hp-elitebook-840-g6-i5-16gb","spec_complete":true,"unit_price":300.0,"unit_shipping":0.0,"charger_cost":30,"delivered_per_unit":330.0,"anchor":160.0,"anchor_basis":"configured benchmark (8 gen)","ratio":2.062,"band":"pass","vs_anchor_pct":106.2,"doa_per_unit":null,"ceiling_breach":true},{"cpu_gen":8,"gen_source":"model","cpu":null,"ram_gb":16,"storage_gb":256,"lot_size":1,"model":"HP EliteBook 840","family":"elitebook_800","source":"Craigslist seattle","source_kind":"craigslist","title":"HP EliteBook 840 G5 – i5 | 16GB RAM | 256GB SSD","price":325.0,"region":"seattle","url":"https://seattle.craigslist.org/search/sss?query=HP%20EliteBook%20840%20G5%20%E2%80%93%20i5%20%7C%2016GB%20RAM%20%7C%20256GB%20SSD","lat":49.1258,"lon":-123.0943,"shipping_usd":0.0,"shipping_known":true,"chargers_included":false,"slug":"richmond-hp-elitebook-840-g5-i5-16gb","spec_complete":true,"unit_price":325.0,"unit_shipping":0.0,"charger_cost":30,"delivered_per_unit":355.0,"anchor":160.0,"anchor_basis":"configured benchmark (8 gen)","ratio":2.219,"band":"pass","vs_anchor_pct":121.9,"doa_per_unit":null,"ceiling_breach":true},{"cpu_gen":11,"gen_source":"model","cpu":null,"ram_gb":16,"storage_gb":null,"lot_size":1,"model":"HP EliteBook 840","family":"elitebook_800","source":"Craigslist seattle","source_kind":"craigslist","title":"Back 2 Class Sale! HP EliteBook 840 G8 Laptop Intel i5-11| 16GB Ram","price":329.0,"region":"seattle","url":"https://seattle.craigslist.org/search/sss?query=Back%202%20Class%20Sale%21%20HP%20EliteBook%20840%20G8%20Laptop%20Intel%20i5-11%7C%201","lat":49.1596,"lon":-122.8903,"shipping_usd":0.0,"shipping_known":true,"chargers_included":false,"slug":"surrey-back-class-sale-hp-elitebook-840","spec_complete":false,"unit_price":329.0,"unit_shipping":0.0,"charger_cost":30,"delivered_per_unit":359.0,"anchor":204.0,"anchor_basis":"cheapest warranted observed $569.00 (5 listings) vs configured $204.00 - using the lower","ratio":1.76,"band":"pass","vs_anchor_pct":76.0,"doa_per_unit":null,"ceiling_breach":true},{"cpu_gen":11,"gen_source":"model","cpu":null,"ram_gb":16,"storage_gb":256,"lot_size":1,"model":"HP EliteBook 840","family":"elitebook_800","source":"Craigslist seattle","source_kind":"craigslist","title":"HP EliteBook 840 G8 Laptop Intel i5-11| 16GB Ram| 256GB SSD w/ warrant","price":329.0,"region":"seattle","url":"https://seattle.craigslist.org/search/sss?query=HP%20EliteBook%20840%20G8%20Laptop%20Intel%20i5-11%7C%2016GB%20Ram%7C%20256GB%20SSD%20","lat":49.1596,"lon":-122.8903,"shipping_usd":0.0,"shipping_known":true,"chargers_included":false,"slug":"surrey-hp-elitebook-840-g8-laptop-intel","spec_complete":true,"unit_price":329.0,"unit_shipping":0.0,"charger_cost":30,"delivered_per_unit":359.0,"anchor":204.0,"anchor_basis":"cheapest warranted observed $569.00 (5 listings) vs configured $204.00 - using the lower","ratio":1.76,"band":"pass","vs_anchor_pct":76.0,"doa_per_unit":null,"ceiling_breach":true},{"cpu_gen":11,"gen_source":"cpu","cpu":"Core i5-11th","ram_gb":16,"storage_gb":null,"lot_size":1,"model":"HP EliteBook 840","family":"elitebook_800","source":"Craigslist seattle","source_kind":"craigslist","title":"Hp Elitebook 840 G8 intel Core i5-11th Gen 16GB RAM/256G SSD with 3 Mo","price":329.0,"region":"seattle","url":"https://seattle.craigslist.org/search/sss?query=Hp%20Elitebook%20840%20G8%20intel%20Core%20i5-11th%20Gen%2016GB%20RAM/256G%20SSD","lat":49.1596,"lon":-122.8903,"shipping_usd":0.0,"shipping_known":true,"chargers_included":false,"slug":"surrey-hp-elitebook-840-g8-intel-core","spec_complete":false,"unit_price":329.0,"unit_shipping":0.0,"charger_cost":30,"delivered_per_unit":359.0,"anchor":204.0,"anchor_basis":"cheapest warranted observed $569.00 (5 listings) vs configured $204.00 - using the lower","ratio":1.76,"band":"pass","vs_anchor_pct":76.0,"doa_per_unit":null,"ceiling_breach":true}]};
+(function () {
+  "use strict";
+  const $ = (id) => document.getElementById(id);
+  const esc = (s) => String(s == null ? "" : s).replace(/[&<>"]/g,
+    (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const money = (n) => (n === null || n === undefined) ? "—" : "$" + Number(n).toFixed(2);
+  const pct = (n) => (n === null || n === undefined) ? "—" : (n > 0 ? "+" : "") + Number(n).toFixed(1) + "%";
+
+  if (!DATA) { $("stamp").textContent = "no baked data"; return; }
+
+  const cfg = DATA.config || {};
+  const s = DATA.solution || {};
+  const a = DATA.anchors || {};
+  const byGen = a.by_gen || {};
+  const deals = DATA.deals || [];
+  const counts = DATA.counts || {};
+
+  $("stamp").textContent = "data as of " + DATA.generated_utc + "  ·  " +
+    (counts.qualifying || 0) + " qualifying listings  ·  " +
+    (counts.rankable || 0) + " with a known model";
+
+  // ---- ask / solution ----
+  $("ask-title").textContent = (s.units_found || 0) + " of " + (s.want_units || 0) + " units";
+  $("ask-sub").textContent = "budget " + money(s.budget_usd) + "  ·  spent " + money(s.spent_usd) +
+    "  ·  " + money(s.per_unit) + "/unit";
+
+  let verdict;
+  if (s.feasible) {
+    verdict = "Cheapest way to hit " + s.want_units + " units inside " + money(s.budget_usd) +
+      " costs " + money(s.spent_usd) + " (" + money(s.per_unit) + " per unit).";
+  } else if (s.units_found) {
+    verdict = "Only " + s.units_found + " of " + s.want_units + " units fit " + money(s.budget_usd) +
+      " — " + money(s.spent_usd) + " so far (" + money(s.per_unit) + "/unit).";
+  } else {
+    verdict = "Nothing on the board today prices below its own warranted-refurb anchor. " +
+      "That is the tool agreeing with the market, not failing to look: on this run every qualified " +
+      "listing was at or above the benchmark price for its family and generation.";
+  }
+  $("ask-verdict").textContent = verdict;
+
+  (s.picks || []).forEach(function (p) {
+    const c = document.createElement("span");
+    c.className = "chip";
+    c.textContent = p.model + " · " + money(p.delivered_per_unit) + "/u" +
+      (p.lot_size > 1 ? " · lot of " + p.lot_size : "");
+    $("ask-chips").appendChild(c);
+  });
+
+  // ---- tiles ----
+  const best = deals.length ? deals[0].delivered_per_unit : null;
+  const tiles = [
+    ["qualifying", counts.qualifying || 0, "met the min spec"],
+    ["rankable", counts.rankable || 0, "known model + anchor"],
+    ["best $/unit", money(best), "delivered, incl. shipping"],
+    ["anchor · 11th gen", money((byGen["11"] || {}).usd), "warranted benchmark"],
+    ["anchor · 10th gen", money((byGen["10"] || {}).usd), "warranted benchmark"],
+    ["anchor · 8th gen", money((byGen["8"] || {}).usd), "warranted benchmark"],
+    ["requests", counts.craigslist_requests || 0, "craigslist calls"]
+  ];
+  tiles.forEach(function (t) {
+    const d = document.createElement("div");
+    d.className = "tile";
+    d.innerHTML = '<div class="k">' + esc(t[0]) + '</div><div class="v">' + esc(t[1]) +
+      '</div><div class="n">' + esc(t[2]) + "</div>";
+    $("stat-tiles").appendChild(d);
+  });
+
+  // ---- deals ----
+  $("deals-count").textContent = deals.length + " shown" +
+    (deals.length ? "  ·  sorted by delivered $/unit" : "");
+  if (!deals.length) { $("deals-empty").style.display = ""; }
+  deals.forEach(function (r) {
+    const tr = document.createElement("tr");
+    const genTxt = r.cpu_gen
+      ? ("gen" + r.cpu_gen + (r.gen_source === "model" ? "*" : ""))
+      : "gen?";
+    const spec = [genTxt,
+                  r.ram_gb ? r.ram_gb + "GB" : "?GB",
+                  r.storage_gb ? r.storage_gb + "GB" : "?GB"].join(" · ") +
+                 (r.spec_complete ? "" : "  ⚠ incomplete");
+    tr.innerHTML =
+      '<td><span class="band ' + esc(r.band) + '">' + esc(String(r.band).toUpperCase()) + "</span></td>" +
+      '<td><a href="' + esc(r.url) + '" target="_blank" rel="noopener">' + esc(r.model) + "</a>" +
+        '<div class="spec">' + esc((r.title || "").slice(0, 78)) + "</div>" +
+        '<div class="basis">anchor ' + money(r.anchor) + " — " + esc(r.anchor_basis || "") + "</div></td>" +
+      '<td><span class="spec">' + esc(r.source) + "</span>" +
+        (r.region ? '<div class="spec">' + esc(r.region) + "</div>" : "") + "</td>" +
+      '<td><span class="spec">' + esc(spec) + "</span></td>" +
+      '<td class="num">' + money(r.price) + "</td>" +
+      '<td class="num' + (r.lot_size > 1 ? " lot" : "") + '">' + (r.lot_size || 1) + "</td>" +
+      '<td class="num">' + money(r.delivered_per_unit) + "</td>" +
+      '<td class="num">' + pct(r.vs_anchor_pct) + "</td>" +
+      '<td class="num">' + (r.doa_per_unit ? money(r.doa_per_unit) : "—") + "</td>";
+    $("deals-body").appendChild(tr);
+  });
+
+  // ---- anchors: always-present generation benchmarks ----
+  const GEN_LABEL = { "11": "11th gen (2021)", "10": "10th gen (2020)", "8": "8th gen (2018)" };
+  ["11", "10", "8"].forEach(function (g) {
+    const b = byGen[g] || {};
+    const tr = document.createElement("tr");
+    tr.innerHTML = "<td>" + esc(GEN_LABEL[g]) + "</td>" +
+      '<td class="num">' + money(b.usd) + "</td>" +
+      '<td><span class="basis">' + esc(b.note || "configured benchmark") + "</span></td>";
+    $("anchor-body").appendChild(tr);
+  });
+
+  // ---- live family anchors (may legitimately be empty) ----
+  const fams = Object.keys(a.families || {}).map(function (k) { return a.families[k]; })
+    .sort(function (x, y) { return y.usd - x.usd; });
+  if (!fams.length) {
+    $("family-empty").style.display = "";
+  }
+  fams.forEach(function (f) {
+    const tr = document.createElement("tr");
+    tr.innerHTML = "<td>" + esc(f.label || f.family) + (f.live ? "" : ' <span class="spec">·stale</span>') +
+      "</td><td class=\"num\">" + esc(f.gen) + "</td>" +
+      '<td class="num">' + money(f.usd) + "</td>" +
+      '<td class="num">' + (f.n || "—") + "</td>" +
+      '<td><span class="basis">' + esc(f.basis) + "</span></td>";
+    $("family-body").appendChild(tr);
+  });
+
+  // ---- filtered ----
+  const rj = DATA.rejects || {};
+  if (!Object.keys(rj).length) {
+    $("rejects").innerHTML = '<span class="rj">nothing filtered</span>';
+  } else {
+    Object.keys(rj).sort().forEach(function (k) {
+      const d = document.createElement("span");
+      d.className = "rj";
+      d.textContent = k + " = " + rj[k];
+      $("rejects").appendChild(d);
+    });
+  }
+  (DATA.reject_samples || []).forEach(function (x) {
+    const tr = document.createElement("tr");
+    tr.innerHTML = '<td><span class="spec">' + esc(x.reason) + "</span></td>" +
+      '<td class="num">' + (x.price ? money(x.price) : "—") + "</td>" +
+      '<td><span class="spec">' + esc(x.title) + "</span></td>";
+    $("reject-body").appendChild(tr);
+  });
+
+  // ---- source health ----
+  (DATA.source_health || []).forEach(function (h) {
+    const li = document.createElement("li");
+    li.className = (h.line || "").indexOf("[FAIL]") === 0 ? "fail" : "";
+    li.textContent = h.line;
+    $("source-health").appendChild(li);
+  });
+})();
+</script>
+</body>
+</html>
