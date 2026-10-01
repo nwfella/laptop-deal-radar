@@ -1,0 +1,51 @@
+{
+  "_comment": "Laptop Deal Radar - user-facing knobs. Edit these, then run: python scripts/collect.py",
+
+  "want_units": 3,
+  "budget_usd": 700,
+  "shipping_inclusive": true,
+  "charger_cost_usd": 30,
+
+  "min_spec": {
+    "cpu_gen": 8,
+    "ram_gb": 16,
+    "storage_gb": 256
+  },
+
+  "max_results": 25,
+
+  "purchase_ceiling": {
+    "_comment": "Delivered per-unit hard ceiling from the used-laptop-agent-fleet valuation method. Listings above it are marked as breaching the ceiling.",
+    "hard_pass_above_usd": 175
+  },
+
+  "anchor_fallback": {
+    "_comment": "Benchmark = what a TESTED, WARRANTED machine of that generation costs. A live scan overrides a (family, generation) pair only when 3+ observations agree. These fallbacks are the honest answer when the resellers do not stock the model this week.",
+    "11": { "usd": 204, "note": "verified Oct 2026: lowest warranted refurb, Latitude 5420 i5 16GB/256GB" },
+    "10": { "usd": 180, "note": "estimated, between the 8th and 11th gen tiers" },
+    "8":  { "usd": 160, "note": "estimated from the agent-fleet lot and retail range" },
+    "default": { "usd": 175, "note": "fallback when generation is unknown" }
+  },
+
+  "shopify_hosts": [
+    { "host": "www.greenit.ie", "label": "GreenIT (IE)", "pages": 4 },
+    { "host": "www.refurb.io", "label": "Refurb.io (US)", "pages": 4 }
+  ],
+
+  "craigslist": {
+    "_comment": "batch=N walks US regions in sequence: 1=sfbay 2=seattle 3=newyork 4=boston 7=losangeles 8=sandiego. Only batches answering 200 are used; 400s are skipped. Keep the request count modest - this is an undocumented internal endpoint.",
+    "batches": [1, 2, 7, 8],
+    "queries": [
+      "latitude 5420",
+      "latitude 7490",
+      "latitude 5490",
+      "thinkpad t480",
+      "elitebook 840",
+      "laptop lot",
+      "latitude lot",
+      "thinkpad lot"
+    ],
+    "request_delay_s": 2.0,
+    "max_requests": 34
+  }
+}

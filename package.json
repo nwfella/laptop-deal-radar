@@ -1,0 +1,14 @@
+{
+  "name": "laptop-deal-radar",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Daily scanner that finds best bang-for-buck used business laptops for an agent fleet, valued against warranted-refurb anchors.",
+  "scripts": {
+    "collect": "python scripts/collect.py",
+    "verify": "node scripts/verify_site.js",
+    "gate": "node scripts/verify_site.js"
+  },
+  "devDependencies": {
+    "jsdom": "^24.1.3"
+  }
+}

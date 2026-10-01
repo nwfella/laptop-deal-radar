@@ -1,0 +1,90 @@
+{
+ "families": {
+  "elitebook_800|10": {
+   "family": "elitebook_800",
+   "gen": 10,
+   "label": "EliteBook 8xx",
+   "usd": 180.0,
+   "n": 3,
+   "live": true,
+   "observed_min": 399.0,
+   "observed_median": 449.0,
+   "configured": 180.0,
+   "basis": "cheapest warranted observed $399.00 (3 listings) vs configured $180.00 - using the lower"
+  },
+  "elitebook_800|11": {
+   "family": "elitebook_800",
+   "gen": 11,
+   "label": "EliteBook 8xx",
+   "usd": 204.0,
+   "n": 5,
+   "live": true,
+   "observed_min": 569.0,
+   "observed_median": 639.0,
+   "configured": 204.0,
+   "basis": "cheapest warranted observed $569.00 (5 listings) vs configured $204.00 - using the lower"
+  },
+  "latitude_5400|11": {
+   "family": "latitude_5400",
+   "gen": 11,
+   "label": "Latitude 5400-series",
+   "usd": 204.0,
+   "n": 5,
+   "live": true,
+   "observed_min": 399.0,
+   "observed_median": 629.0,
+   "configured": 204.0,
+   "basis": "cheapest warranted observed $399.00 (5 listings) vs configured $204.00 - using the lower"
+  },
+  "latitude_7400|10": {
+   "family": "latitude_7400",
+   "gen": 10,
+   "label": "Latitude 7400-series",
+   "usd": 180.0,
+   "n": 3,
+   "live": true,
+   "observed_min": 469.0,
+   "observed_median": 549.0,
+   "configured": 180.0,
+   "basis": "cheapest warranted observed $469.00 (3 listings) vs configured $180.00 - using the lower"
+  },
+  "latitude_7400|11": {
+   "family": "latitude_7400",
+   "gen": 11,
+   "label": "Latitude 7400-series",
+   "usd": 204.0,
+   "n": 4,
+   "live": true,
+   "observed_min": 469.0,
+   "observed_median": 539.0,
+   "configured": 204.0,
+   "basis": "cheapest warranted observed $469.00 (4 listings) vs configured $204.00 - using the lower"
+  }
+ },
+ "by_gen": {
+  "11": {
+   "usd": 204.0,
+   "note": "verified Oct 2026: lowest warranted refurb, Latitude 5420 i5 16GB/256GB"
+  },
+  "10": {
+   "usd": 180.0,
+   "note": "estimated, between the 8th and 11th gen tiers"
+  },
+  "8": {
+   "usd": 160.0,
+   "note": "estimated from the agent-fleet lot and retail range"
+  },
+  "default": {
+   "usd": 175.0,
+   "note": "fallback when generation is unknown"
+  }
+ },
+ "live_keys": [
+  "elitebook_800|10",
+  "elitebook_800|11",
+  "latitude_5400|11",
+  "latitude_7400|10",
+  "latitude_7400|11"
+ ],
+ "updated_utc": "2026-10-01T18:38:10Z"
+}

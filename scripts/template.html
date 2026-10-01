@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Laptop Deal Radar — used business laptops for an agent fleet</title>
+<style>
+  :root{
+    --bg:#0b0f14; --panel:#121821; --panel2:#0f151d; --line:#1e2836;
+    --fg:#e6edf6; --dim:#8b9bb0; --dim2:#5f7186;
+    --steal:#3ddc97; --good:#4ea8ff; --fair:#e8b44a; --pass:#6b7b8f; --suspect:#e0607e;
+    --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--fg);
+       font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+       -webkit-font-smoothing:antialiased}
+  .wrap{max-width:1220px;margin:0 auto;padding:28px 20px 64px}
+  header h1{margin:0;font-size:26px;letter-spacing:-.4px}
+  header .sub{color:var(--dim);font-size:13px;margin-top:6px;max-width:760px}
+  header .stamp{color:var(--dim2);font-size:12px;font-family:var(--mono);margin-top:10px}
+  .ask{margin:22px 0;padding:18px 20px;background:linear-gradient(180deg,#141c26,#101720);
+       border:1px solid var(--line);border-radius:12px}
+  .ask .line{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline}
+  .ask .big{font-size:20px;font-weight:600}
+  .ask .unit{font-family:var(--mono);color:var(--dim);font-size:13px}
+  #ask-verdict{margin-top:12px;font-size:14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+  .chip{font-family:var(--mono);font-size:12px;padding:3px 9px;border-radius:999px;
+        border:1px solid var(--line);color:var(--dim);background:var(--panel2)}
+  .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(156px,1fr));gap:12px;margin:22px 0}
+  .tile{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+  .tile .k{font-size:11px;text-transform:uppercase;letter-spacing:.7px;color:var(--dim2)}
+  .tile .v{font-size:22px;font-weight:650;margin-top:6px;font-family:var(--mono)}
+  .tile .n{font-size:12px;color:var(--dim);margin-top:3px}
+  h2{font-size:15px;text-transform:uppercase;letter-spacing:.9px;color:var(--dim);
+     margin:34px 0 12px;font-weight:600}
+  h2 .sub{text-transform:none;letter-spacing:0;color:var(--dim2);font-weight:400;font-size:12.5px}
+  table{width:100%;border-collapse:collapse;font-size:13.5px}
+  th{text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.6px;
+     color:var(--dim2);font-weight:600;padding:8px 10px;border-bottom:1px solid var(--line)}
+  td{padding:10px;border-bottom:1px solid var(--line);vertical-align:top}
+  tr:hover td{background:#101823}
+  td.num{font-family:var(--mono);white-space:nowrap}
+  a{color:var(--good);text-decoration:none} a:hover{text-decoration:underline}
+  .band{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.5px;
+        padding:3px 8px;border-radius:5px;border:1px solid}
+  .band.steal{color:var(--steal);border-color:#1d5c45;background:#0e2018}
+  .band.good{color:var(--good);border-color:#1c4c78;background:#0d1a26}
+  .band.fair{color:var(--fair);border-color:#6a5220;background:#1e1808}
+  .band.pass{color:var(--pass);border-color:#2a3644;background:#111823}
+  .band.suspect{color:var(--suspect);border-color:#6d2136;background:#1f0d13}
+  .band.unknown{color:var(--dim2);border-color:#2a3644}
+  .spec{font-family:var(--mono);font-size:11.5px;color:var(--dim)}
+  .basis{font-family:var(--mono);font-size:11px;color:var(--dim2)}
+  .lot{color:var(--steal);font-weight:700}
+  #source-health{list-style:none;padding:0;margin:0;font-family:var(--mono);font-size:12.5px}
+  #source-health li{padding:5px 0;border-bottom:1px solid #141c26;color:var(--dim)}
+  #source-health li.fail{color:var(--fair)}
+  #rejects{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+  .rj{font-family:var(--mono);font-size:12px;padding:3px 9px;border-radius:6px;
+      border:1px solid var(--line);background:var(--panel2);color:var(--dim)}
+  .note{color:var(--dim);font-size:12.5px;border-left:2px solid var(--line);
+        padding:2px 0 2px 14px;margin:10px 0}
+  footer{margin-top:44px;color:var(--dim2);font-size:12px;border-top:1px solid var(--line);padding-top:16px}
+  footer strong{color:var(--dim)}
+  .empty{color:var(--dim);padding:16px 0;font-style:italic}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Laptop Deal Radar</h1>
+    <div class="sub">Used business laptops worth buying for an agent fleet, valued against tested
+      warranted-refurb anchors — delivered cost per unit, buy band, and the do-not-exceed ceiling.</div>
+    <div class="stamp" id="stamp">loading…</div>
+  </header>
+
+  <section class="ask" id="ask">
+    <div class="line"><span class="big" id="ask-title">—</span><span class="unit" id="ask-sub"></span></div>
+    <div id="ask-verdict">—</div>
+    <div class="chips" id="ask-chips"></div>
+  </section>
+
+  <section class="tiles" id="stat-tiles"></section>
+
+  <h2>Ranked deals <span class="sub" id="deals-count"></span></h2>
+  <table>
+    <thead><tr>
+      <th>Band</th><th>Machine</th><th>Source</th><th>Spec</th><th>Ask</th>
+      <th>Lot</th><th>$/unit delivered</th><th>vs anchor</th><th>1 dead</th>
+    </tr></thead>
+    <tbody id="deals-body"></tbody>
+  </table>
+  <div class="empty" id="deals-empty" style="display:none">No listings met the min spec on this run.</div>
+  <p class="note"><strong>gen8*</strong> means the generation was inferred from the model itself — the
+    listing did not name a CPU, so the anchor is the benchmark for that model's known generation, not a
+    spec the seller verified. <strong>⚠ incomplete</strong> means the listing omitted RAM or storage, so it
+    cleared the min spec only on the fields it did state. Both are judgement calls, not confirmations;
+    the 1-dead column is what the mistake costs you.</p>
+
+  <h2>Generation benchmarks <span class="sub">what a tested, warranted machine of that generation costs</span></h2>
+  <table><thead><tr><th>Tier</th><th>Anchor</th><th>Basis</th></tr></thead>
+    <tbody id="anchor-body"></tbody></table>
+  <p class="note">A live scan only overrides one of these when at least 3 listings of that exact family and
+    generation agree, because reseller catalogues are dominated by newer stock and a catalogue-wide median
+    would make every honest listing look like a 70%-off steal. Otherwise the configured benchmark applies —
+    and an empty or failed scan never overwrites a good anchor with nothing.</p>
+
+  <h2>Live family anchors <span class="sub">observed at the scanned resellers this run</span></h2>
+  <table><thead><tr><th>Family</th><th>Gen</th><th>Anchor</th><th>Obs.</th><th>Basis</th></tr></thead>
+    <tbody id="family-body"></tbody></table>
+  <div class="empty" id="family-empty" style="display:none">No family and generation pair reached 3 agreeing
+    live observations this run, so every listing above was judged against its generation benchmark.</div>
+  <p class="note">Where a live anchor exists it is the <strong>lower</strong> of the cheapest comparable
+    warranted listing observed and the configured benchmark — the best warranted alternative you actually
+    have. It is deliberately not an average, because reseller catalogues are full of premium configs
+    (an i7 with 512GB) whose price would make every honest listing look like a 50%-off steal.</p>
+
+  <h2>Filtered out <span class="sub">so the numbers above can be argued with</span></h2>
+  <div id="rejects"></div>
+  <table><thead><tr><th>Reason</th><th>Price</th><th>Listing</th></tr></thead>
+    <tbody id="reject-body"></tbody></table>
+
+  <h2>Source health</h2>
+  <ul id="source-health"></ul>
+
+  <footer>
+    <strong>How a listing is valued.</strong> delivered&nbsp;$/unit =
+    (price ÷ lot size) + shipping share + charger cost when chargers are absent.
+    Bands against the anchor: ≤40% steal, ≤60% good, ≤80% fair, else pass.
+    A single unit under 30% of anchor is flagged <strong>suspect</strong> rather than celebrated —
+    at that price it is far more often a battery, a bare chassis or a misdescription; multi-unit lots
+    are exempt because a 3-pack at −67% is real. <strong>1 dead</strong> is the delivered cost per
+    surviving unit if exactly one machine arrives non-working: the real risk number for a no-warranty lot.
+    Craigslist prices are local pickup and carry no shipping tax.
+    <em>By the usual luck of this shop, any listing which has suffered the misfortune to be found
+    honest, cheap and immediately available is liable to be sold before you read this.</em>
+    Nothing here reserves inventory or verifies a seller's condition claim.
+  </footer>
+</div>
+
+<script>
+const DATA = /*__DATA__*/null;
+(function () {
+  "use strict";
+  const $ = (id) => document.getElementById(id);
+  const esc = (s) => String(s == null ? "" : s).replace(/[&<>"]/g,
+    (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const money = (n) => (n === null || n === undefined) ? "—" : "$" + Number(n).toFixed(2);
+  const pct = (n) => (n === null || n === undefined) ? "—" : (n > 0 ? "+" : "") + Number(n).toFixed(1) + "%";
+
+  if (!DATA) { $("stamp").textContent = "no baked data"; return; }
+
+  const cfg = DATA.config || {};
+  const s = DATA.solution || {};
+  const a = DATA.anchors || {};
+  const byGen = a.by_gen || {};
+  const deals = DATA.deals || [];
+  const counts = DATA.counts || {};
+
+  $("stamp").textContent = "data as of " + DATA.generated_utc + "  ·  " +
+    (counts.qualifying || 0) + " qualifying listings  ·  " +
+    (counts.rankable || 0) + " with a known model";
+
+  // ---- ask / solution ----
+  $("ask-title").textContent = (s.units_found || 0) + " of " + (s.want_units || 0) + " units";
+  $("ask-sub").textContent = "budget " + money(s.budget_usd) + "  ·  spent " + money(s.spent_usd) +
+    "  ·  " + money(s.per_unit) + "/unit";
+
+  let verdict;
+  if (s.feasible) {
+    verdict = "Cheapest way to hit " + s.want_units + " units inside " + money(s.budget_usd) +
+      " costs " + money(s.spent_usd) + " (" + money(s.per_unit) + " per unit).";
+  } else if (s.units_found) {
+    verdict = "Only " + s.units_found + " of " + s.want_units + " units fit " + money(s.budget_usd) +
+      " — " + money(s.spent_usd) + " so far (" + money(s.per_unit) + "/unit).";
+  } else {
+    verdict = "Nothing on the board today prices below its own warranted-refurb anchor. " +
+      "That is the tool agreeing with the market, not failing to look: on this run every qualified " +
+      "listing was at or above the benchmark price for its family and generation.";
+  }
+  $("ask-verdict").textContent = verdict;
+
+  (s.picks || []).forEach(function (p) {
+    const c = document.createElement("span");
+    c.className = "chip";
+    c.textContent = p.model + " · " + money(p.delivered_per_unit) + "/u" +
+      (p.lot_size > 1 ? " · lot of " + p.lot_size : "");
+    $("ask-chips").appendChild(c);
+  });
+
+  // ---- tiles ----
+  const best = deals.length ? deals[0].delivered_per_unit : null;
+  const tiles = [
+    ["qualifying", counts.qualifying || 0, "met the min spec"],
+    ["rankable", counts.rankable || 0, "known model + anchor"],
+    ["best $/unit", money(best), "delivered, incl. shipping"],
+    ["anchor · 11th gen", money((byGen["11"] || {}).usd), "warranted benchmark"],
+    ["anchor · 10th gen", money((byGen["10"] || {}).usd), "warranted benchmark"],
+    ["anchor · 8th gen", money((byGen["8"] || {}).usd), "warranted benchmark"],
+    ["requests", counts.craigslist_requests || 0, "craigslist calls"]
+  ];
+  tiles.forEach(function (t) {
+    const d = document.createElement("div");
+    d.className = "tile";
+    d.innerHTML = '<div class="k">' + esc(t[0]) + '</div><div class="v">' + esc(t[1]) +
+      '</div><div class="n">' + esc(t[2]) + "</div>";
+    $("stat-tiles").appendChild(d);
+  });
+
+  // ---- deals ----
+  $("deals-count").textContent = deals.length + " shown" +
+    (deals.length ? "  ·  sorted by delivered $/unit" : "");
+  if (!deals.length) { $("deals-empty").style.display = ""; }
+  deals.forEach(function (r) {
+    const tr = document.createElement("tr");
+    const genTxt = r.cpu_gen
+      ? ("gen" + r.cpu_gen + (r.gen_source === "model" ? "*" : ""))
+      : "gen?";
+    const spec = [genTxt,
+                  r.ram_gb ? r.ram_gb + "GB" : "?GB",
+                  r.storage_gb ? r.storage_gb + "GB" : "?GB"].join(" · ") +
+                 (r.spec_complete ? "" : "  ⚠ incomplete");
+    tr.innerHTML =
+      '<td><span class="band ' + esc(r.band) + '">' + esc(String(r.band).toUpperCase()) + "</span></td>" +
+      '<td><a href="' + esc(r.url) + '" target="_blank" rel="noopener">' + esc(r.model) + "</a>" +
+        '<div class="spec">' + esc((r.title || "").slice(0, 78)) + "</div>" +
+        '<div class="basis">anchor ' + money(r.anchor) + " — " + esc(r.anchor_basis || "") + "</div></td>" +
+      '<td><span class="spec">' + esc(r.source) + "</span>" +
+        (r.region ? '<div class="spec">' + esc(r.region) + "</div>" : "") + "</td>" +
+      '<td><span class="spec">' + esc(spec) + "</span></td>" +
+      '<td class="num">' + money(r.price) + "</td>" +
+      '<td class="num' + (r.lot_size > 1 ? " lot" : "") + '">' + (r.lot_size || 1) + "</td>" +
+      '<td class="num">' + money(r.delivered_per_unit) + "</td>" +
+      '<td class="num">' + pct(r.vs_anchor_pct) + "</td>" +
+      '<td class="num">' + (r.doa_per_unit ? money(r.doa_per_unit) : "—") + "</td>";
+    $("deals-body").appendChild(tr);
+  });
+
+  // ---- anchors: always-present generation benchmarks ----
+  const GEN_LABEL = { "11": "11th gen (2021)", "10": "10th gen (2020)", "8": "8th gen (2018)" };
+  ["11", "10", "8"].forEach(function (g) {
+    const b = byGen[g] || {};
+    const tr = document.createElement("tr");
+    tr.innerHTML = "<td>" + esc(GEN_LABEL[g]) + "</td>" +
+      '<td class="num">' + money(b.usd) + "</td>" +
+      '<td><span class="basis">' + esc(b.note || "configured benchmark") + "</span></td>";
+    $("anchor-body").appendChild(tr);
+  });
+
+  // ---- live family anchors (may legitimately be empty) ----
+  const fams = Object.keys(a.families || {}).map(function (k) { return a.families[k]; })
+    .sort(function (x, y) { return y.usd - x.usd; });
+  if (!fams.length) {
+    $("family-empty").style.display = "";
+  }
+  fams.forEach(function (f) {
+    const tr = document.createElement("tr");
+    tr.innerHTML = "<td>" + esc(f.label || f.family) + (f.live ? "" : ' <span class="spec">·stale</span>') +
+      "</td><td class=\"num\">" + esc(f.gen) + "</td>" +
+      '<td class="num">' + money(f.usd) + "</td>" +
+      '<td class="num">' + (f.n || "—") + "</td>" +
+      '<td><span class="basis">' + esc(f.basis) + "</span></td>";
+    $("family-body").appendChild(tr);
+  });
+
+  // ---- filtered ----
+  const rj = DATA.rejects || {};
+  if (!Object.keys(rj).length) {
+    $("rejects").innerHTML = '<span class="rj">nothing filtered</span>';
+  } else {
+    Object.keys(rj).sort().forEach(function (k) {
+      const d = document.createElement("span");
+      d.className = "rj";
+      d.textContent = k + " = " + rj[k];
+      $("rejects").appendChild(d);
+    });
+  }
+  (DATA.reject_samples || []).forEach(function (x) {
+    const tr = document.createElement("tr");
+    tr.innerHTML = '<td><span class="spec">' + esc(x.reason) + "</span></td>" +
+      '<td class="num">' + (x.price ? money(x.price) : "—") + "</td>" +
+      '<td><span class="spec">' + esc(x.title) + "</span></td>";
+    $("reject-body").appendChild(tr);
+  });
+
+  // ---- source health ----
+  (DATA.source_health || []).forEach(function (h) {
+    const li = document.createElement("li");
+    li.className = (h.line || "").indexOf("[FAIL]") === 0 ? "fail" : "";
+    li.textContent = h.line;
+    $("source-health").appendChild(li);
+  });
+})();
+</script>
+</body>
+</html>
