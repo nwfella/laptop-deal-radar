@@ -98,3 +98,7 @@ python scripts/collect.py --dry-run --dump # write nothing, dump data/_pool.json
 node scripts/verify_site.js                # gate - must pass before deploy
 python scripts/daily_refresh.py            # collect + gate + deploy to gh-pages
 ```
+
+**Pages propagation lag is real (~40-60s).** An immediate readback of the live URL after a deploy can
+still serve the *previous* commit. Compare `git show origin/gh-pages:index.html` against the live
+response and retry before concluding a deploy failed — verified twice on 2026-10-01.
