@@ -1,5 +1,5 @@
 {
- "generated_utc": "2026-10-01 18:44 UTC",
+ "generated_utc": "2026-10-02 00:44 UTC",
  "config": {
   "want_units": 3,
   "budget_usd": 700,
@@ -16,22 +16,22 @@
    "hard_pass_above_usd": 175
   },
   "anchor_fallback": {
-   "_comment": "Benchmark = what a TESTED, WARRANTED machine of that generation costs. A live scan overrides a (family, generation) pair only when 3+ observations agree. These fallbacks are the honest answer when the resellers do not stock the model this week.",
+   "_comment": "Benchmark = what a TESTED, WARRANTED machine of that generation costs at 16GB/256GB. NOT the used-lot street price - those are a different market, 30-50% lower. A live scan overrides a (family, generation) pair only when 3+ observations agree. Refit 2026-10-01; the previous 8th/10th gen values were carried over from used-lot pricing and were ~40% too low.",
    "11": {
     "usd": 204,
-    "note": "verified Oct 2026: lowest warranted refurb, Latitude 5420 i5 16GB/256GB"
+    "note": "LaptopReno + GotLaptopParts each list a Latitude 5420 i5 16GB/256GB at $203.99; corroborated upward by eBay 'very good' $235 and Back Market $273"
    },
    "10": {
-    "usd": 180,
-    "note": "estimated, between the 8th and 11th gen tiers"
+    "usd": 245,
+    "note": "ThinkPad T14 Gen 1 i5-10310U 16GB/256GB: Wisetek Market $243.71 and Newegg $244.70. Single model, snippet-sourced - the weakest tier, replace with eBay data first"
    },
    "8": {
-    "usd": 160,
-    "note": "estimated from the agent-fleet lot and retail range"
+    "usd": 240,
+    "note": "page-verified: Alamogeeks Latitude 5400 i5 16GB/256GB $249.98, Woot Latitude 7490 i5-8350U 16GB/256GB $269.99; snippet: Newegg 7490 $219.00 + $19.99 ship"
    },
    "default": {
-    "usd": 175,
-    "note": "fallback when generation is unknown"
+    "usd": 204,
+    "note": "fallback when a generation cannot be resolved - set to the lowest tier so an unknown spec is judged conservatively"
    }
   },
   "shopify_hosts": [
@@ -74,13 +74,13 @@
     "family": "elitebook_800",
     "gen": 10,
     "label": "EliteBook 8xx",
-    "usd": 180.0,
+    "usd": 245.0,
     "n": 3,
     "live": true,
     "observed_min": 399.0,
     "observed_median": 449.0,
-    "configured": 180.0,
-    "basis": "cheapest warranted observed $399.00 (3 listings) vs configured $180.00 - using the lower"
+    "configured": 245.0,
+    "basis": "cheapest warranted observed $399.00 (3 listings) vs configured $245.00 - using the lower"
    },
    "elitebook_800|11": {
     "family": "elitebook_800",
@@ -110,13 +110,13 @@
     "family": "latitude_7400",
     "gen": 10,
     "label": "Latitude 7400-series",
-    "usd": 180.0,
+    "usd": 245.0,
     "n": 3,
     "live": true,
     "observed_min": 469.0,
     "observed_median": 549.0,
-    "configured": 180.0,
-    "basis": "cheapest warranted observed $469.00 (3 listings) vs configured $180.00 - using the lower"
+    "configured": 245.0,
+    "basis": "cheapest warranted observed $469.00 (3 listings) vs configured $245.00 - using the lower"
    },
    "latitude_7400|11": {
     "family": "latitude_7400",
@@ -134,19 +134,19 @@
   "by_gen": {
    "11": {
     "usd": 204.0,
-    "note": "verified Oct 2026: lowest warranted refurb, Latitude 5420 i5 16GB/256GB"
+    "note": "LaptopReno + GotLaptopParts each list a Latitude 5420 i5 16GB/256GB at $203.99; corroborated upward by eBay 'very good' $235 and Back Market $273"
    },
    "10": {
-    "usd": 180.0,
-    "note": "estimated, between the 8th and 11th gen tiers"
+    "usd": 245.0,
+    "note": "ThinkPad T14 Gen 1 i5-10310U 16GB/256GB: Wisetek Market $243.71 and Newegg $244.70. Single model, snippet-sourced - the weakest tier, replace with eBay data first"
    },
    "8": {
-    "usd": 160.0,
-    "note": "estimated from the agent-fleet lot and retail range"
+    "usd": 240.0,
+    "note": "page-verified: Alamogeeks Latitude 5400 i5 16GB/256GB $249.98, Woot Latitude 7490 i5-8350U 16GB/256GB $269.99; snippet: Newegg 7490 $219.00 + $19.99 ship"
    },
    "default": {
-    "usd": 175.0,
-    "note": "fallback when generation is unknown"
+    "usd": 204.0,
+    "note": "fallback when a generation cannot be resolved - set to the lowest tier so an unknown spec is judged conservatively"
    }
   },
   "live_keys": [
@@ -156,7 +156,7 @@
    "latitude_7400|10",
    "latitude_7400|11"
   ],
-  "updated_utc": "2026-10-01T18:42:53Z"
+  "updated_utc": "2026-10-02T00:42:20Z"
  },
  "family_labels": {
   "latitude_5400": "Latitude 5400-series",
@@ -170,12 +170,12 @@
  },
  "source_health": [
   {
-   "line": "[ok] GreenIT (IE): 28 comparable laptops of 33 available",
-   "n": 28
+   "line": "[ok] GreenIT (IE): 27 comparable laptops of 32 available",
+   "n": 27
   },
   {
-   "line": "[ok] Refurb.io (US): 70 comparable laptops of 76 available",
-   "n": 70
+   "line": "[ok] Refurb.io (US): 72 comparable laptops of 78 available",
+   "n": 72
   },
   {
    "line": "[ok] craigslist 'latitude 5420': 18 listings",
@@ -198,8 +198,8 @@
    "n": 46
   },
   {
-   "line": "[ok] craigslist 'laptop lot': 2 listings",
-   "n": 2
+   "line": "[ok] craigslist 'laptop lot': 1 listings",
+   "n": 1
   },
   {
    "line": "[ok] craigslist 'latitude lot': 0 listings",
@@ -211,18 +211,18 @@
   }
  ],
  "counts": {
-  "anchor_rows": 98,
-  "craigslist_rows": 80,
+  "anchor_rows": 99,
+  "craigslist_rows": 79,
   "craigslist_requests": 32,
-  "qualifying": 141,
+  "qualifying": 142,
   "rankable": 73
  },
  "rejects": {
-  "parts": 83,
-  "unrecognised": 193,
-  "not_a_laptop": 9,
+  "parts": 84,
+  "unrecognised": 201,
+  "not_a_laptop": 10,
   "implausible_price": 4,
-  "below_min_spec": 22,
+  "below_min_spec": 21,
   "duplicate": 15
  },
  "reject_samples": [
@@ -290,11 +290,82 @@
  "solution": {
   "want_units": 3,
   "budget_usd": 700.0,
-  "units_found": 0,
-  "spent_usd": 0.0,
-  "per_unit": null,
+  "units_found": 2,
+  "spent_usd": 370.0,
+  "per_unit": 185.0,
   "feasible": false,
-  "picks": []
+  "blocked_by_budget": false,
+  "candidates_considered": 2,
+  "picks": [
+   {
+    "cpu_gen": 8,
+    "gen_source": "model",
+    "cpu": null,
+    "ram_gb": null,
+    "storage_gb": null,
+    "lot_size": 1,
+    "model": "Dell Latitude 7490",
+    "family": "latitude_7400",
+    "source": "Craigslist sfbay",
+    "source_kind": "craigslist",
+    "title": "Lenovo Latitude 7490 Laptop",
+    "price": 150.0,
+    "region": "sfbay",
+    "url": "https://sfbay.craigslist.org/search/sss?query=Lenovo%20Latitude%207490%20Laptop",
+    "lat": 36.2028,
+    "lon": -121.1273,
+    "shipping_usd": 0.0,
+    "shipping_known": true,
+    "chargers_included": false,
+    "slug": "king-city-lenovo-latitude-7490-laptop",
+    "spec_complete": false,
+    "unit_price": 150.0,
+    "unit_shipping": 0.0,
+    "charger_cost": 30,
+    "delivered_per_unit": 180.0,
+    "anchor": 240.0,
+    "anchor_basis": "configured benchmark (8 gen)",
+    "ratio": 0.75,
+    "band": "fair",
+    "vs_anchor_pct": -25.0,
+    "doa_per_unit": null,
+    "ceiling_breach": true
+   },
+   {
+    "cpu_gen": 8,
+    "gen_source": "model",
+    "cpu": null,
+    "ram_gb": null,
+    "storage_gb": null,
+    "lot_size": 1,
+    "model": "Dell Latitude 5490",
+    "family": "latitude_5400",
+    "source": "Craigslist seattle",
+    "source_kind": "craigslist",
+    "title": "Dell Latitude 5490 Laptop",
+    "price": 160.0,
+    "region": "seattle",
+    "url": "https://seattle.craigslist.org/search/sss?query=Dell%20Latitude%205490%20Laptop",
+    "lat": 47.6673,
+    "lon": -122.2907,
+    "shipping_usd": 0.0,
+    "shipping_known": true,
+    "chargers_included": false,
+    "slug": "seattle-dell-latitude-5490-laptop",
+    "spec_complete": false,
+    "unit_price": 160.0,
+    "unit_shipping": 0.0,
+    "charger_cost": 30,
+    "delivered_per_unit": 190.0,
+    "anchor": 240.0,
+    "anchor_basis": "configured benchmark (8 gen)",
+    "ratio": 0.792,
+    "band": "fair",
+    "vs_anchor_pct": -20.8,
+    "doa_per_unit": null,
+    "ceiling_breach": true
+   }
+  ]
  },
  "deals": [
   {
@@ -323,45 +394,11 @@
    "unit_shipping": 0.0,
    "charger_cost": 30,
    "delivered_per_unit": 180.0,
-   "anchor": 160.0,
+   "anchor": 240.0,
    "anchor_basis": "configured benchmark (8 gen)",
-   "ratio": 1.125,
-   "band": "pass",
-   "vs_anchor_pct": 12.5,
-   "doa_per_unit": null,
-   "ceiling_breach": true
-  },
-  {
-   "cpu_gen": 8,
-   "gen_source": "model",
-   "cpu": null,
-   "ram_gb": null,
-   "storage_gb": null,
-   "lot_size": 1,
-   "model": "HP EliteBook 840",
-   "family": "elitebook_800",
-   "source": "Craigslist seattle",
-   "source_kind": "craigslist",
-   "title": "Hp EliteBook 840 laptop i5 / SSD / 14 in / W10",
-   "price": 155.0,
-   "region": "seattle",
-   "url": "https://seattle.craigslist.org/search/sss?query=Hp%20EliteBook%20840%20laptop%20i5%20/%20SSD%20/%2014%20in%20/%20W10",
-   "lat": 49.2551,
-   "lon": -123.0667,
-   "shipping_usd": 0.0,
-   "shipping_known": true,
-   "chargers_included": false,
-   "slug": "vancouver-hp-elitebook-840-laptop-i5",
-   "spec_complete": false,
-   "unit_price": 155.0,
-   "unit_shipping": 0.0,
-   "charger_cost": 30,
-   "delivered_per_unit": 185.0,
-   "anchor": 160.0,
-   "anchor_basis": "configured benchmark (8 gen)",
-   "ratio": 1.156,
-   "band": "pass",
-   "vs_anchor_pct": 15.6,
+   "ratio": 0.75,
+   "band": "fair",
+   "vs_anchor_pct": -25.0,
    "doa_per_unit": null,
    "ceiling_breach": true
   },
@@ -391,11 +428,11 @@
    "unit_shipping": 0.0,
    "charger_cost": 30,
    "delivered_per_unit": 190.0,
-   "anchor": 160.0,
+   "anchor": 240.0,
    "anchor_basis": "configured benchmark (8 gen)",
-   "ratio": 1.188,
-   "band": "pass",
-   "vs_anchor_pct": 18.8,
+   "ratio": 0.792,
+   "band": "fair",
+   "vs_anchor_pct": -20.8,
    "doa_per_unit": null,
    "ceiling_breach": true
   },
@@ -425,11 +462,11 @@
    "unit_shipping": 0.0,
    "charger_cost": 30,
    "delivered_per_unit": 210.0,
-   "anchor": 160.0,
+   "anchor": 240.0,
    "anchor_basis": "configured benchmark (8 gen)",
-   "ratio": 1.312,
+   "ratio": 0.875,
    "band": "pass",
-   "vs_anchor_pct": 31.2,
+   "vs_anchor_pct": -12.5,
    "doa_per_unit": null,
    "ceiling_breach": true
   },
@@ -459,11 +496,11 @@
    "unit_shipping": 0.0,
    "charger_cost": 30,
    "delivered_per_unit": 229.0,
-   "anchor": 160.0,
+   "anchor": 240.0,
    "anchor_basis": "configured benchmark (8 gen)",
-   "ratio": 1.431,
+   "ratio": 0.954,
    "band": "pass",
-   "vs_anchor_pct": 43.1,
+   "vs_anchor_pct": -4.6,
    "doa_per_unit": null,
    "ceiling_breach": true
   },
@@ -527,11 +564,11 @@
    "unit_shipping": 0.0,
    "charger_cost": 30,
    "delivered_per_unit": 230.0,
-   "anchor": 160.0,
+   "anchor": 240.0,
    "anchor_basis": "configured benchmark (8 gen)",
-   "ratio": 1.438,
+   "ratio": 0.958,
    "band": "pass",
-   "vs_anchor_pct": 43.8,
+   "vs_anchor_pct": -4.2,
    "doa_per_unit": null,
    "ceiling_breach": true
   },
@@ -561,11 +598,45 @@
    "unit_shipping": 0.0,
    "charger_cost": 30,
    "delivered_per_unit": 230.0,
-   "anchor": 180.0,
-   "anchor_basis": "cheapest warranted observed $399.00 (3 listings) vs configured $180.00 - using the lower",
-   "ratio": 1.278,
+   "anchor": 245.0,
+   "anchor_basis": "cheapest warranted observed $399.00 (3 listings) vs configured $245.00 - using the lower",
+   "ratio": 0.939,
    "band": "pass",
-   "vs_anchor_pct": 27.8,
+   "vs_anchor_pct": -6.1,
+   "doa_per_unit": null,
+   "ceiling_breach": true
+  },
+  {
+   "cpu_gen": 8,
+   "gen_source": "model",
+   "cpu": null,
+   "ram_gb": null,
+   "storage_gb": null,
+   "lot_size": 1,
+   "model": "HP EliteBook 840",
+   "family": "elitebook_800",
+   "source": "Craigslist seattle",
+   "source_kind": "craigslist",
+   "title": "HP EliteBook 840 G11 Notebook PC",
+   "price": 200.0,
+   "region": "seattle",
+   "url": "https://seattle.craigslist.org/search/sss?query=HP%20EliteBook%20840%20G11%20Notebook%20PC",
+   "lat": 47.699,
+   "lon": -122.3482,
+   "shipping_usd": 0.0,
+   "shipping_known": true,
+   "chargers_included": false,
+   "slug": "seattle-hp-elitebook-840-g11-notebook-pc",
+   "spec_complete": false,
+   "unit_price": 200.0,
+   "unit_shipping": 0.0,
+   "charger_cost": 30,
+   "delivered_per_unit": 230.0,
+   "anchor": 240.0,
+   "anchor_basis": "configured benchmark (8 gen)",
+   "ratio": 0.958,
+   "band": "pass",
+   "vs_anchor_pct": -4.2,
    "doa_per_unit": null,
    "ceiling_breach": true
   },
@@ -595,11 +666,11 @@
    "unit_shipping": 0.0,
    "charger_cost": 30,
    "delivered_per_unit": 249.0,
-   "anchor": 160.0,
+   "anchor": 240.0,
    "anchor_basis": "configured benchmark (8 gen)",
-   "ratio": 1.556,
+   "ratio": 1.038,
    "band": "pass",
-   "vs_anchor_pct": 55.6,
+   "vs_anchor_pct": 3.8,
    "doa_per_unit": null,
    "ceiling_breach": true
   },
@@ -731,11 +802,11 @@
    "unit_shipping": 0.0,
    "charger_cost": 30,
    "delivered_per_unit": 270.0,
-   "anchor": 160.0,
+   "anchor": 240.0,
    "anchor_basis": "configured benchmark (8 gen)",
-   "ratio": 1.688,
+   "ratio": 1.125,
    "band": "pass",
-   "vs_anchor_pct": 68.8,
+   "vs_anchor_pct": 12.5,
    "doa_per_unit": null,
    "ceiling_breach": true
   },
@@ -765,11 +836,11 @@
    "unit_shipping": 0.0,
    "charger_cost": 30,
    "delivered_per_unit": 280.0,
-   "anchor": 160.0,
+   "anchor": 240.0,
    "anchor_basis": "configured benchmark (8 gen)",
-   "ratio": 1.75,
+   "ratio": 1.167,
    "band": "pass",
-   "vs_anchor_pct": 75.0,
+   "vs_anchor_pct": 16.7,
    "doa_per_unit": null,
    "ceiling_breach": true
   },
@@ -799,11 +870,11 @@
    "unit_shipping": 0.0,
    "charger_cost": 30,
    "delivered_per_unit": 280.0,
-   "anchor": 160.0,
+   "anchor": 240.0,
    "anchor_basis": "configured benchmark (8 gen)",
-   "ratio": 1.75,
+   "ratio": 1.167,
    "band": "pass",
-   "vs_anchor_pct": 75.0,
+   "vs_anchor_pct": 16.7,
    "doa_per_unit": null,
    "ceiling_breach": true
   },
@@ -833,11 +904,11 @@
    "unit_shipping": 0.0,
    "charger_cost": 30,
    "delivered_per_unit": 329.0,
-   "anchor": 180.0,
-   "anchor_basis": "cheapest warranted observed $399.00 (3 listings) vs configured $180.00 - using the lower",
-   "ratio": 1.828,
+   "anchor": 245.0,
+   "anchor_basis": "cheapest warranted observed $399.00 (3 listings) vs configured $245.00 - using the lower",
+   "ratio": 1.343,
    "band": "pass",
-   "vs_anchor_pct": 82.8,
+   "vs_anchor_pct": 34.3,
    "doa_per_unit": null,
    "ceiling_breach": true
   },
@@ -867,11 +938,11 @@
    "unit_shipping": 0.0,
    "charger_cost": 30,
    "delivered_per_unit": 329.0,
-   "anchor": 180.0,
-   "anchor_basis": "cheapest warranted observed $399.00 (3 listings) vs configured $180.00 - using the lower",
-   "ratio": 1.828,
+   "anchor": 245.0,
+   "anchor_basis": "cheapest warranted observed $399.00 (3 listings) vs configured $245.00 - using the lower",
+   "ratio": 1.343,
    "band": "pass",
-   "vs_anchor_pct": 82.8,
+   "vs_anchor_pct": 34.3,
    "doa_per_unit": null,
    "ceiling_breach": true
   },
@@ -901,11 +972,11 @@
    "unit_shipping": 0.0,
    "charger_cost": 30,
    "delivered_per_unit": 330.0,
-   "anchor": 160.0,
+   "anchor": 240.0,
    "anchor_basis": "configured benchmark (8 gen)",
-   "ratio": 2.062,
+   "ratio": 1.375,
    "band": "pass",
-   "vs_anchor_pct": 106.2,
+   "vs_anchor_pct": 37.5,
    "doa_per_unit": null,
    "ceiling_breach": true
   },
@@ -935,11 +1006,11 @@
    "unit_shipping": 0.0,
    "charger_cost": 30,
    "delivered_per_unit": 330.0,
-   "anchor": 180.0,
-   "anchor_basis": "cheapest warranted observed $399.00 (3 listings) vs configured $180.00 - using the lower",
-   "ratio": 1.833,
+   "anchor": 245.0,
+   "anchor_basis": "cheapest warranted observed $399.00 (3 listings) vs configured $245.00 - using the lower",
+   "ratio": 1.347,
    "band": "pass",
-   "vs_anchor_pct": 83.3,
+   "vs_anchor_pct": 34.7,
    "doa_per_unit": null,
    "ceiling_breach": true
   },
@@ -969,11 +1040,11 @@
    "unit_shipping": 0.0,
    "charger_cost": 30,
    "delivered_per_unit": 330.0,
-   "anchor": 160.0,
+   "anchor": 240.0,
    "anchor_basis": "configured benchmark (8 gen)",
-   "ratio": 2.062,
+   "ratio": 1.375,
    "band": "pass",
-   "vs_anchor_pct": 106.2,
+   "vs_anchor_pct": 37.5,
    "doa_per_unit": null,
    "ceiling_breach": true
   },
@@ -1003,11 +1074,11 @@
    "unit_shipping": 0.0,
    "charger_cost": 30,
    "delivered_per_unit": 330.0,
-   "anchor": 160.0,
+   "anchor": 240.0,
    "anchor_basis": "configured benchmark (8 gen)",
-   "ratio": 2.062,
+   "ratio": 1.375,
    "band": "pass",
-   "vs_anchor_pct": 106.2,
+   "vs_anchor_pct": 37.5,
    "doa_per_unit": null,
    "ceiling_breach": true
   },
@@ -1037,11 +1108,11 @@
    "unit_shipping": 0.0,
    "charger_cost": 30,
    "delivered_per_unit": 355.0,
-   "anchor": 160.0,
+   "anchor": 240.0,
    "anchor_basis": "configured benchmark (8 gen)",
-   "ratio": 2.219,
+   "ratio": 1.479,
    "band": "pass",
-   "vs_anchor_pct": 121.9,
+   "vs_anchor_pct": 47.9,
    "doa_per_unit": null,
    "ceiling_breach": true
   },
