@@ -1,5 +1,5 @@
 {
- "generated_utc": "2026-10-02 00:44 UTC",
+ "generated_utc": "2026-10-02 16:02 UTC",
  "config": {
   "want_units": 3,
   "budget_usd": 700,
@@ -156,7 +156,7 @@
    "latitude_7400|10",
    "latitude_7400|11"
   ],
-  "updated_utc": "2026-10-02T00:42:20Z"
+  "updated_utc": "2026-10-02T16:00:31Z"
  },
  "family_labels": {
   "latitude_5400": "Latitude 5400-series",
@@ -170,20 +170,20 @@
  },
  "source_health": [
   {
-   "line": "[ok] GreenIT (IE): 27 comparable laptops of 32 available",
-   "n": 27
+   "line": "[ok] GreenIT (IE): 25 comparable laptops of 29 available",
+   "n": 25
   },
   {
-   "line": "[ok] Refurb.io (US): 72 comparable laptops of 78 available",
-   "n": 72
+   "line": "[ok] Refurb.io (US): 73 comparable laptops of 79 available",
+   "n": 73
   },
   {
    "line": "[ok] craigslist 'latitude 5420': 18 listings",
    "n": 18
   },
   {
-   "line": "[ok] craigslist 'latitude 7490': 7 listings",
-   "n": 7
+   "line": "[ok] craigslist 'latitude 7490': 6 listings",
+   "n": 6
   },
   {
    "line": "[ok] craigslist 'latitude 5490': 4 listings",
@@ -194,12 +194,12 @@
    "n": 2
   },
   {
-   "line": "[ok] craigslist 'elitebook 840': 46 listings",
-   "n": 46
+   "line": "[ok] craigslist 'elitebook 840': 45 listings",
+   "n": 45
   },
   {
-   "line": "[ok] craigslist 'laptop lot': 1 listings",
-   "n": 1
+   "line": "[ok] craigslist 'laptop lot': 2 listings",
+   "n": 2
   },
   {
    "line": "[ok] craigslist 'latitude lot': 0 listings",
@@ -211,16 +211,16 @@
   }
  ],
  "counts": {
-  "anchor_rows": 99,
-  "craigslist_rows": 79,
+  "anchor_rows": 98,
+  "craigslist_rows": 78,
   "craigslist_requests": 32,
-  "qualifying": 142,
-  "rankable": 73
+  "qualifying": 140,
+  "rankable": 71
  },
  "rejects": {
-  "parts": 84,
-  "unrecognised": 201,
-  "not_a_laptop": 10,
+  "parts": 80,
+  "unrecognised": 203,
+  "not_a_laptop": 9,
   "implausible_price": 4,
   "below_min_spec": 21,
   "duplicate": 15
@@ -239,11 +239,6 @@
   {
    "reason": "parts",
    "title": "V7 J153400 33.8 cm (13.3\") Sleeve case Black",
-   "price": 10.0
-  },
-  {
-   "reason": "parts",
-   "title": "V7 16\" Water-resistant Neoprene Laptop Sleeve Case",
    "price": 10.0
   },
   {
@@ -280,6 +275,11 @@
    "reason": "not_a_laptop",
    "title": "Acer C740-C90X 11.6\" Chromebook Intel Celeron 3205U 1.5GHz, 2GB RAM, 16GB Solid State Driv",
    "price": 129.0
+  },
+  {
+   "reason": "unrecognised",
+   "title": "Dell Latitude Laptop 5420 i7 16gb Ram 512gb NVMe Drive 3.0ghz 14\" Touch Win 11Pr",
+   "price": 280.0
   },
   {
    "reason": "unrecognised",
@@ -535,40 +535,6 @@
    "ratio": 1.127,
    "band": "pass",
    "vs_anchor_pct": 12.7,
-   "doa_per_unit": null,
-   "ceiling_breach": true
-  },
-  {
-   "cpu_gen": 8,
-   "gen_source": "cpu",
-   "cpu": "Core i7-8th",
-   "ram_gb": null,
-   "storage_gb": null,
-   "lot_size": 1,
-   "model": "Dell Latitude 7490",
-   "family": "latitude_7400",
-   "source": "Craigslist seattle",
-   "source_kind": "craigslist",
-   "title": "DELL Latitude 7490 Laptop Core i7-8th 240Gb 8Gb Win11 Office Pro",
-   "price": 200.0,
-   "region": "seattle",
-   "url": "https://seattle.craigslist.org/search/sss?query=DELL%20Latitude%207490%20Laptop%20Core%20i7-8th%20240Gb%208Gb%20Win11%20Office",
-   "lat": 49.2858,
-   "lon": -123.0581,
-   "shipping_usd": 0.0,
-   "shipping_known": true,
-   "chargers_included": false,
-   "slug": "dell-latitude-7490-laptop-core-i7-8th",
-   "spec_complete": false,
-   "unit_price": 200.0,
-   "unit_shipping": 0.0,
-   "charger_cost": 30,
-   "delivered_per_unit": 230.0,
-   "anchor": 240.0,
-   "anchor_basis": "configured benchmark (8 gen)",
-   "ratio": 0.958,
-   "band": "pass",
-   "vs_anchor_pct": -4.2,
    "doa_per_unit": null,
    "ceiling_breach": true
   },
@@ -1215,6 +1181,40 @@
    "ratio": 1.76,
    "band": "pass",
    "vs_anchor_pct": 76.0,
+   "doa_per_unit": null,
+   "ceiling_breach": true
+  },
+  {
+   "cpu_gen": 11,
+   "gen_source": "model",
+   "cpu": null,
+   "ram_gb": null,
+   "storage_gb": null,
+   "lot_size": 1,
+   "model": "Dell Latitude 5420",
+   "family": "latitude_5400",
+   "source": "Craigslist sfbay",
+   "source_kind": "craigslist",
+   "title": "Good condition Dell Latitude 5420 laptop with Microsoft Office",
+   "price": 340.0,
+   "region": "sfbay",
+   "url": "https://sfbay.craigslist.org/search/sss?query=Good%20condition%20Dell%20Latitude%205420%20laptop%20with%20Microsoft%20Offi",
+   "lat": 37.6332,
+   "lon": -122.0971,
+   "shipping_usd": 0.0,
+   "shipping_known": true,
+   "chargers_included": false,
+   "slug": "hayward-good-condition-dell-latitude",
+   "spec_complete": false,
+   "unit_price": 340.0,
+   "unit_shipping": 0.0,
+   "charger_cost": 30,
+   "delivered_per_unit": 370.0,
+   "anchor": 204.0,
+   "anchor_basis": "cheapest warranted observed $399.00 (5 listings) vs configured $204.00 - using the lower",
+   "ratio": 1.814,
+   "band": "pass",
+   "vs_anchor_pct": 81.4,
    "doa_per_unit": null,
    "ceiling_breach": true
   }
