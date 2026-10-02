@@ -172,9 +172,13 @@ const DATA = /*__DATA__*/null;
   if (s.feasible) {
     verdict = "Cheapest way to hit " + s.want_units + " units inside " + money(s.budget_usd) +
       " costs " + money(s.spent_usd) + " (" + money(s.per_unit) + " per unit).";
+  } else if (s.units_found && s.blocked_by_budget) {
+    verdict = s.units_found + " of " + s.want_units + " units for " + money(s.spent_usd) + " (" +
+      money(s.per_unit) + "/unit) — the " + money(s.budget_usd) + " budget priced out the rest.";
   } else if (s.units_found) {
-    verdict = "Only " + s.units_found + " of " + s.want_units + " units fit " + money(s.budget_usd) +
-      " — " + money(s.spent_usd) + " so far (" + money(s.per_unit) + "/unit).";
+    verdict = s.units_found + " of " + s.want_units + " units for " + money(s.spent_usd) + " (" +
+      money(s.per_unit) + "/unit). The budget was not the constraint: only " +
+      (s.candidates_considered || 0) + " listing(s) banded better than pass on this run.";
   } else {
     verdict = "Nothing on the board today prices below its own warranted-refurb anchor. " +
       "That is the tool agreeing with the market, not failing to look: on this run every qualified " +

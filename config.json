@@ -20,11 +20,11 @@
   },
 
   "anchor_fallback": {
-    "_comment": "Benchmark = what a TESTED, WARRANTED machine of that generation costs. A live scan overrides a (family, generation) pair only when 3+ observations agree. These fallbacks are the honest answer when the resellers do not stock the model this week.",
-    "11": { "usd": 204, "note": "verified Oct 2026: lowest warranted refurb, Latitude 5420 i5 16GB/256GB" },
-    "10": { "usd": 180, "note": "estimated, between the 8th and 11th gen tiers" },
-    "8":  { "usd": 160, "note": "estimated from the agent-fleet lot and retail range" },
-    "default": { "usd": 175, "note": "fallback when generation is unknown" }
+    "_comment": "Benchmark = what a TESTED, WARRANTED machine of that generation costs at 16GB/256GB. NOT the used-lot street price - those are a different market, 30-50% lower. A live scan overrides a (family, generation) pair only when 3+ observations agree. Refit 2026-10-01; the previous 8th/10th gen values were carried over from used-lot pricing and were ~40% too low.",
+    "11": { "usd": 204, "note": "LaptopReno + GotLaptopParts each list a Latitude 5420 i5 16GB/256GB at $203.99; corroborated upward by eBay 'very good' $235 and Back Market $273" },
+    "10": { "usd": 245, "note": "ThinkPad T14 Gen 1 i5-10310U 16GB/256GB: Wisetek Market $243.71 and Newegg $244.70. Single model, snippet-sourced - the weakest tier, replace with eBay data first" },
+    "8":  { "usd": 240, "note": "page-verified: Alamogeeks Latitude 5400 i5 16GB/256GB $249.98, Woot Latitude 7490 i5-8350U 16GB/256GB $269.99; snippet: Newegg 7490 $219.00 + $19.99 ship" },
+    "default": { "usd": 204, "note": "fallback when a generation cannot be resolved - set to the lowest tier so an unknown spec is judged conservatively" }
   },
 
   "shopify_hosts": [

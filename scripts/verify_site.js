@@ -62,6 +62,12 @@ if (data) {
   const inferred = (data.deals || []).filter((r) => r.gen_source === "model").length;
   ok((data.deals || []).every((r) => r.gen_source === "cpu" || r.gen_source === "model"),
     "generation provenance recorded on every deal (" + inferred + " inferred from model)");
+  // regression guard: an unmet ask must not blame the budget when the budget was
+  // not the binding constraint (there were simply too few qualifying listings)
+  ok(typeof data.solution.blocked_by_budget === "boolean",
+    "solution distinguishes a budget constraint from a thin market");
+  ok(Array.isArray(data.deals) && data.deals.length >= 1,
+    "the page still shows market context on a thin day (" + (data.deals || []).length + " rows)");
 }
 
 // ---- 2. boot the page ----

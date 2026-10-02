@@ -49,6 +49,23 @@ Anchors are built as `min(configured benchmark, cheapest comparable live listing
 The configured benchmarks in `config.json` are the fallback and are labelled *verified* or
 *estimated* on the page. They are what applies when the resellers do not stock the model this week.
 
+Refit 2026-10-01, with the evidence recorded per tier in `config.json`:
+
+| Tier | Anchor | Basis |
+|---|---|---|
+| 11th gen | **$204** | LaptopReno + GotLaptopParts both list a Latitude 5420 i5 16/256 at $203.99 |
+| 10th gen | **$245** | ThinkPad T14 Gen 1 i5-10310U 16/256: Wisetek Market $243.71, Newegg $244.70 |
+| 8th gen | **$240** | page-verified Alamogeeks 5400 $249.98 and Woot 7490 $269.99; Newegg 7490 $219.00 + $19.99 ship |
+
+The previous 8th/10th-gen values ($160/$180) were **~40% too low**: they were carried over from
+the skill's used-lot street prices, which are a different market from tested, warranted, returnable
+units. That error made the tool over-conservative — low anchors push listings into `pass`.
+
+**Two caveats on the current numbers.** The tiers are not yet on a consistent channel basis (the
+11th-gen figure comes from high-volume value sellers, the 8th/10th from retail channels), which is
+why 11th gen currently prices *below* 8th gen. And the 10th-gen tier rests on a single model from
+search snippets. Adding the eBay Browse API fixes both by putting every tier on one live basis.
+
 ## Sources
 
 | Source | Adapter | What it contributes |

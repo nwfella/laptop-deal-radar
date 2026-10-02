@@ -542,11 +542,13 @@ def solve(pool, want_units, budget):
         key=lambda t: t[0])
 
     picks, units, spent, seen = [], 0, 0.0, set()
+    blocked_by_budget = False
     for per_unit, r in scored:
         if units >= want_units:
             break
         cost = per_unit * max(1, r["lot_size"])
         if spent + cost > budget:
+            blocked_by_budget = True   # a real listing, priced out by the budget
             continue
         key = (r["source"], r.get("title"))
         if key in seen:
@@ -559,7 +561,12 @@ def solve(pool, want_units, budget):
         "want_units": want_units, "budget_usd": budget,
         "units_found": units, "spent_usd": round(spent, 2),
         "per_unit": round(spent / units, 2) if units else None,
-        "feasible": units >= want_units, "picks": picks,
+        "feasible": units >= want_units,
+        # WHICH constraint bit: an unmet ask must never blame the budget when the
+        # budget was not the binding limit (there were simply too few listings).
+        "blocked_by_budget": bool(blocked_by_budget and units < want_units),
+        "candidates_considered": len(scored),
+        "picks": picks,
     }
 
 
@@ -601,8 +608,10 @@ def main():
 
     pool.sort(key=lambda x: x["delivered_per_unit"])
     rankable = [r for r in pool if r.get("family")]
-    flagged = [r for r in rankable if r["band"] in ("steal", "good", "fair", "suspect")]
-    top = (flagged or rankable)[: int(cfg.get("max_results", 25))]
+    # qualifying listings first, then the rest of the market for context - a thin
+    # day must still show what the board actually looks like
+    top = sorted(rankable, key=lambda x: (x["band"] == "pass", x["delivered_per_unit"]))
+    top = top[: int(cfg.get("max_results", 25))]
 
     solution = solve(pool, int(cfg.get("want_units", 1)), float(cfg.get("budget_usd", 0)))
 
@@ -656,12 +665,20 @@ def main():
     if s["feasible"]:
         report.append("ASK SOLVED: %d units for $%.2f ($%.2f/unit) inside $%.0f"
                       % (s["units_found"], s["spent_usd"], s["per_unit"], s["budget_usd"]))
-    elif s["units_found"]:
-        report.append("ASK PARTIAL: %d of %d units for $%.2f ($%.2f/unit); budget $%.0f too low"
+    elif s["units_found"] and s.get("blocked_by_budget"):
+        report.append("ASK PARTIAL: %d of %d units for $%.2f ($%.2f/unit); the $%.0f budget priced out the rest"
                       % (s["units_found"], s["want_units"], s["spent_usd"],
                          s["per_unit"], s["budget_usd"]))
+    elif s["units_found"]:
+        report.append("ASK NOT MET: %d of %d units for $%.2f ($%.2f/unit) - budget was NOT the constraint,"
+                      " only %d listing(s) banded better than pass"
+                      % (s["units_found"], s["want_units"], s["spent_usd"],
+                         s["per_unit"], s.get("candidates_considered", 0)))
+    elif s.get("blocked_by_budget"):
+        report.append("ASK UNSOLVED: nothing affordable inside $%.0f" % s["budget_usd"])
     else:
-        report.append("ASK UNSOLVED: nothing qualifying inside $%.0f" % s["budget_usd"])
+        report.append("ASK UNSOLVED: no listing on this run banded better than pass (%d considered)"
+                      % s.get("candidates_considered", 0))
 
     if dry:
         if dump:
