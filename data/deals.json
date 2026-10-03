@@ -1,5 +1,5 @@
 {
- "generated_utc": "2026-10-02 16:02 UTC",
+ "generated_utc": "2026-10-03 16:02 UTC",
  "config": {
   "want_units": 3,
   "budget_usd": 700,
@@ -156,7 +156,7 @@
    "latitude_7400|10",
    "latitude_7400|11"
   ],
-  "updated_utc": "2026-10-02T16:00:31Z"
+  "updated_utc": "2026-10-03T16:00:34Z"
  },
  "family_labels": {
   "latitude_5400": "Latitude 5400-series",
@@ -174,16 +174,16 @@
    "n": 25
   },
   {
-   "line": "[ok] Refurb.io (US): 73 comparable laptops of 79 available",
-   "n": 73
+   "line": "[ok] Refurb.io (US): 71 comparable laptops of 77 available",
+   "n": 71
   },
   {
    "line": "[ok] craigslist 'latitude 5420': 18 listings",
    "n": 18
   },
   {
-   "line": "[ok] craigslist 'latitude 7490': 6 listings",
-   "n": 6
+   "line": "[ok] craigslist 'latitude 7490': 5 listings",
+   "n": 5
   },
   {
    "line": "[ok] craigslist 'latitude 5490': 4 listings",
@@ -194,8 +194,8 @@
    "n": 2
   },
   {
-   "line": "[ok] craigslist 'elitebook 840': 45 listings",
-   "n": 45
+   "line": "[ok] craigslist 'elitebook 840': 46 listings",
+   "n": 46
   },
   {
    "line": "[ok] craigslist 'laptop lot': 2 listings",
@@ -211,16 +211,16 @@
   }
  ],
  "counts": {
-  "anchor_rows": 98,
+  "anchor_rows": 96,
   "craigslist_rows": 78,
   "craigslist_requests": 32,
-  "qualifying": 140,
+  "qualifying": 138,
   "rankable": 71
  },
  "rejects": {
-  "parts": 80,
-  "unrecognised": 203,
-  "not_a_laptop": 9,
+  "parts": 83,
+  "unrecognised": 210,
+  "not_a_laptop": 10,
   "implausible_price": 4,
   "below_min_spec": 21,
   "duplicate": 15
@@ -278,13 +278,13 @@
   },
   {
    "reason": "unrecognised",
-   "title": "Dell Latitude Laptop 5420 i7 16gb Ram 512gb NVMe Drive 3.0ghz 14\" Touch Win 11Pr",
+   "title": "Dell Latitude Laptop 5420 i7 16gb Ram 512gb NVMe SSD Drive 14\"Touchscreen 11th G",
    "price": 280.0
   },
   {
-   "reason": "unrecognised",
-   "title": "Dell Latitude Laptop 5420 i5 16gb Ram 512gb NVMe Drive 2.6ghz 1145G7",
-   "price": 260.0
+   "reason": "parts",
+   "title": "Dell Latitude 5420 Motherboard (54CCV)",
+   "price": 120.0
   }
  ],
  "solution": {
