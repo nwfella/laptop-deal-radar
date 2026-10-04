@@ -1,5 +1,5 @@
 {
- "generated_utc": "2026-10-03 16:02 UTC",
+ "generated_utc": "2026-10-04 16:02 UTC",
  "config": {
   "want_units": 3,
   "budget_usd": 700,
@@ -156,7 +156,7 @@
    "latitude_7400|10",
    "latitude_7400|11"
   ],
-  "updated_utc": "2026-10-03T16:00:34Z"
+  "updated_utc": "2026-10-04T16:00:35Z"
  },
  "family_labels": {
   "latitude_5400": "Latitude 5400-series",
@@ -170,8 +170,8 @@
  },
  "source_health": [
   {
-   "line": "[ok] GreenIT (IE): 25 comparable laptops of 29 available",
-   "n": 25
+   "line": "[ok] GreenIT (IE): 24 comparable laptops of 28 available",
+   "n": 24
   },
   {
    "line": "[ok] Refurb.io (US): 71 comparable laptops of 77 available",
@@ -211,16 +211,16 @@
   }
  ],
  "counts": {
-  "anchor_rows": 96,
+  "anchor_rows": 95,
   "craigslist_rows": 78,
   "craigslist_requests": 32,
-  "qualifying": 138,
-  "rankable": 71
+  "qualifying": 137,
+  "rankable": 70
  },
  "rejects": {
   "parts": 83,
-  "unrecognised": 210,
-  "not_a_laptop": 10,
+  "unrecognised": 194,
+  "not_a_laptop": 9,
   "implausible_price": 4,
   "below_min_spec": 21,
   "duplicate": 15
@@ -443,6 +443,40 @@
    "ram_gb": null,
    "storage_gb": null,
    "lot_size": 1,
+   "model": "HP EliteBook 840",
+   "family": "elitebook_800",
+   "source": "Craigslist seattle",
+   "source_kind": "craigslist",
+   "title": "HP EliteBook 840 G11 Notebook PC (Read Description)",
+   "price": 170.0,
+   "region": "seattle",
+   "url": "https://seattle.craigslist.org/search/sss?query=HP%20EliteBook%20840%20G11%20Notebook%20PC%20%28Read%20Description%29",
+   "lat": 47.699,
+   "lon": -122.3482,
+   "shipping_usd": 0.0,
+   "shipping_known": true,
+   "chargers_included": false,
+   "slug": "seattle-hp-elitebook-840-g11-notebook",
+   "spec_complete": false,
+   "unit_price": 170.0,
+   "unit_shipping": 0.0,
+   "charger_cost": 30,
+   "delivered_per_unit": 200.0,
+   "anchor": 240.0,
+   "anchor_basis": "configured benchmark (8 gen)",
+   "ratio": 0.833,
+   "band": "pass",
+   "vs_anchor_pct": -16.7,
+   "doa_per_unit": null,
+   "ceiling_breach": true
+  },
+  {
+   "cpu_gen": 8,
+   "gen_source": "model",
+   "cpu": null,
+   "ram_gb": null,
+   "storage_gb": null,
+   "lot_size": 1,
    "model": "Dell Latitude 7490",
    "family": "latitude_7400",
    "source": "Craigslist seattle",
@@ -569,40 +603,6 @@
    "ratio": 0.939,
    "band": "pass",
    "vs_anchor_pct": -6.1,
-   "doa_per_unit": null,
-   "ceiling_breach": true
-  },
-  {
-   "cpu_gen": 8,
-   "gen_source": "model",
-   "cpu": null,
-   "ram_gb": null,
-   "storage_gb": null,
-   "lot_size": 1,
-   "model": "HP EliteBook 840",
-   "family": "elitebook_800",
-   "source": "Craigslist seattle",
-   "source_kind": "craigslist",
-   "title": "HP EliteBook 840 G11 Notebook PC",
-   "price": 200.0,
-   "region": "seattle",
-   "url": "https://seattle.craigslist.org/search/sss?query=HP%20EliteBook%20840%20G11%20Notebook%20PC",
-   "lat": 47.699,
-   "lon": -122.3482,
-   "shipping_usd": 0.0,
-   "shipping_known": true,
-   "chargers_included": false,
-   "slug": "seattle-hp-elitebook-840-g11-notebook-pc",
-   "spec_complete": false,
-   "unit_price": 200.0,
-   "unit_shipping": 0.0,
-   "charger_cost": 30,
-   "delivered_per_unit": 230.0,
-   "anchor": 240.0,
-   "anchor_basis": "configured benchmark (8 gen)",
-   "ratio": 0.958,
-   "band": "pass",
-   "vs_anchor_pct": -4.2,
    "doa_per_unit": null,
    "ceiling_breach": true
   },
