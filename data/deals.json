@@ -1,5 +1,5 @@
 {
- "generated_utc": "2026-10-04 16:02 UTC",
+ "generated_utc": "2026-10-05 16:03 UTC",
  "config": {
   "want_units": 3,
   "budget_usd": 700,
@@ -99,12 +99,12 @@
     "gen": 11,
     "label": "Latitude 5400-series",
     "usd": 204.0,
-    "n": 5,
+    "n": 6,
     "live": true,
     "observed_min": 399.0,
-    "observed_median": 629.0,
+    "observed_median": 614.0,
     "configured": 204.0,
-    "basis": "cheapest warranted observed $399.00 (5 listings) vs configured $204.00 - using the lower"
+    "basis": "cheapest warranted observed $399.00 (6 listings) vs configured $204.00 - using the lower"
    },
    "latitude_7400|10": {
     "family": "latitude_7400",
@@ -117,18 +117,6 @@
     "observed_median": 549.0,
     "configured": 245.0,
     "basis": "cheapest warranted observed $469.00 (3 listings) vs configured $245.00 - using the lower"
-   },
-   "latitude_7400|11": {
-    "family": "latitude_7400",
-    "gen": 11,
-    "label": "Latitude 7400-series",
-    "usd": 204.0,
-    "n": 4,
-    "live": true,
-    "observed_min": 469.0,
-    "observed_median": 539.0,
-    "configured": 204.0,
-    "basis": "cheapest warranted observed $469.00 (4 listings) vs configured $204.00 - using the lower"
    }
   },
   "by_gen": {
@@ -153,10 +141,9 @@
    "elitebook_800|10",
    "elitebook_800|11",
    "latitude_5400|11",
-   "latitude_7400|10",
-   "latitude_7400|11"
+   "latitude_7400|10"
   ],
-  "updated_utc": "2026-10-04T16:00:35Z"
+  "updated_utc": "2026-10-05T16:01:24Z"
  },
  "family_labels": {
   "latitude_5400": "Latitude 5400-series",
@@ -170,12 +157,12 @@
  },
  "source_health": [
   {
-   "line": "[ok] GreenIT (IE): 24 comparable laptops of 28 available",
-   "n": 24
+   "line": "[ok] GreenIT (IE): 28 comparable laptops of 32 available",
+   "n": 28
   },
   {
-   "line": "[ok] Refurb.io (US): 71 comparable laptops of 77 available",
-   "n": 71
+   "line": "[ok] Refurb.io (US): 69 comparable laptops of 75 available",
+   "n": 69
   },
   {
    "line": "[ok] craigslist 'latitude 5420': 18 listings",
@@ -194,12 +181,12 @@
    "n": 2
   },
   {
-   "line": "[ok] craigslist 'elitebook 840': 46 listings",
-   "n": 46
+   "line": "[ok] craigslist 'elitebook 840': 45 listings",
+   "n": 45
   },
   {
-   "line": "[ok] craigslist 'laptop lot': 2 listings",
-   "n": 2
+   "line": "[ok] craigslist 'laptop lot': 1 listings",
+   "n": 1
   },
   {
    "line": "[ok] craigslist 'latitude lot': 0 listings",
@@ -211,19 +198,19 @@
   }
  ],
  "counts": {
-  "anchor_rows": 95,
-  "craigslist_rows": 78,
+  "anchor_rows": 97,
+  "craigslist_rows": 76,
   "craigslist_requests": 32,
-  "qualifying": 137,
+  "qualifying": 138,
   "rankable": 70
  },
  "rejects": {
-  "parts": 83,
-  "unrecognised": 194,
-  "not_a_laptop": 9,
+  "parts": 84,
+  "unrecognised": 193,
+  "not_a_laptop": 10,
   "implausible_price": 4,
   "below_min_spec": 21,
-  "duplicate": 15
+  "duplicate": 14
  },
  "reject_samples": [
   {
@@ -505,36 +492,36 @@
    "ceiling_breach": true
   },
   {
-   "cpu_gen": 8,
+   "cpu_gen": 11,
    "gen_source": "model",
    "cpu": null,
    "ram_gb": null,
    "storage_gb": null,
    "lot_size": 1,
-   "model": "HP EliteBook 840",
-   "family": "elitebook_800",
-   "source": "Craigslist losangeles",
+   "model": "Dell Latitude 5420",
+   "family": "latitude_5400",
+   "source": "Craigslist sfbay",
    "source_kind": "craigslist",
-   "title": "HP EliteBook 840 Business Class Laptop",
-   "price": 199.0,
-   "region": "losangeles",
-   "url": "https://losangeles.craigslist.org/search/sss?query=HP%20EliteBook%20840%20Business%20Class%20Laptop",
-   "lat": 32.8239,
-   "lon": -117.1965,
+   "title": "Rare  Eye-Care Setup (400-nits ComfortView-Plus)  Dell Latitude 5420",
+   "price": 200.0,
+   "region": "sfbay",
+   "url": "https://sfbay.craigslist.org/search/sss?query=Rare%20%20Eye-Care%20Setup%20%28400-nits%20ComfortView-Plus%29%20%20Dell%20Latit",
+   "lat": 37.5671,
+   "lon": -122.3676,
    "shipping_usd": 0.0,
    "shipping_known": true,
    "chargers_included": false,
-   "slug": "san-diego-hp-elitebook-840-business",
+   "slug": "burlingame-rare-eye-care-setup-400-nits",
    "spec_complete": false,
-   "unit_price": 199.0,
+   "unit_price": 200.0,
    "unit_shipping": 0.0,
    "charger_cost": 30,
-   "delivered_per_unit": 229.0,
-   "anchor": 240.0,
-   "anchor_basis": "configured benchmark (8 gen)",
-   "ratio": 0.954,
+   "delivered_per_unit": 230.0,
+   "anchor": 204.0,
+   "anchor_basis": "cheapest warranted observed $399.00 (6 listings) vs configured $204.00 - using the lower",
+   "ratio": 1.127,
    "band": "pass",
-   "vs_anchor_pct": -4.6,
+   "vs_anchor_pct": 12.7,
    "doa_per_unit": null,
    "ceiling_breach": true
   },
@@ -565,7 +552,7 @@
    "charger_cost": 30,
    "delivered_per_unit": 230.0,
    "anchor": 204.0,
-   "anchor_basis": "cheapest warranted observed $399.00 (5 listings) vs configured $204.00 - using the lower",
+   "anchor_basis": "cheapest warranted observed $399.00 (6 listings) vs configured $204.00 - using the lower",
    "ratio": 1.127,
    "band": "pass",
    "vs_anchor_pct": 12.7,
@@ -644,40 +631,6 @@
    "cpu_gen": 11,
    "gen_source": "model",
    "cpu": null,
-   "ram_gb": null,
-   "storage_gb": null,
-   "lot_size": 1,
-   "model": "Dell Latitude 5420",
-   "family": "latitude_5400",
-   "source": "Craigslist sfbay",
-   "source_kind": "craigslist",
-   "title": "Rare  Eye-Care Setup (400-nits ComfortView-Plus)  Dell Latitude 5420",
-   "price": 220.0,
-   "region": "sfbay",
-   "url": "https://sfbay.craigslist.org/search/sss?query=Rare%20%20Eye-Care%20Setup%20%28400-nits%20ComfortView-Plus%29%20%20Dell%20Latit",
-   "lat": 37.5671,
-   "lon": -122.3676,
-   "shipping_usd": 0.0,
-   "shipping_known": true,
-   "chargers_included": false,
-   "slug": "burlingame-rare-eye-care-setup-400-nits",
-   "spec_complete": false,
-   "unit_price": 220.0,
-   "unit_shipping": 0.0,
-   "charger_cost": 30,
-   "delivered_per_unit": 250.0,
-   "anchor": 204.0,
-   "anchor_basis": "cheapest warranted observed $399.00 (5 listings) vs configured $204.00 - using the lower",
-   "ratio": 1.225,
-   "band": "pass",
-   "vs_anchor_pct": 22.5,
-   "doa_per_unit": null,
-   "ceiling_breach": true
-  },
-  {
-   "cpu_gen": 11,
-   "gen_source": "model",
-   "cpu": null,
    "ram_gb": 16,
    "storage_gb": 256,
    "lot_size": 1,
@@ -685,23 +638,23 @@
    "family": "latitude_5400",
    "source": "Craigslist seattle",
    "source_kind": "craigslist",
-   "title": "14\" Dell Latitude 5420 Laptop | Core i5, 16GB RAM, 256GB SSD",
+   "title": "Dell Latitude 5420 14\" Laptop | 16GB RAM, 256GB SSD",
    "price": 225.0,
    "region": "seattle",
-   "url": "https://seattle.craigslist.org/search/sss?query=14%22%20Dell%20Latitude%205420%20Laptop%20%7C%20Core%20i5%2C%2016GB%20RAM%2C%20256GB%20SSD",
+   "url": "https://seattle.craigslist.org/search/sss?query=Dell%20Latitude%205420%2014%22%20Laptop%20%7C%2016GB%20RAM%2C%20256GB%20SSD",
    "lat": 47.6753,
    "lon": -122.3863,
    "shipping_usd": 0.0,
    "shipping_known": true,
    "chargers_included": false,
-   "slug": "seattle-14-dell-latitude-5420-laptop",
+   "slug": "seattle-dell-latitude-laptop-16gb-ram",
    "spec_complete": true,
    "unit_price": 225.0,
    "unit_shipping": 0.0,
    "charger_cost": 30,
    "delivered_per_unit": 255.0,
    "anchor": 204.0,
-   "anchor_basis": "cheapest warranted observed $399.00 (5 listings) vs configured $204.00 - using the lower",
+   "anchor_basis": "cheapest warranted observed $399.00 (6 listings) vs configured $204.00 - using the lower",
    "ratio": 1.25,
    "band": "pass",
    "vs_anchor_pct": 25.0,
@@ -1211,10 +1164,41 @@
    "charger_cost": 30,
    "delivered_per_unit": 370.0,
    "anchor": 204.0,
-   "anchor_basis": "cheapest warranted observed $399.00 (5 listings) vs configured $204.00 - using the lower",
+   "anchor_basis": "cheapest warranted observed $399.00 (6 listings) vs configured $204.00 - using the lower",
    "ratio": 1.814,
    "band": "pass",
    "vs_anchor_pct": 81.4,
+   "doa_per_unit": null,
+   "ceiling_breach": true
+  },
+  {
+   "cpu_gen": 8,
+   "gen_source": "cpu",
+   "cpu": "Core i7-8665U",
+   "ram_gb": null,
+   "storage_gb": null,
+   "lot_size": 1,
+   "model": "Dell Latitude 7400",
+   "family": "latitude_7400",
+   "source": "Refurb.io (US)",
+   "source_kind": "shopify",
+   "title": "Dell Latitude  7400 14\" Touch Laptop Core i7-8665U 1.9 GHz 16 GB 256 GB Windows 11 Pro - Refurbished",
+   "url": "https://www.refurb.io/products/dell-latitude-7400-14-touch-laptop-core-i7-8665u-1-9-ghz-16-gb-256-gb-windows-10-pro-refurbished",
+   "price": 379.0,
+   "region": "ships",
+   "shipping_usd": 0.0,
+   "shipping_known": false,
+   "chargers_included": null,
+   "spec_complete": false,
+   "unit_price": 379.0,
+   "unit_shipping": 0.0,
+   "charger_cost": 0,
+   "delivered_per_unit": 379.0,
+   "anchor": 240.0,
+   "anchor_basis": "configured benchmark (8 gen)",
+   "ratio": 1.579,
+   "band": "pass",
+   "vs_anchor_pct": 57.9,
    "doa_per_unit": null,
    "ceiling_breach": true
   }
