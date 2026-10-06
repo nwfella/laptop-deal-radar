@@ -1,5 +1,5 @@
 {
- "generated_utc": "2026-10-05 16:03 UTC",
+ "generated_utc": "2026-10-06 16:03 UTC",
  "config": {
   "want_units": 3,
   "budget_usd": 700,
@@ -102,7 +102,7 @@
     "n": 6,
     "live": true,
     "observed_min": 399.0,
-    "observed_median": 614.0,
+    "observed_median": 609.0,
     "configured": 204.0,
     "basis": "cheapest warranted observed $399.00 (6 listings) vs configured $204.00 - using the lower"
    },
@@ -143,7 +143,7 @@
    "latitude_5400|11",
    "latitude_7400|10"
   ],
-  "updated_utc": "2026-10-05T16:01:24Z"
+  "updated_utc": "2026-10-06T16:01:22Z"
  },
  "family_labels": {
   "latitude_5400": "Latitude 5400-series",
@@ -157,12 +157,12 @@
  },
  "source_health": [
   {
-   "line": "[ok] GreenIT (IE): 28 comparable laptops of 32 available",
-   "n": 28
+   "line": "[ok] GreenIT (IE): 27 comparable laptops of 31 available",
+   "n": 27
   },
   {
-   "line": "[ok] Refurb.io (US): 69 comparable laptops of 75 available",
-   "n": 69
+   "line": "[ok] Refurb.io (US): 72 comparable laptops of 78 available",
+   "n": 72
   },
   {
    "line": "[ok] craigslist 'latitude 5420': 18 listings",
@@ -173,20 +173,20 @@
    "n": 5
   },
   {
-   "line": "[ok] craigslist 'latitude 5490': 4 listings",
-   "n": 4
+   "line": "[ok] craigslist 'latitude 5490': 3 listings",
+   "n": 3
   },
   {
-   "line": "[ok] craigslist 'thinkpad t480': 2 listings",
+   "line": "[ok] craigslist 'thinkpad t480': 3 listings",
+   "n": 3
+  },
+  {
+   "line": "[ok] craigslist 'elitebook 840': 46 listings",
+   "n": 46
+  },
+  {
+   "line": "[ok] craigslist 'laptop lot': 2 listings",
    "n": 2
-  },
-  {
-   "line": "[ok] craigslist 'elitebook 840': 45 listings",
-   "n": 45
-  },
-  {
-   "line": "[ok] craigslist 'laptop lot': 1 listings",
-   "n": 1
   },
   {
    "line": "[ok] craigslist 'latitude lot': 0 listings",
@@ -198,18 +198,18 @@
   }
  ],
  "counts": {
-  "anchor_rows": 97,
-  "craigslist_rows": 76,
+  "anchor_rows": 99,
+  "craigslist_rows": 78,
   "craigslist_requests": 32,
-  "qualifying": 138,
+  "qualifying": 141,
   "rankable": 70
  },
  "rejects": {
-  "parts": 84,
-  "unrecognised": 193,
-  "not_a_laptop": 10,
+  "parts": 77,
+  "unrecognised": 191,
+  "not_a_laptop": 9,
   "implausible_price": 4,
-  "below_min_spec": 21,
+  "below_min_spec": 22,
   "duplicate": 14
  },
  "reject_samples": [
@@ -594,40 +594,6 @@
    "ceiling_breach": true
   },
   {
-   "cpu_gen": 8,
-   "gen_source": "cpu",
-   "cpu": "i5-8350U",
-   "ram_gb": null,
-   "storage_gb": 275,
-   "lot_size": 1,
-   "model": "Dell Latitude 5490",
-   "family": "latitude_5400",
-   "source": "Craigslist seattle",
-   "source_kind": "craigslist",
-   "title": "Dell Latitude 5490 i5-8350U 14\" Windows 11 Pro Laptop 275GB SSD 16GB",
-   "price": 219.0,
-   "region": "seattle",
-   "url": "https://seattle.craigslist.org/search/sss?query=Dell%20Latitude%205490%20i5-8350U%2014%22%20Windows%2011%20Pro%20Laptop%20275GB%20",
-   "lat": 45.3514,
-   "lon": -122.8567,
-   "shipping_usd": 0.0,
-   "shipping_known": true,
-   "chargers_included": false,
-   "slug": "sherwood-dell-latitude-5490-i5-8350u-14",
-   "spec_complete": false,
-   "unit_price": 219.0,
-   "unit_shipping": 0.0,
-   "charger_cost": 30,
-   "delivered_per_unit": 249.0,
-   "anchor": 240.0,
-   "anchor_basis": "configured benchmark (8 gen)",
-   "ratio": 1.038,
-   "band": "pass",
-   "vs_anchor_pct": 3.8,
-   "doa_per_unit": null,
-   "ceiling_breach": true
-  },
-  {
    "cpu_gen": 11,
    "gen_source": "model",
    "cpu": null,
@@ -750,6 +716,40 @@
    "shipping_known": true,
    "chargers_included": false,
    "slug": "lynden-dell-latitude-5490-laptop-for",
+   "spec_complete": false,
+   "unit_price": 250.0,
+   "unit_shipping": 0.0,
+   "charger_cost": 30,
+   "delivered_per_unit": 280.0,
+   "anchor": 240.0,
+   "anchor_basis": "configured benchmark (8 gen)",
+   "ratio": 1.167,
+   "band": "pass",
+   "vs_anchor_pct": 16.7,
+   "doa_per_unit": null,
+   "ceiling_breach": true
+  },
+  {
+   "cpu_gen": 8,
+   "gen_source": "model",
+   "cpu": null,
+   "ram_gb": null,
+   "storage_gb": null,
+   "lot_size": 1,
+   "model": "Lenovo ThinkPad T480",
+   "family": "thinkpad_t",
+   "source": "Craigslist seattle",
+   "source_kind": "craigslist",
+   "title": "2023 LENOVO THINKPAD T480 |CORE i5 + SSD | SOLID BUSINESS LAPTOP READY",
+   "price": 250.0,
+   "region": "seattle",
+   "url": "https://seattle.craigslist.org/search/sss?query=2023%20LENOVO%20THINKPAD%20T480%20%7CCORE%20i5%20%2B%20SSD%20%7C%20SOLID%20BUSINESS%20LA",
+   "lat": 49.2228,
+   "lon": -122.9945,
+   "shipping_usd": 0.0,
+   "shipping_known": true,
+   "chargers_included": false,
+   "slug": "burnaby-2023-lenovo-thinkpad-t480-core",
    "spec_complete": false,
    "unit_price": 250.0,
    "unit_shipping": 0.0,
