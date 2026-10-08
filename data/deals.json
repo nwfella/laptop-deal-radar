@@ -1,5 +1,5 @@
 {
- "generated_utc": "2026-10-07 22:37 UTC",
+ "generated_utc": "2026-10-08 16:03 UTC",
  "config": {
   "want_units": 3,
   "budget_usd": 700,
@@ -87,12 +87,12 @@
     "gen": 11,
     "label": "EliteBook 8xx",
     "usd": 204.0,
-    "n": 5,
+    "n": 4,
     "live": true,
     "observed_min": 569.0,
-    "observed_median": 639.0,
+    "observed_median": 687.88,
     "configured": 204.0,
-    "basis": "cheapest warranted observed $569.00 (5 listings) vs configured $204.00 - using the lower"
+    "basis": "cheapest warranted observed $569.00 (4 listings) vs configured $204.00 - using the lower"
    },
    "latitude_5400|11": {
     "family": "latitude_5400",
@@ -143,7 +143,7 @@
    "latitude_5400|11",
    "latitude_7400|10"
   ],
-  "updated_utc": "2026-10-07T22:35:29Z"
+  "updated_utc": "2026-10-08T16:01:13Z"
  },
  "family_labels": {
   "latitude_5400": "Latitude 5400-series",
@@ -169,20 +169,20 @@
    "n": 18
   },
   {
-   "line": "[ok] craigslist 'latitude 7490': 4 listings",
-   "n": 4
+   "line": "[ok] craigslist 'latitude 7490': 5 listings",
+   "n": 5
   },
   {
    "line": "[ok] craigslist 'latitude 5490': 2 listings",
    "n": 2
   },
   {
-   "line": "[ok] craigslist 'thinkpad t480': 3 listings",
-   "n": 3
+   "line": "[ok] craigslist 'thinkpad t480': 2 listings",
+   "n": 2
   },
   {
-   "line": "[ok] craigslist 'elitebook 840': 47 listings",
-   "n": 47
+   "line": "[ok] craigslist 'elitebook 840': 48 listings",
+   "n": 48
   },
   {
    "line": "[ok] craigslist 'laptop lot': 2 listings",
@@ -199,14 +199,14 @@
  ],
  "counts": {
   "anchor_rows": 98,
-  "craigslist_rows": 77,
+  "craigslist_rows": 78,
   "craigslist_requests": 32,
-  "qualifying": 140,
+  "qualifying": 141,
   "rankable": 71
  },
  "rejects": {
-  "unrecognised": 198,
-  "parts": 74,
+  "unrecognised": 186,
+  "parts": 75,
   "not_a_laptop": 10,
   "implausible_price": 4,
   "below_min_spec": 21,
@@ -270,7 +270,7 @@
   },
   {
    "reason": "unrecognised",
-   "title": "Dell Latitude Laptop 5420 i7 16gb Ram 512gb NVMe Drive 3.0ghz 14\" Touch Win 11Pr",
+   "title": "Dell Latitude Laptop 5420 i7 16gb Ram 512gb NVMe SSD Drive 14\"Touchscreen 11th G",
    "price": 280.0
   }
  ],
@@ -654,7 +654,7 @@
    "charger_cost": 30,
    "delivered_per_unit": 260.0,
    "anchor": 204.0,
-   "anchor_basis": "cheapest warranted observed $569.00 (5 listings) vs configured $204.00 - using the lower",
+   "anchor_basis": "cheapest warranted observed $569.00 (4 listings) vs configured $204.00 - using the lower",
    "ratio": 1.275,
    "band": "pass",
    "vs_anchor_pct": 27.5,
@@ -866,6 +866,40 @@
    "ceiling_breach": true
   },
   {
+   "cpu_gen": 8,
+   "gen_source": "model",
+   "cpu": null,
+   "ram_gb": null,
+   "storage_gb": null,
+   "lot_size": 1,
+   "model": "Dell Latitude 7490",
+   "family": "latitude_7400",
+   "source": "Craigslist sfbay",
+   "source_kind": "craigslist",
+   "title": "DELL LATITUDE 7490 i7 32GB 512GB",
+   "price": 300.0,
+   "region": "sfbay",
+   "url": "https://sfbay.craigslist.org/search/sss?query=DELL%20LATITUDE%207490%20i7%2032GB%20512GB",
+   "lat": 37.296,
+   "lon": -121.8939,
+   "shipping_usd": 0.0,
+   "shipping_known": true,
+   "chargers_included": false,
+   "slug": "san-jose-dell-latitude-7490-i7-32gb",
+   "spec_complete": false,
+   "unit_price": 300.0,
+   "unit_shipping": 0.0,
+   "charger_cost": 30,
+   "delivered_per_unit": 330.0,
+   "anchor": 240.0,
+   "anchor_basis": "configured benchmark (8 gen)",
+   "ratio": 1.375,
+   "band": "pass",
+   "vs_anchor_pct": 37.5,
+   "doa_per_unit": null,
+   "ceiling_breach": true
+  },
+  {
    "cpu_gen": 10,
    "gen_source": "model",
    "cpu": null,
@@ -1028,7 +1062,7 @@
    "charger_cost": 30,
    "delivered_per_unit": 359.0,
    "anchor": 204.0,
-   "anchor_basis": "cheapest warranted observed $569.00 (5 listings) vs configured $204.00 - using the lower",
+   "anchor_basis": "cheapest warranted observed $569.00 (4 listings) vs configured $204.00 - using the lower",
    "ratio": 1.76,
    "band": "pass",
    "vs_anchor_pct": 76.0,
@@ -1062,7 +1096,7 @@
    "charger_cost": 30,
    "delivered_per_unit": 359.0,
    "anchor": 204.0,
-   "anchor_basis": "cheapest warranted observed $569.00 (5 listings) vs configured $204.00 - using the lower",
+   "anchor_basis": "cheapest warranted observed $569.00 (4 listings) vs configured $204.00 - using the lower",
    "ratio": 1.76,
    "band": "pass",
    "vs_anchor_pct": 76.0,
@@ -1096,7 +1130,7 @@
    "charger_cost": 30,
    "delivered_per_unit": 359.0,
    "anchor": 204.0,
-   "anchor_basis": "cheapest warranted observed $569.00 (5 listings) vs configured $204.00 - using the lower",
+   "anchor_basis": "cheapest warranted observed $569.00 (4 listings) vs configured $204.00 - using the lower",
    "ratio": 1.76,
    "band": "pass",
    "vs_anchor_pct": 76.0,
@@ -1159,40 +1193,6 @@
    "unit_price": 379.0,
    "unit_shipping": 0.0,
    "charger_cost": 0,
-   "delivered_per_unit": 379.0,
-   "anchor": 240.0,
-   "anchor_basis": "configured benchmark (8 gen)",
-   "ratio": 1.579,
-   "band": "pass",
-   "vs_anchor_pct": 57.9,
-   "doa_per_unit": null,
-   "ceiling_breach": true
-  },
-  {
-   "cpu_gen": 8,
-   "gen_source": "model",
-   "cpu": null,
-   "ram_gb": null,
-   "storage_gb": null,
-   "lot_size": 1,
-   "model": "HP EliteBook 840",
-   "family": "elitebook_800",
-   "source": "Craigslist seattle",
-   "source_kind": "craigslist",
-   "title": "HP Elitebook 840 G1 - 14\" HD",
-   "price": 349.0,
-   "region": "seattle",
-   "url": "https://seattle.craigslist.org/search/sss?query=HP%20Elitebook%20840%20G1%20-%2014%22%20HD",
-   "lat": 45.5225,
-   "lon": -122.6556,
-   "shipping_usd": 0.0,
-   "shipping_known": true,
-   "chargers_included": false,
-   "slug": "portland-hp-elitebook-840-hd",
-   "spec_complete": false,
-   "unit_price": 349.0,
-   "unit_shipping": 0.0,
-   "charger_cost": 30,
    "delivered_per_unit": 379.0,
    "anchor": 240.0,
    "anchor_basis": "configured benchmark (8 gen)",
