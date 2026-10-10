@@ -1,5 +1,5 @@
 {
- "generated_utc": "2026-10-08 16:03 UTC",
+ "generated_utc": "2026-10-10 16:02 UTC",
  "config": {
   "want_units": 3,
   "budget_usd": 700,
@@ -101,10 +101,10 @@
     "usd": 204.0,
     "n": 6,
     "live": true,
-    "observed_min": 399.0,
+    "observed_min": 429.0,
     "observed_median": 609.0,
     "configured": 204.0,
-    "basis": "cheapest warranted observed $399.00 (6 listings) vs configured $204.00 - using the lower"
+    "basis": "cheapest warranted observed $429.00 (6 listings) vs configured $204.00 - using the lower"
    },
    "latitude_7400|10": {
     "family": "latitude_7400",
@@ -143,7 +143,7 @@
    "latitude_5400|11",
    "latitude_7400|10"
   ],
-  "updated_utc": "2026-10-08T16:01:13Z"
+  "updated_utc": "2026-10-10T16:01:02Z"
  },
  "family_labels": {
   "latitude_5400": "Latitude 5400-series",
@@ -157,20 +157,20 @@
  },
  "source_health": [
   {
-   "line": "[ok] GreenIT (IE): 28 comparable laptops of 33 available",
-   "n": 28
+   "line": "[ok] GreenIT (IE): 30 comparable laptops of 35 available",
+   "n": 30
   },
   {
-   "line": "[ok] Refurb.io (US): 70 comparable laptops of 76 available",
-   "n": 70
+   "line": "[ok] Refurb.io (US): 68 comparable laptops of 74 available",
+   "n": 68
   },
   {
-   "line": "[ok] craigslist 'latitude 5420': 18 listings",
-   "n": 18
+   "line": "[ok] craigslist 'latitude 5420': 19 listings",
+   "n": 19
   },
   {
-   "line": "[ok] craigslist 'latitude 7490': 5 listings",
-   "n": 5
+   "line": "[ok] craigslist 'latitude 7490': 6 listings",
+   "n": 6
   },
   {
    "line": "[ok] craigslist 'latitude 5490': 2 listings",
@@ -181,8 +181,8 @@
    "n": 2
   },
   {
-   "line": "[ok] craigslist 'elitebook 840': 48 listings",
-   "n": 48
+   "line": "[ok] craigslist 'elitebook 840': 47 listings",
+   "n": 47
   },
   {
    "line": "[ok] craigslist 'laptop lot': 2 listings",
@@ -199,18 +199,18 @@
  ],
  "counts": {
   "anchor_rows": 98,
-  "craigslist_rows": 78,
+  "craigslist_rows": 79,
   "craigslist_requests": 32,
-  "qualifying": 141,
+  "qualifying": 140,
   "rankable": 71
  },
  "rejects": {
-  "unrecognised": 186,
-  "parts": 75,
+  "unrecognised": 201,
+  "parts": 68,
   "not_a_laptop": 10,
   "implausible_price": 4,
-  "below_min_spec": 21,
-  "duplicate": 14
+  "below_min_spec": 22,
+  "duplicate": 15
  },
  "reject_samples": [
   {
@@ -269,9 +269,9 @@
    "price": 129.0
   },
   {
-   "reason": "unrecognised",
-   "title": "Dell Latitude Laptop 5420 i7 16gb Ram 512gb NVMe SSD Drive 14\"Touchscreen 11th G",
-   "price": 280.0
+   "reason": "parts",
+   "title": "Dell Latitude 5420 Motherboard (54CCV)",
+   "price": 120.0
   }
  ],
  "solution": {
@@ -518,7 +518,7 @@
    "charger_cost": 30,
    "delivered_per_unit": 230.0,
    "anchor": 204.0,
-   "anchor_basis": "cheapest warranted observed $399.00 (6 listings) vs configured $204.00 - using the lower",
+   "anchor_basis": "cheapest warranted observed $429.00 (6 listings) vs configured $204.00 - using the lower",
    "ratio": 1.127,
    "band": "pass",
    "vs_anchor_pct": 12.7,
@@ -552,7 +552,7 @@
    "charger_cost": 30,
    "delivered_per_unit": 230.0,
    "anchor": 204.0,
-   "anchor_basis": "cheapest warranted observed $399.00 (6 listings) vs configured $204.00 - using the lower",
+   "anchor_basis": "cheapest warranted observed $429.00 (6 listings) vs configured $204.00 - using the lower",
    "ratio": 1.127,
    "band": "pass",
    "vs_anchor_pct": 12.7,
@@ -590,40 +590,6 @@
    "ratio": 0.939,
    "band": "pass",
    "vs_anchor_pct": -6.1,
-   "doa_per_unit": null,
-   "ceiling_breach": true
-  },
-  {
-   "cpu_gen": 11,
-   "gen_source": "model",
-   "cpu": null,
-   "ram_gb": 16,
-   "storage_gb": 256,
-   "lot_size": 1,
-   "model": "Dell Latitude 5420",
-   "family": "latitude_5400",
-   "source": "Craigslist seattle",
-   "source_kind": "craigslist",
-   "title": "Dell Latitude 5420 14\" Laptop | 16GB RAM, 256GB SSD",
-   "price": 225.0,
-   "region": "seattle",
-   "url": "https://seattle.craigslist.org/search/sss?query=Dell%20Latitude%205420%2014%22%20Laptop%20%7C%2016GB%20RAM%2C%20256GB%20SSD",
-   "lat": 47.6753,
-   "lon": -122.3863,
-   "shipping_usd": 0.0,
-   "shipping_known": true,
-   "chargers_included": false,
-   "slug": "seattle-dell-latitude-laptop-16gb-ram",
-   "spec_complete": true,
-   "unit_price": 225.0,
-   "unit_shipping": 0.0,
-   "charger_cost": 30,
-   "delivered_per_unit": 255.0,
-   "anchor": 204.0,
-   "anchor_basis": "cheapest warranted observed $399.00 (6 listings) vs configured $204.00 - using the lower",
-   "ratio": 1.25,
-   "band": "pass",
-   "vs_anchor_pct": 25.0,
    "doa_per_unit": null,
    "ceiling_breach": true
   },
@@ -692,6 +658,40 @@
    "ratio": 1.125,
    "band": "pass",
    "vs_anchor_pct": 12.5,
+   "doa_per_unit": null,
+   "ceiling_breach": true
+  },
+  {
+   "cpu_gen": 11,
+   "gen_source": "model",
+   "cpu": null,
+   "ram_gb": 16,
+   "storage_gb": 256,
+   "lot_size": 1,
+   "model": "Dell Latitude 5420",
+   "family": "latitude_5400",
+   "source": "Craigslist seattle",
+   "source_kind": "craigslist",
+   "title": "Dell Latitude 5420 14\" Laptop | 16GB RAM, 256GB SSD",
+   "price": 250.0,
+   "region": "seattle",
+   "url": "https://seattle.craigslist.org/search/sss?query=Dell%20Latitude%205420%2014%22%20Laptop%20%7C%2016GB%20RAM%2C%20256GB%20SSD",
+   "lat": 47.6753,
+   "lon": -122.3863,
+   "shipping_usd": 0.0,
+   "shipping_known": true,
+   "chargers_included": false,
+   "slug": "seattle-dell-latitude-laptop-16gb-ram",
+   "spec_complete": true,
+   "unit_price": 250.0,
+   "unit_shipping": 0.0,
+   "charger_cost": 30,
+   "delivered_per_unit": 280.0,
+   "anchor": 204.0,
+   "anchor_basis": "cheapest warranted observed $429.00 (6 listings) vs configured $204.00 - using the lower",
+   "ratio": 1.373,
+   "band": "pass",
+   "vs_anchor_pct": 37.3,
    "doa_per_unit": null,
    "ceiling_breach": true
   },
@@ -1164,7 +1164,7 @@
    "charger_cost": 30,
    "delivered_per_unit": 370.0,
    "anchor": 204.0,
-   "anchor_basis": "cheapest warranted observed $399.00 (6 listings) vs configured $204.00 - using the lower",
+   "anchor_basis": "cheapest warranted observed $429.00 (6 listings) vs configured $204.00 - using the lower",
    "ratio": 1.814,
    "band": "pass",
    "vs_anchor_pct": 81.4,
