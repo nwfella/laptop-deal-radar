@@ -1,5 +1,5 @@
 {
- "generated_utc": "2026-10-11 16:03 UTC",
+ "generated_utc": "2026-10-12 18:07 UTC",
  "config": {
   "want_units": 3,
   "budget_usd": 700,
@@ -70,18 +70,6 @@
  },
  "anchors": {
   "families": {
-   "elitebook_800|10": {
-    "family": "elitebook_800",
-    "gen": 10,
-    "label": "EliteBook 8xx",
-    "usd": 245.0,
-    "n": 3,
-    "live": true,
-    "observed_min": 399.0,
-    "observed_median": 449.0,
-    "configured": 245.0,
-    "basis": "cheapest warranted observed $399.00 (3 listings) vs configured $245.00 - using the lower"
-   },
    "elitebook_800|11": {
     "family": "elitebook_800",
     "gen": 11,
@@ -99,24 +87,12 @@
     "gen": 11,
     "label": "Latitude 5400-series",
     "usd": 204.0,
-    "n": 6,
+    "n": 8,
     "live": true,
-    "observed_min": 429.0,
-    "observed_median": 609.0,
+    "observed_min": 379.0,
+    "observed_median": 559.0,
     "configured": 204.0,
-    "basis": "cheapest warranted observed $429.00 (6 listings) vs configured $204.00 - using the lower"
-   },
-   "latitude_7400|10": {
-    "family": "latitude_7400",
-    "gen": 10,
-    "label": "Latitude 7400-series",
-    "usd": 245.0,
-    "n": 3,
-    "live": true,
-    "observed_min": 469.0,
-    "observed_median": 549.0,
-    "configured": 245.0,
-    "basis": "cheapest warranted observed $469.00 (3 listings) vs configured $245.00 - using the lower"
+    "basis": "cheapest warranted observed $379.00 (8 listings) vs configured $204.00 - using the lower"
    }
   },
   "by_gen": {
@@ -138,12 +114,10 @@
    }
   },
   "live_keys": [
-   "elitebook_800|10",
    "elitebook_800|11",
-   "latitude_5400|11",
-   "latitude_7400|10"
+   "latitude_5400|11"
   ],
-  "updated_utc": "2026-10-11T16:01:22Z"
+  "updated_utc": "2026-10-12T18:05:26Z"
  },
  "family_labels": {
   "latitude_5400": "Latitude 5400-series",
@@ -157,8 +131,8 @@
  },
  "source_health": [
   {
-   "line": "[ok] GreenIT (IE): 29 comparable laptops of 34 available",
-   "n": 29
+   "line": "[ok] GreenIT (IE): 26 comparable laptops of 31 available",
+   "n": 26
   },
   {
    "line": "[ok] Refurb.io (US): 68 comparable laptops of 74 available",
@@ -185,8 +159,8 @@
    "n": 50
   },
   {
-   "line": "[ok] craigslist 'laptop lot': 2 listings",
-   "n": 2
+   "line": "[ok] craigslist 'laptop lot': 3 listings",
+   "n": 3
   },
   {
    "line": "[ok] craigslist 'latitude lot': 0 listings",
@@ -198,16 +172,16 @@
   }
  ],
  "counts": {
-  "anchor_rows": 97,
-  "craigslist_rows": 83,
+  "anchor_rows": 94,
+  "craigslist_rows": 84,
   "craigslist_requests": 32,
-  "qualifying": 143,
+  "qualifying": 141,
   "rankable": 73
  },
  "rejects": {
-  "unrecognised": 188,
-  "parts": 69,
-  "not_a_laptop": 10,
+  "unrecognised": 211,
+  "parts": 74,
+  "not_a_laptop": 12,
   "implausible_price": 4,
   "below_min_spec": 21,
   "duplicate": 16
@@ -270,7 +244,7 @@
   },
   {
    "reason": "unrecognised",
-   "title": "Dell Latitude Laptop 5420 i7 16gb Ram 512gb NVMe Drive 3.0ghz 14\" Touch Win 11Pr",
+   "title": "Dell Latitude Laptop 5420 i7 16gb Ram 512gb NVMe SSD Drive 14\"Touchscreen 11th G",
    "price": 280.0
   }
  ],
@@ -278,11 +252,11 @@
   "want_units": 3,
   "budget_usd": 700.0,
   "units_found": 3,
-  "spent_usd": 545.0,
-  "per_unit": 181.67,
+  "spent_usd": 550.0,
+  "per_unit": 183.33,
   "feasible": true,
   "blocked_by_budget": false,
-  "candidates_considered": 4,
+  "candidates_considered": 3,
   "picks": [
    {
     "cpu_gen": 8,
@@ -359,30 +333,30 @@
     "ram_gb": null,
     "storage_gb": null,
     "lot_size": 1,
-    "model": "HP EliteBook 840",
-    "family": "elitebook_800",
+    "model": "Dell Latitude 5490",
+    "family": "latitude_5400",
     "source": "Craigslist seattle",
     "source_kind": "craigslist",
-    "title": "Hp EliteBook 840 laptop i5 / SSD / 14 in / W10",
-    "price": 155.0,
+    "title": "Dell Latitude 5490 Laptop",
+    "price": 160.0,
     "region": "seattle",
-    "url": "https://seattle.craigslist.org/search/sss?query=Hp%20EliteBook%20840%20laptop%20i5%20/%20SSD%20/%2014%20in%20/%20W10",
-    "lat": 49.2551,
-    "lon": -123.0667,
+    "url": "https://seattle.craigslist.org/search/sss?query=Dell%20Latitude%205490%20Laptop",
+    "lat": 47.6673,
+    "lon": -122.2907,
     "shipping_usd": 0.0,
     "shipping_known": true,
     "chargers_included": false,
-    "slug": "vancouver-hp-elitebook-840-laptop-i5",
+    "slug": "seattle-dell-latitude-5490-laptop",
     "spec_complete": false,
-    "unit_price": 155.0,
+    "unit_price": 160.0,
     "unit_shipping": 0.0,
     "charger_cost": 30,
-    "delivered_per_unit": 185.0,
+    "delivered_per_unit": 190.0,
     "anchor": 240.0,
     "anchor_basis": "configured benchmark (8 gen)",
-    "ratio": 0.771,
+    "ratio": 0.792,
     "band": "fair",
-    "vs_anchor_pct": -22.9,
+    "vs_anchor_pct": -20.8,
     "doa_per_unit": null,
     "ceiling_breach": true
    }
@@ -454,40 +428,6 @@
    "ratio": 0.75,
    "band": "fair",
    "vs_anchor_pct": -25.0,
-   "doa_per_unit": null,
-   "ceiling_breach": true
-  },
-  {
-   "cpu_gen": 8,
-   "gen_source": "model",
-   "cpu": null,
-   "ram_gb": null,
-   "storage_gb": null,
-   "lot_size": 1,
-   "model": "HP EliteBook 840",
-   "family": "elitebook_800",
-   "source": "Craigslist seattle",
-   "source_kind": "craigslist",
-   "title": "Hp EliteBook 840 laptop i5 / SSD / 14 in / W10",
-   "price": 155.0,
-   "region": "seattle",
-   "url": "https://seattle.craigslist.org/search/sss?query=Hp%20EliteBook%20840%20laptop%20i5%20/%20SSD%20/%2014%20in%20/%20W10",
-   "lat": 49.2551,
-   "lon": -123.0667,
-   "shipping_usd": 0.0,
-   "shipping_known": true,
-   "chargers_included": false,
-   "slug": "vancouver-hp-elitebook-840-laptop-i5",
-   "spec_complete": false,
-   "unit_price": 155.0,
-   "unit_shipping": 0.0,
-   "charger_cost": 30,
-   "delivered_per_unit": 185.0,
-   "anchor": 240.0,
-   "anchor_basis": "configured benchmark (8 gen)",
-   "ratio": 0.771,
-   "band": "fair",
-   "vs_anchor_pct": -22.9,
    "doa_per_unit": null,
    "ceiling_breach": true
   },
@@ -586,7 +526,7 @@
    "charger_cost": 30,
    "delivered_per_unit": 230.0,
    "anchor": 204.0,
-   "anchor_basis": "cheapest warranted observed $429.00 (6 listings) vs configured $204.00 - using the lower",
+   "anchor_basis": "cheapest warranted observed $379.00 (8 listings) vs configured $204.00 - using the lower",
    "ratio": 1.127,
    "band": "pass",
    "vs_anchor_pct": 12.7,
@@ -620,7 +560,7 @@
    "charger_cost": 30,
    "delivered_per_unit": 230.0,
    "anchor": 204.0,
-   "anchor_basis": "cheapest warranted observed $429.00 (6 listings) vs configured $204.00 - using the lower",
+   "anchor_basis": "cheapest warranted observed $379.00 (8 listings) vs configured $204.00 - using the lower",
    "ratio": 1.127,
    "band": "pass",
    "vs_anchor_pct": 12.7,
@@ -654,7 +594,7 @@
    "charger_cost": 30,
    "delivered_per_unit": 230.0,
    "anchor": 245.0,
-   "anchor_basis": "cheapest warranted observed $399.00 (3 listings) vs configured $245.00 - using the lower",
+   "anchor_basis": "configured benchmark (10 gen)",
    "ratio": 0.939,
    "band": "pass",
    "vs_anchor_pct": -6.1,
@@ -756,7 +696,7 @@
    "charger_cost": 30,
    "delivered_per_unit": 280.0,
    "anchor": 204.0,
-   "anchor_basis": "cheapest warranted observed $429.00 (6 listings) vs configured $204.00 - using the lower",
+   "anchor_basis": "cheapest warranted observed $379.00 (8 listings) vs configured $204.00 - using the lower",
    "ratio": 1.373,
    "band": "pass",
    "vs_anchor_pct": 37.3,
@@ -892,7 +832,7 @@
    "charger_cost": 30,
    "delivered_per_unit": 329.0,
    "anchor": 245.0,
-   "anchor_basis": "cheapest warranted observed $399.00 (3 listings) vs configured $245.00 - using the lower",
+   "anchor_basis": "configured benchmark (10 gen)",
    "ratio": 1.343,
    "band": "pass",
    "vs_anchor_pct": 34.3,
@@ -926,7 +866,7 @@
    "charger_cost": 30,
    "delivered_per_unit": 329.0,
    "anchor": 245.0,
-   "anchor_basis": "cheapest warranted observed $399.00 (3 listings) vs configured $245.00 - using the lower",
+   "anchor_basis": "configured benchmark (10 gen)",
    "ratio": 1.343,
    "band": "pass",
    "vs_anchor_pct": 34.3,
@@ -994,7 +934,7 @@
    "charger_cost": 30,
    "delivered_per_unit": 330.0,
    "anchor": 245.0,
-   "anchor_basis": "cheapest warranted observed $399.00 (3 listings) vs configured $245.00 - using the lower",
+   "anchor_basis": "configured benchmark (10 gen)",
    "ratio": 1.347,
    "band": "pass",
    "vs_anchor_pct": 34.7,
@@ -1232,10 +1172,41 @@
    "charger_cost": 30,
    "delivered_per_unit": 370.0,
    "anchor": 204.0,
-   "anchor_basis": "cheapest warranted observed $429.00 (6 listings) vs configured $204.00 - using the lower",
+   "anchor_basis": "cheapest warranted observed $379.00 (8 listings) vs configured $204.00 - using the lower",
    "ratio": 1.814,
    "band": "pass",
    "vs_anchor_pct": 81.4,
+   "doa_per_unit": null,
+   "ceiling_breach": true
+  },
+  {
+   "cpu_gen": 11,
+   "gen_source": "cpu",
+   "cpu": "Core i5 11th",
+   "ram_gb": 16,
+   "storage_gb": 256,
+   "lot_size": 1,
+   "model": "Dell Latitude 5420",
+   "family": "latitude_5400",
+   "source": "GreenIT (IE)",
+   "source_kind": "shopify",
+   "title": "Dell Latitude 5420 | Core i5 11th Gen | 16GB RAM | 256GB SSD | Windows 11 Pro | Webcam | Standard | 1 Year Warranty | Refurbished",
+   "url": "https://www.greenit.ie/products/dell-latitude-5420-core-i5-11th-gen-16gb-ram-256gb-ssd-windows-11-pro-webcam-standard-1-year-warranty-refurbished",
+   "price": 379.0,
+   "region": "ships",
+   "shipping_usd": 0.0,
+   "shipping_known": false,
+   "chargers_included": null,
+   "spec_complete": true,
+   "unit_price": 379.0,
+   "unit_shipping": 0.0,
+   "charger_cost": 0,
+   "delivered_per_unit": 379.0,
+   "anchor": 204.0,
+   "anchor_basis": "cheapest warranted observed $379.00 (8 listings) vs configured $204.00 - using the lower",
+   "ratio": 1.858,
+   "band": "pass",
+   "vs_anchor_pct": 85.8,
    "doa_per_unit": null,
    "ceiling_breach": true
   }
