@@ -1,5 +1,5 @@
 {
- "generated_utc": "2026-10-13 02:05 UTC",
+ "generated_utc": "2026-10-13 16:02 UTC",
  "config": {
   "want_units": 3,
   "budget_usd": 700,
@@ -117,7 +117,7 @@
    "elitebook_800|11",
    "latitude_5400|11"
   ],
-  "updated_utc": "2026-10-13T02:03:29Z"
+  "updated_utc": "2026-10-13T16:00:47Z"
  },
  "family_labels": {
   "latitude_5400": "Latitude 5400-series",
@@ -131,8 +131,8 @@
  },
  "source_health": [
   {
-   "line": "[ok] GreenIT (IE): 26 comparable laptops of 31 available",
-   "n": 26
+   "line": "[ok] GreenIT (IE): 23 comparable laptops of 28 available",
+   "n": 23
   },
   {
    "line": "[ok] Refurb.io (US): 68 comparable laptops of 74 available",
@@ -143,8 +143,8 @@
    "n": 19
   },
   {
-   "line": "[ok] craigslist 'latitude 7490': 6 listings",
-   "n": 6
+   "line": "[ok] craigslist 'latitude 7490': 8 listings",
+   "n": 8
   },
   {
    "line": "[ok] craigslist 'latitude 5490': 2 listings",
@@ -155,12 +155,12 @@
    "n": 4
   },
   {
-   "line": "[ok] craigslist 'elitebook 840': 47 listings",
-   "n": 47
+   "line": "[ok] craigslist 'elitebook 840': 48 listings",
+   "n": 48
   },
   {
-   "line": "[ok] craigslist 'laptop lot': 1 listings",
-   "n": 1
+   "line": "[ok] craigslist 'laptop lot': 2 listings",
+   "n": 2
   },
   {
    "line": "[ok] craigslist 'latitude lot': 0 listings",
@@ -172,19 +172,19 @@
   }
  ],
  "counts": {
-  "anchor_rows": 94,
-  "craigslist_rows": 80,
+  "anchor_rows": 91,
+  "craigslist_rows": 84,
   "craigslist_requests": 32,
-  "qualifying": 139,
-  "rankable": 71
+  "qualifying": 138,
+  "rankable": 72
  },
  "rejects": {
-  "unrecognised": 193,
-  "parts": 71,
-  "not_a_laptop": 9,
-  "implausible_price": 4,
-  "below_min_spec": 19,
-  "duplicate": 16
+  "unrecognised": 180,
+  "parts": 68,
+  "not_a_laptop": 10,
+  "implausible_price": 2,
+  "below_min_spec": 20,
+  "duplicate": 17
  },
  "reject_samples": [
   {
@@ -252,11 +252,11 @@
   "want_units": 3,
   "budget_usd": 700.0,
   "units_found": 3,
-  "spent_usd": 550.0,
-  "per_unit": 183.33,
+  "spent_usd": 540.0,
+  "per_unit": 180.0,
   "feasible": true,
   "blocked_by_budget": false,
-  "candidates_considered": 3,
+  "candidates_considered": 4,
   "picks": [
    {
     "cpu_gen": 8,
@@ -279,6 +279,40 @@
     "shipping_known": true,
     "chargers_included": false,
     "slug": "king-city-lenovo-latitude-7490-laptop",
+    "spec_complete": false,
+    "unit_price": 150.0,
+    "unit_shipping": 0.0,
+    "charger_cost": 30,
+    "delivered_per_unit": 180.0,
+    "anchor": 240.0,
+    "anchor_basis": "configured benchmark (8 gen)",
+    "ratio": 0.75,
+    "band": "fair",
+    "vs_anchor_pct": -25.0,
+    "doa_per_unit": null,
+    "ceiling_breach": true
+   },
+   {
+    "cpu_gen": 8,
+    "gen_source": "model",
+    "cpu": null,
+    "ram_gb": null,
+    "storage_gb": null,
+    "lot_size": 1,
+    "model": "Dell Latitude 7490",
+    "family": "latitude_7400",
+    "source": "Craigslist losangeles",
+    "source_kind": "craigslist",
+    "title": "Dell Latitude 7490 14\" Laptop i7 1.9GHz 16GB 256GB HDMI Windows11",
+    "price": 150.0,
+    "region": "losangeles",
+    "url": "https://losangeles.craigslist.org/search/sss?query=Dell%20Latitude%207490%2014%22%20Laptop%20i7%201.9GHz%2016GB%20256GB%20HDMI%20Wind",
+    "lat": 33.6647,
+    "lon": -117.7464,
+    "shipping_usd": 0.0,
+    "shipping_known": true,
+    "chargers_included": false,
+    "slug": "east-irvine-dell-latitude-laptop-i7",
     "spec_complete": false,
     "unit_price": 150.0,
     "unit_shipping": 0.0,
@@ -325,40 +359,6 @@
     "vs_anchor_pct": -25.0,
     "doa_per_unit": null,
     "ceiling_breach": true
-   },
-   {
-    "cpu_gen": 8,
-    "gen_source": "model",
-    "cpu": null,
-    "ram_gb": null,
-    "storage_gb": null,
-    "lot_size": 1,
-    "model": "Dell Latitude 5490",
-    "family": "latitude_5400",
-    "source": "Craigslist seattle",
-    "source_kind": "craigslist",
-    "title": "Dell Latitude 5490 Laptop",
-    "price": 160.0,
-    "region": "seattle",
-    "url": "https://seattle.craigslist.org/search/sss?query=Dell%20Latitude%205490%20Laptop",
-    "lat": 47.6673,
-    "lon": -122.2907,
-    "shipping_usd": 0.0,
-    "shipping_known": true,
-    "chargers_included": false,
-    "slug": "seattle-dell-latitude-5490-laptop",
-    "spec_complete": false,
-    "unit_price": 160.0,
-    "unit_shipping": 0.0,
-    "charger_cost": 30,
-    "delivered_per_unit": 190.0,
-    "anchor": 240.0,
-    "anchor_basis": "configured benchmark (8 gen)",
-    "ratio": 0.792,
-    "band": "fair",
-    "vs_anchor_pct": -20.8,
-    "doa_per_unit": null,
-    "ceiling_breach": true
    }
   ]
  },
@@ -384,6 +384,40 @@
    "shipping_known": true,
    "chargers_included": false,
    "slug": "king-city-lenovo-latitude-7490-laptop",
+   "spec_complete": false,
+   "unit_price": 150.0,
+   "unit_shipping": 0.0,
+   "charger_cost": 30,
+   "delivered_per_unit": 180.0,
+   "anchor": 240.0,
+   "anchor_basis": "configured benchmark (8 gen)",
+   "ratio": 0.75,
+   "band": "fair",
+   "vs_anchor_pct": -25.0,
+   "doa_per_unit": null,
+   "ceiling_breach": true
+  },
+  {
+   "cpu_gen": 8,
+   "gen_source": "model",
+   "cpu": null,
+   "ram_gb": null,
+   "storage_gb": null,
+   "lot_size": 1,
+   "model": "Dell Latitude 7490",
+   "family": "latitude_7400",
+   "source": "Craigslist losangeles",
+   "source_kind": "craigslist",
+   "title": "Dell Latitude 7490 14\" Laptop i7 1.9GHz 16GB 256GB HDMI Windows11",
+   "price": 150.0,
+   "region": "losangeles",
+   "url": "https://losangeles.craigslist.org/search/sss?query=Dell%20Latitude%207490%2014%22%20Laptop%20i7%201.9GHz%2016GB%20256GB%20HDMI%20Wind",
+   "lat": 33.6647,
+   "lon": -117.7464,
+   "shipping_usd": 0.0,
+   "shipping_known": true,
+   "chargers_included": false,
+   "slug": "east-irvine-dell-latitude-laptop-i7",
    "spec_complete": false,
    "unit_price": 150.0,
    "unit_shipping": 0.0,
@@ -1176,37 +1210,6 @@
    "ratio": 1.814,
    "band": "pass",
    "vs_anchor_pct": 81.4,
-   "doa_per_unit": null,
-   "ceiling_breach": true
-  },
-  {
-   "cpu_gen": 11,
-   "gen_source": "cpu",
-   "cpu": "Core i5 11th",
-   "ram_gb": 16,
-   "storage_gb": 256,
-   "lot_size": 1,
-   "model": "Dell Latitude 5420",
-   "family": "latitude_5400",
-   "source": "GreenIT (IE)",
-   "source_kind": "shopify",
-   "title": "Dell Latitude 5420 | Core i5 11th Gen | 16GB RAM | 256GB SSD | Windows 11 Pro | Webcam | Standard | 1 Year Warranty | Refurbished",
-   "url": "https://www.greenit.ie/products/dell-latitude-5420-core-i5-11th-gen-16gb-ram-256gb-ssd-windows-11-pro-webcam-standard-1-year-warranty-refurbished",
-   "price": 379.0,
-   "region": "ships",
-   "shipping_usd": 0.0,
-   "shipping_known": false,
-   "chargers_included": null,
-   "spec_complete": true,
-   "unit_price": 379.0,
-   "unit_shipping": 0.0,
-   "charger_cost": 0,
-   "delivered_per_unit": 379.0,
-   "anchor": 204.0,
-   "anchor_basis": "cheapest warranted observed $379.00 (8 listings) vs configured $204.00 - using the lower",
-   "ratio": 1.858,
-   "band": "pass",
-   "vs_anchor_pct": 85.8,
    "doa_per_unit": null,
    "ceiling_breach": true
   }
