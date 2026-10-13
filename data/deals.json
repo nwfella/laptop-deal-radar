@@ -1,5 +1,5 @@
 {
- "generated_utc": "2026-10-13 01:58 UTC",
+ "generated_utc": "2026-10-13 02:05 UTC",
  "config": {
   "want_units": 3,
   "budget_usd": 700,
@@ -117,7 +117,7 @@
    "elitebook_800|11",
    "latitude_5400|11"
   ],
-  "updated_utc": "2026-10-13T01:56:50Z"
+  "updated_utc": "2026-10-13T02:03:29Z"
  },
  "family_labels": {
   "latitude_5400": "Latitude 5400-series",
