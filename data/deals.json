@@ -1,5 +1,5 @@
 {
- "generated_utc": "2026-10-12 18:07 UTC",
+ "generated_utc": "2026-10-13 01:58 UTC",
  "config": {
   "want_units": 3,
   "budget_usd": 700,
@@ -117,7 +117,7 @@
    "elitebook_800|11",
    "latitude_5400|11"
   ],
-  "updated_utc": "2026-10-12T18:05:26Z"
+  "updated_utc": "2026-10-13T01:56:50Z"
  },
  "family_labels": {
   "latitude_5400": "Latitude 5400-series",
@@ -151,16 +151,16 @@
    "n": 2
   },
   {
-   "line": "[ok] craigslist 'thinkpad t480': 3 listings",
-   "n": 3
+   "line": "[ok] craigslist 'thinkpad t480': 4 listings",
+   "n": 4
   },
   {
-   "line": "[ok] craigslist 'elitebook 840': 50 listings",
-   "n": 50
+   "line": "[ok] craigslist 'elitebook 840': 47 listings",
+   "n": 47
   },
   {
-   "line": "[ok] craigslist 'laptop lot': 3 listings",
-   "n": 3
+   "line": "[ok] craigslist 'laptop lot': 1 listings",
+   "n": 1
   },
   {
    "line": "[ok] craigslist 'latitude lot': 0 listings",
@@ -173,17 +173,17 @@
  ],
  "counts": {
   "anchor_rows": 94,
-  "craigslist_rows": 84,
+  "craigslist_rows": 80,
   "craigslist_requests": 32,
-  "qualifying": 141,
-  "rankable": 73
+  "qualifying": 139,
+  "rankable": 71
  },
  "rejects": {
-  "unrecognised": 211,
-  "parts": 74,
-  "not_a_laptop": 12,
+  "unrecognised": 193,
+  "parts": 71,
+  "not_a_laptop": 9,
   "implausible_price": 4,
-  "below_min_spec": 21,
+  "below_min_spec": 19,
   "duplicate": 16
  },
  "reject_samples": [
@@ -243,9 +243,9 @@
    "price": 129.0
   },
   {
-   "reason": "unrecognised",
-   "title": "Dell Latitude Laptop 5420 i7 16gb Ram 512gb NVMe SSD Drive 14\"Touchscreen 11th G",
-   "price": 280.0
+   "reason": "parts",
+   "title": "Dell Latitude 5420 Motherboard (54CCV)",
+   "price": 120.0
   }
  ],
  "solution": {
@@ -564,6 +564,40 @@
    "ratio": 1.127,
    "band": "pass",
    "vs_anchor_pct": 12.7,
+   "doa_per_unit": null,
+   "ceiling_breach": true
+  },
+  {
+   "cpu_gen": 8,
+   "gen_source": "cpu",
+   "cpu": "i7-8650U",
+   "ram_gb": 16,
+   "storage_gb": 256,
+   "lot_size": 1,
+   "model": "Lenovo ThinkPad T480",
+   "family": "thinkpad_t",
+   "source": "Craigslist losangeles",
+   "source_kind": "craigslist",
+   "title": "Lenovo ThinkPad T480s i7-8650U, 16GB, 256GB NVMe, Win 11 Pro",
+   "price": 200.0,
+   "region": "losangeles",
+   "url": "https://losangeles.craigslist.org/search/sss?query=Lenovo%20ThinkPad%20T480s%20i7-8650U%2C%2016GB%2C%20256GB%20NVMe%2C%20Win%2011%20Pro",
+   "lat": 34.2353,
+   "lon": -118.5188,
+   "shipping_usd": 0.0,
+   "shipping_known": true,
+   "chargers_included": false,
+   "slug": "northridge-lenovo-thinkpad-t480s-i7",
+   "spec_complete": true,
+   "unit_price": 200.0,
+   "unit_shipping": 0.0,
+   "charger_cost": 30,
+   "delivered_per_unit": 230.0,
+   "anchor": 240.0,
+   "anchor_basis": "configured benchmark (8 gen)",
+   "ratio": 0.958,
+   "band": "pass",
+   "vs_anchor_pct": -4.2,
    "doa_per_unit": null,
    "ceiling_breach": true
   },
@@ -1006,40 +1040,6 @@
    "ratio": 1.375,
    "band": "pass",
    "vs_anchor_pct": 37.5,
-   "doa_per_unit": null,
-   "ceiling_breach": true
-  },
-  {
-   "cpu_gen": 8,
-   "gen_source": "model",
-   "cpu": null,
-   "ram_gb": 16,
-   "storage_gb": 256,
-   "lot_size": 1,
-   "model": "HP EliteBook 840",
-   "family": "elitebook_800",
-   "source": "Craigslist seattle",
-   "source_kind": "craigslist",
-   "title": "HP EliteBook 840 G5 \u2013 i5 | 16GB RAM | 256GB SSD",
-   "price": 325.0,
-   "region": "seattle",
-   "url": "https://seattle.craigslist.org/search/sss?query=HP%20EliteBook%20840%20G5%20%E2%80%93%20i5%20%7C%2016GB%20RAM%20%7C%20256GB%20SSD",
-   "lat": 49.1258,
-   "lon": -123.0943,
-   "shipping_usd": 0.0,
-   "shipping_known": true,
-   "chargers_included": false,
-   "slug": "richmond-hp-elitebook-840-g5-i5-16gb",
-   "spec_complete": true,
-   "unit_price": 325.0,
-   "unit_shipping": 0.0,
-   "charger_cost": 30,
-   "delivered_per_unit": 355.0,
-   "anchor": 240.0,
-   "anchor_basis": "configured benchmark (8 gen)",
-   "ratio": 1.479,
-   "band": "pass",
-   "vs_anchor_pct": 47.9,
    "doa_per_unit": null,
    "ceiling_breach": true
   },
