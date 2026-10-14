@@ -1,5 +1,5 @@
 {
- "generated_utc": "2026-10-13 16:02 UTC",
+ "generated_utc": "2026-10-14 16:02 UTC",
  "config": {
   "want_units": 3,
   "budget_usd": 700,
@@ -90,7 +90,7 @@
     "n": 8,
     "live": true,
     "observed_min": 379.0,
-    "observed_median": 559.0,
+    "observed_median": 514.0,
     "configured": 204.0,
     "basis": "cheapest warranted observed $379.00 (8 listings) vs configured $204.00 - using the lower"
    }
@@ -117,7 +117,7 @@
    "elitebook_800|11",
    "latitude_5400|11"
   ],
-  "updated_utc": "2026-10-13T16:00:47Z"
+  "updated_utc": "2026-10-14T16:00:46Z"
  },
  "family_labels": {
   "latitude_5400": "Latitude 5400-series",
@@ -131,12 +131,12 @@
  },
  "source_health": [
   {
-   "line": "[ok] GreenIT (IE): 23 comparable laptops of 28 available",
-   "n": 23
+   "line": "[ok] GreenIT (IE): 24 comparable laptops of 28 available",
+   "n": 24
   },
   {
-   "line": "[ok] Refurb.io (US): 68 comparable laptops of 74 available",
-   "n": 68
+   "line": "[ok] Refurb.io (US): 67 comparable laptops of 73 available",
+   "n": 67
   },
   {
    "line": "[ok] craigslist 'latitude 5420': 19 listings",
@@ -159,12 +159,12 @@
    "n": 48
   },
   {
-   "line": "[ok] craigslist 'laptop lot': 2 listings",
-   "n": 2
+   "line": "[ok] craigslist 'laptop lot': 3 listings",
+   "n": 3
   },
   {
-   "line": "[ok] craigslist 'latitude lot': 0 listings",
-   "n": 0
+   "line": "[ok] craigslist 'latitude lot': 1 listings",
+   "n": 1
   },
   {
    "line": "[ok] craigslist 'thinkpad lot': 1 listings",
@@ -173,25 +173,20 @@
  ],
  "counts": {
   "anchor_rows": 91,
-  "craigslist_rows": 84,
+  "craigslist_rows": 86,
   "craigslist_requests": 32,
-  "qualifying": 138,
-  "rankable": 72
+  "qualifying": 140,
+  "rankable": 73
  },
  "rejects": {
-  "unrecognised": 180,
-  "parts": 68,
+  "parts": 71,
+  "unrecognised": 187,
   "not_a_laptop": 10,
   "implausible_price": 2,
-  "below_min_spec": 20,
-  "duplicate": 17
+  "below_min_spec": 19,
+  "duplicate": 18
  },
  "reject_samples": [
-  {
-   "reason": "unrecognised",
-   "title": "Apple Macbook Pro 2021 14.2\" Apple M1 pro | 16GB RAM | 512GB SSD | Webcam | Excellent",
-   "price": 999.0
-  },
   {
    "reason": "parts",
    "title": "Manhattan Laptop and Tablet Stand, Adjustable (5 positions), Suitable for all tablets and ",
@@ -243,9 +238,14 @@
    "price": 129.0
   },
   {
-   "reason": "parts",
-   "title": "Dell Latitude 5420 Motherboard (54CCV)",
-   "price": 120.0
+   "reason": "unrecognised",
+   "title": "Dell Latitude Laptop 5420 i7 16gb Ram 512gb NVMe Drive 3.0ghz 14\" Touch Win 11Pr",
+   "price": 280.0
+  },
+  {
+   "reason": "unrecognised",
+   "title": "Dell Latitude Laptop 5420 i7 16gb Ram 512gb NVMe SSD Drive 14\"Touchscreen 11th G",
+   "price": 280.0
   }
  ],
  "solution": {
@@ -667,6 +667,40 @@
    "band": "pass",
    "vs_anchor_pct": -6.1,
    "doa_per_unit": null,
+   "ceiling_breach": true
+  },
+  {
+   "cpu_gen": 10,
+   "gen_source": "model",
+   "cpu": null,
+   "ram_gb": 16,
+   "storage_gb": 256,
+   "lot_size": 3,
+   "model": "Dell Latitude 7410",
+   "family": "latitude_7400",
+   "source": "Craigslist sfbay",
+   "source_kind": "craigslist",
+   "title": "Lot of 3 Dell Latitude 7410 i7 16gb Ram 256gb NVMe SSD Drive 14\"Screen Win 11Pro",
+   "price": 600.0,
+   "region": "sfbay",
+   "url": "https://sfbay.craigslist.org/search/sss?query=Lot%20of%203%20Dell%20Latitude%207410%20i7%2016gb%20Ram%20256gb%20NVMe%20SSD%20Drive",
+   "lat": 37.7613,
+   "lon": -121.9056,
+   "shipping_usd": 0.0,
+   "shipping_known": true,
+   "chargers_included": false,
+   "slug": "san-ramon-lot-of-dell-latitude-7410-i7",
+   "spec_complete": true,
+   "unit_price": 200.0,
+   "unit_shipping": 0.0,
+   "charger_cost": 30,
+   "delivered_per_unit": 230.0,
+   "anchor": 245.0,
+   "anchor_basis": "configured benchmark (10 gen)",
+   "ratio": 0.939,
+   "band": "pass",
+   "vs_anchor_pct": -6.1,
+   "doa_per_unit": 345.0,
    "ceiling_breach": true
   },
   {
@@ -1176,40 +1210,6 @@
    "ratio": 1.76,
    "band": "pass",
    "vs_anchor_pct": 76.0,
-   "doa_per_unit": null,
-   "ceiling_breach": true
-  },
-  {
-   "cpu_gen": 11,
-   "gen_source": "model",
-   "cpu": null,
-   "ram_gb": null,
-   "storage_gb": null,
-   "lot_size": 1,
-   "model": "Dell Latitude 5420",
-   "family": "latitude_5400",
-   "source": "Craigslist sfbay",
-   "source_kind": "craigslist",
-   "title": "Good condition Dell Latitude 5420 laptop with Microsoft Office",
-   "price": 340.0,
-   "region": "sfbay",
-   "url": "https://sfbay.craigslist.org/search/sss?query=Good%20condition%20Dell%20Latitude%205420%20laptop%20with%20Microsoft%20Offi",
-   "lat": 37.6332,
-   "lon": -122.0971,
-   "shipping_usd": 0.0,
-   "shipping_known": true,
-   "chargers_included": false,
-   "slug": "hayward-good-condition-dell-latitude",
-   "spec_complete": false,
-   "unit_price": 340.0,
-   "unit_shipping": 0.0,
-   "charger_cost": 30,
-   "delivered_per_unit": 370.0,
-   "anchor": 204.0,
-   "anchor_basis": "cheapest warranted observed $379.00 (8 listings) vs configured $204.00 - using the lower",
-   "ratio": 1.814,
-   "band": "pass",
-   "vs_anchor_pct": 81.4,
    "doa_per_unit": null,
    "ceiling_breach": true
   }
