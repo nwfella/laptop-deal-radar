@@ -363,6 +363,23 @@ CL_BASE = "https://sapi.craigslist.org/web/v8/postings/search/full"
 #   [5] flags  [6] [age, hash]  [7] [n, ...image ids]  [8] [len, slug]
 #   [9] [len, "$260"]  [10] title
 CL_PRICE, CL_GEO, CL_SLUG, CL_TITLE = 3, 4, 8, 10
+CL_TOKEN = 6   # [age, token] - token is the permalink suffix on www.craigslist.org/view/d
+
+
+def cl_permalink(slug, token, region, title):
+    """Real posting permalink, built from the sapi search row.
+
+    https://www.craigslist.org/view/d/<slug>/<token> is byte-identical to the href the
+    Craigslist HTML SERP emits for that row and resolves 200 to the live post, so this
+    costs no extra request. The old code synthesised a /search/sss?query=<title[:60]>
+    URL instead: clicking it searched for a truncated title and landed on "no results
+    found", which reads as a dead listing even when the post is live.
+    """
+    if slug and token:
+        return "https://www.craigslist.org/view/d/%s/%s" % (slug, token)
+    # missing token/slug: a search URL is a poor but honest last resort
+    return "https://%s/search/sss?query=%s" % (region, urllib.parse.quote(title[:60]))
+
 
 
 def scan_craigslist(cfg, rejects):
@@ -413,11 +430,14 @@ def scan_craigslist(cfg, rejects):
                     slug = it[CL_SLUG][1]
                 except (IndexError, TypeError):
                     slug = ""
+                try:
+                    token = it[CL_TOKEN][1]
+                except (IndexError, TypeError):
+                    token = ""
                 row.update(
                     source="Craigslist " + region.split(".")[0], source_kind="craigslist",
                     title=title, price=price, region=region.split(".")[0],
-                    url="https://%s/search/sss?query=%s"
-                        % (region, urllib.parse.quote(title[:60])),
+                    url=cl_permalink(slug, token, region, title),
                     lat=lat, lon=lon, shipping_usd=0.0, shipping_known=True,
                     chargers_included=False, slug=slug)
                 rows.append(row)

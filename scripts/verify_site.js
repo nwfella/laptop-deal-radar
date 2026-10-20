@@ -68,6 +68,19 @@ if (data) {
     "solution distinguishes a budget constraint from a thin market");
   ok(Array.isArray(data.deals) && data.deals.length >= 1,
     "the page still shows market context on a thin day (" + (data.deals || []).length + " rows)");
+  // link integrity: a craigslist deal must point at the actual post. The collector once
+  // synthesised /search/sss?query=<title[:60]> URLs, so every "link" searched for a
+  // truncated title, landed on "no results found", and read as a dead listing while the
+  // post was live. Publish only real /view/d/<slug>/<token> permalinks.
+  const clRows = (data.deals || []).filter((r) => r.source_kind === "craigslist");
+  const stubUrl = clRows.filter((r) => /\/search\//.test(r.url || ""));
+  ok(stubUrl.length === 0,
+    "no craigslist deal links to a search stub (" + stubUrl.length + "/" + clRows.length + ")");
+  const permalink = clRows.filter(
+    (r) => /^https:\/\/www\.craigslist\.org\/view\/d\/[^/]+\/[^/]+$/.test(r.url || ""));
+  ok(clRows.length === 0 || permalink.length === clRows.length,
+    "every craigslist deal carries a real posting permalink ("
+      + permalink.length + "/" + clRows.length + ")");
 }
 
 // ---- 2. boot the page ----
@@ -126,7 +139,8 @@ const BANDS = ["steal", "good", "fair", "pass", "suspect", "unknown"];
 let linkOk = 0, bandOk = 0, moneyOk = 0, badLink = null;
 Array.prototype.forEach.call(rows, (tr) => {
   const a = tr.querySelector("a");
-  if (a && /^https:\/\//.test(a.getAttribute("href"))) linkOk++;
+  if (a && /^https:\/\//.test(a.getAttribute("href"))
+      && !/\/search\//.test(a.getAttribute("href"))) linkOk++;
   else badLink = badLink || (a ? a.getAttribute("href") : "(no anchor)");
   const chip = tr.querySelector(".band");
   if (chip && BANDS.indexOf(chip.className.replace("band", "").trim()) !== -1) bandOk++;

@@ -18,11 +18,27 @@ days it correctly reports that nothing beats the benchmark.
 | Cron | `7c70756fcd22` `laptop-deal-radar-daily`, `no_agent`, daily 09:00, `deliver=origin` |
 | Cost | **$0** — script-only, zero model calls. 32 Craigslist + 8 Shopify requests per run, ~160s |
 
-## Current verified state (2026-10-01)
+## Current verified state (2026-10-20)
 
-- `python scripts/collect.py` → exit 0. 98 anchor rows + 80 Craigslist rows across 32 requests.
-- `node scripts/verify_site.js` → **37 assertions, exit 0**. This gate has caught 3 real bugs; never bypass it.
+- `python scripts/collect.py` → exit 0. 87 anchor rows + 88 Craigslist rows across 32 requests.
+- `node scripts/verify_site.js` → **39 assertions, exit 0**. This gate has caught 4 real bugs; never bypass it.
 - Cron end-to-end proven: collect → verify → deploy → CDN serving the deployed commit byte-identical.
+
+### Deal links are real permalinks (fixed 2026-10-20)
+
+Craigslist deals used to publish `https://<region>/search/sss?query=<title[:60]>` — a synthesised
+search URL, not the post. Every "link" on the live page therefore opened Craigslist saying *no
+listing found*, which reads as a dead listing while the post is live. The sapi row already carries
+everything needed at no extra request:
+
+```
+https://www.craigslist.org/view/d/<item[8][1] slug>/<item[6][1] token>
+```
+
+Byte-identical to the href the Craigslist HTML SERP emits for that row, 200 on all 25 deals. Two
+assertions now guard it (no `/search/` stub in the payload; every Craigslist deal matches the
+permalink regex), plus the DOM row-link check rejects a `/search/` href. Verified RED against the
+previous bake (3 failures) before the fix went green at 39.
 
 ## The ask (edit `config.json`, re-run)
 
