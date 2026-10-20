@@ -1,5 +1,5 @@
 {
- "generated_utc": "2026-10-20 08:00 UTC",
+ "generated_utc": "2026-10-20 16:02 UTC",
  "config": {
   "want_units": 3,
   "budget_usd": 700,
@@ -143,7 +143,7 @@
    "latitude_5400|11",
    "latitude_7400|11"
   ],
-  "updated_utc": "2026-10-20T07:58:49Z"
+  "updated_utc": "2026-10-20T16:00:41Z"
  },
  "family_labels": {
   "latitude_5400": "Latitude 5400-series",
@@ -157,8 +157,8 @@
  },
  "source_health": [
   {
-   "line": "[ok] GreenIT (IE): 23 comparable laptops of 28 available",
-   "n": 23
+   "line": "[ok] GreenIT (IE): 30 comparable laptops of 35 available",
+   "n": 30
   },
   {
    "line": "[ok] Refurb.io (US): 64 comparable laptops of 72 available",
@@ -185,8 +185,8 @@
    "n": 47
   },
   {
-   "line": "[ok] craigslist 'laptop lot': 2 listings",
-   "n": 2
+   "line": "[ok] craigslist 'laptop lot': 3 listings",
+   "n": 3
   },
   {
    "line": "[ok] craigslist 'latitude lot': 1 listings",
@@ -198,18 +198,18 @@
   }
  ],
  "counts": {
-  "anchor_rows": 87,
-  "craigslist_rows": 88,
+  "anchor_rows": 94,
+  "craigslist_rows": 89,
   "craigslist_requests": 32,
-  "qualifying": 139,
+  "qualifying": 146,
   "rankable": 74
  },
  "rejects": {
-  "unrecognised": 184,
-  "parts": 70,
+  "unrecognised": 181,
+  "parts": 71,
   "not_a_laptop": 10,
   "implausible_price": 2,
-  "below_min_spec": 17,
+  "below_min_spec": 18,
   "duplicate": 19
  },
  "reject_samples": [
@@ -278,8 +278,8 @@
   "want_units": 3,
   "budget_usd": 700.0,
   "units_found": 3,
-  "spent_usd": 465.0,
-  "per_unit": 155.0,
+  "spent_usd": 450.0,
+  "per_unit": 150.0,
   "feasible": true,
   "blocked_by_budget": false,
   "candidates_considered": 6,
@@ -295,26 +295,26 @@
     "family": "thinkpad_t",
     "source": "Craigslist losangeles",
     "source_kind": "craigslist",
-    "title": "Moving sale - laptops: IdeaPad 5i 2-in-1, ThinkPad T14s, HP, Dell, Mac",
-    "price": 75.0,
+    "title": "Moving sale - laptops: ThinkPad T14s, HP EliteBook, HP ZBook, Dell",
+    "price": 60.0,
     "region": "losangeles",
-    "url": "https://www.craigslist.org/view/d/los-angeles-moving-sale-laptops-ideapad/8SzKWy1gMBVVU89uH72GS2",
+    "url": "https://www.craigslist.org/view/d/los-angeles-moving-sale-laptops/8SzKWy1gMBVVU89uH72GS2",
     "lat": 34.0531,
     "lon": -118.3806,
     "shipping_usd": 0.0,
     "shipping_known": true,
     "chargers_included": false,
-    "slug": "los-angeles-moving-sale-laptops-ideapad",
+    "slug": "los-angeles-moving-sale-laptops",
     "spec_complete": false,
-    "unit_price": 75.0,
+    "unit_price": 60.0,
     "unit_shipping": 0.0,
     "charger_cost": 30,
-    "delivered_per_unit": 105.0,
+    "delivered_per_unit": 90.0,
     "anchor": 204.0,
     "anchor_basis": "configured benchmark (11 gen)",
-    "ratio": 0.515,
+    "ratio": 0.441,
     "band": "good",
-    "vs_anchor_pct": -48.5,
+    "vs_anchor_pct": -55.9,
     "doa_per_unit": null,
     "ceiling_breach": false
    },
@@ -400,26 +400,26 @@
    "family": "thinkpad_t",
    "source": "Craigslist losangeles",
    "source_kind": "craigslist",
-   "title": "Moving sale - laptops: IdeaPad 5i 2-in-1, ThinkPad T14s, HP, Dell, Mac",
-   "price": 75.0,
+   "title": "Moving sale - laptops: ThinkPad T14s, HP EliteBook, HP ZBook, Dell",
+   "price": 60.0,
    "region": "losangeles",
-   "url": "https://www.craigslist.org/view/d/los-angeles-moving-sale-laptops-ideapad/8SzKWy1gMBVVU89uH72GS2",
+   "url": "https://www.craigslist.org/view/d/los-angeles-moving-sale-laptops/8SzKWy1gMBVVU89uH72GS2",
    "lat": 34.0531,
    "lon": -118.3806,
    "shipping_usd": 0.0,
    "shipping_known": true,
    "chargers_included": false,
-   "slug": "los-angeles-moving-sale-laptops-ideapad",
+   "slug": "los-angeles-moving-sale-laptops",
    "spec_complete": false,
-   "unit_price": 75.0,
+   "unit_price": 60.0,
    "unit_shipping": 0.0,
    "charger_cost": 30,
-   "delivered_per_unit": 105.0,
+   "delivered_per_unit": 90.0,
    "anchor": 204.0,
    "anchor_basis": "configured benchmark (11 gen)",
-   "ratio": 0.515,
+   "ratio": 0.441,
    "band": "good",
-   "vs_anchor_pct": -48.5,
+   "vs_anchor_pct": -55.9,
    "doa_per_unit": null,
    "ceiling_breach": false
   },
