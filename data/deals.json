@@ -1,5 +1,5 @@
 {
- "generated_utc": "2026-10-21 02:14 UTC",
+ "generated_utc": "2026-10-21 02:19 UTC",
  "config": {
   "want_units": 3,
   "budget_usd": 700,
@@ -69,7 +69,20 @@
   }
  },
  "anchors": {
-  "families": {},
+  "families": {
+   "latitude_5400|11": {
+    "family": "latitude_5400",
+    "gen": 11,
+    "label": "Latitude 5400-series",
+    "usd": 204.0,
+    "n": 3,
+    "live": true,
+    "observed_min": 529.0,
+    "observed_median": 629.0,
+    "configured": 204.0,
+    "basis": "cheapest warranted observed $529.00 (3 listings) vs configured $204.00 - using the lower"
+   }
+  },
   "by_gen": {
    "11": {
     "usd": 204.0,
@@ -88,8 +101,10 @@
     "note": "fallback when a generation cannot be resolved - set to the lowest tier so an unknown spec is judged conservatively"
    }
   },
-  "live_keys": [],
-  "updated_utc": "2026-10-21T02:12:30Z"
+  "live_keys": [
+   "latitude_5400|11"
+  ],
+  "updated_utc": "2026-10-21T02:17:29Z"
  },
  "family_labels": {
   "latitude_5400": "Latitude 5400-series",
@@ -144,21 +159,46 @@
   }
  ],
  "counts": {
-  "anchor_rows": 0,
+  "anchor_rows": 50,
   "craigslist_rows": 83,
   "craigslist_requests": 32,
-  "qualifying": 53,
-  "rankable": 44
+  "qualifying": 101,
+  "rankable": 56
  },
  "rejects": {
-  "unrecognised": 181,
-  "parts": 67,
+  "parts": 68,
+  "not_a_laptop": 8,
+  "unrecognised": 183,
   "implausible_price": 2,
-  "not_a_laptop": 6,
-  "below_min_spec": 14,
+  "below_min_spec": 16,
   "duplicate": 16
  },
  "reject_samples": [
+  {
+   "reason": "parts",
+   "title": "Microsoft Surface Pro 6 12.3\" Touch Laptop Intel i5-8250U 1.6 GHz 8 GB  256 GB SSD Windows",
+   "price": 389.0
+  },
+  {
+   "reason": "not_a_laptop",
+   "title": "Acer R721 Spin 311 2-in-1 Chromebook AMD A4-9120C 4GB RAM 32GB eMMC 11.6\" Touch - Refurbis",
+   "price": 159.0
+  },
+  {
+   "reason": "not_a_laptop",
+   "title": "\ud83d\udd25 Mystery Surprise! Receive a Windows 11 Laptop or Tablet A-Grade",
+   "price": 189.0
+  },
+  {
+   "reason": "unrecognised",
+   "title": "Dell Latitude 3190 Pentium N4100  4 GB 64 GB SSD Windows 10 Pro 11.6\" Touch- Refurbished",
+   "price": 179.0
+  },
+  {
+   "reason": "unrecognised",
+   "title": "Dell Latitude 5450 14\" Ultra 7 165U 32GB 512GB SSD 14\" Windows 11 Pro - Refurbished",
+   "price": 939.0
+  },
   {
    "reason": "unrecognised",
    "title": "Dell Latitude Laptop 5420 i7 16gb Ram 512gb NVMe Drive 3.0ghz 14\" Touch Win 11Pr",
@@ -193,31 +233,6 @@
    "reason": "unrecognised",
    "title": "Dell Refurbished, In the box Dell Latitude Laptop i7, 16GB RAM,",
    "price": 320.0
-  },
-  {
-   "reason": "unrecognised",
-   "title": "Dell Refurbished, In the box Dell Latitude Laptop i7, 16GB RAM,",
-   "price": 320.0
-  },
-  {
-   "reason": "implausible_price",
-   "title": "Dell Latitude 5420 14\" Windows 11 laptop",
-   "price": 170.0
-  },
-  {
-   "reason": "unrecognised",
-   "title": "Dell Latitude Laptop 7490 i7 16gb Ram 256gb SSD NVMe Drive 15\" Screen Win 11Pro",
-   "price": 180.0
-  },
-  {
-   "reason": "unrecognised",
-   "title": "Dell Latitude Laptop 7490 i7 16gb Ram 256gb NVMe Drive 14\" Screen Win 11Pro",
-   "price": 170.0
-  },
-  {
-   "reason": "unrecognised",
-   "title": "Dell Latitude E7490 Laptop \u2013 i7, 16GB RAM, 512GB SSD",
-   "price": 255.0
   }
  ],
  "solution": {
@@ -668,7 +683,7 @@
    "charger_cost": 30,
    "delivered_per_unit": 230.0,
    "anchor": 204.0,
-   "anchor_basis": "configured benchmark (11 gen)",
+   "anchor_basis": "cheapest warranted observed $529.00 (3 listings) vs configured $204.00 - using the lower",
    "ratio": 1.127,
    "band": "pass",
    "vs_anchor_pct": 12.7,
@@ -804,7 +819,7 @@
    "charger_cost": 30,
    "delivered_per_unit": 280.0,
    "anchor": 204.0,
-   "anchor_basis": "configured benchmark (11 gen)",
+   "anchor_basis": "cheapest warranted observed $529.00 (3 listings) vs configured $204.00 - using the lower",
    "ratio": 1.373,
    "band": "pass",
    "vs_anchor_pct": 37.3,
