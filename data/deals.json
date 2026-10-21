@@ -1,5 +1,5 @@
 {
- "generated_utc": "2026-10-21 02:19 UTC",
+ "generated_utc": "2026-10-21 21:12 UTC",
  "config": {
   "want_units": 3,
   "budget_usd": 700,
@@ -70,17 +70,53 @@
  },
  "anchors": {
   "families": {
+   "elitebook_800|11": {
+    "family": "elitebook_800",
+    "gen": 11,
+    "label": "EliteBook 8xx",
+    "usd": 204.0,
+    "n": 4,
+    "live": true,
+    "observed_min": 569.0,
+    "observed_median": 687.88,
+    "configured": 204.0,
+    "basis": "cheapest warranted observed $569.00 (4 listings) vs configured $204.00 - using the lower"
+   },
+   "latitude_5400|10": {
+    "family": "latitude_5400",
+    "gen": 10,
+    "label": "Latitude 5400-series",
+    "usd": 245.0,
+    "n": 4,
+    "live": true,
+    "observed_min": 399.0,
+    "observed_median": 519.0,
+    "configured": 245.0,
+    "basis": "cheapest warranted observed $399.00 (4 listings) vs configured $245.00 - using the lower"
+   },
    "latitude_5400|11": {
     "family": "latitude_5400",
     "gen": 11,
     "label": "Latitude 5400-series",
     "usd": 204.0,
+    "n": 6,
+    "live": true,
+    "observed_min": 449.0,
+    "observed_median": 579.0,
+    "configured": 204.0,
+    "basis": "cheapest warranted observed $449.00 (6 listings) vs configured $204.00 - using the lower"
+   },
+   "latitude_7400|11": {
+    "family": "latitude_7400",
+    "gen": 11,
+    "label": "Latitude 7400-series",
+    "usd": 204.0,
     "n": 3,
     "live": true,
-    "observed_min": 529.0,
-    "observed_median": 629.0,
+    "observed_min": 469.0,
+    "observed_median": 519.0,
     "configured": 204.0,
-    "basis": "cheapest warranted observed $529.00 (3 listings) vs configured $204.00 - using the lower"
+    "basis": "cheapest warranted observed $469.00 (3 listings) vs configured $204.00 - using the lower"
    }
   },
   "by_gen": {
@@ -102,9 +138,12 @@
    }
   },
   "live_keys": [
-   "latitude_5400|11"
+   "elitebook_800|11",
+   "latitude_5400|10",
+   "latitude_5400|11",
+   "latitude_7400|11"
   ],
-  "updated_utc": "2026-10-21T02:17:29Z"
+  "updated_utc": "2026-10-21T21:10:12Z"
  },
  "family_labels": {
   "latitude_5400": "Latitude 5400-series",
@@ -118,12 +157,12 @@
  },
  "source_health": [
   {
-   "line": "[FAIL] GreenIT (IE): HTTP Error 429: Too Many Requests",
-   "n": 0
+   "line": "[ok] GreenIT (IE): 27 comparable laptops of 35 available",
+   "n": 27
   },
   {
-   "line": "[FAIL] Refurb.io (US): HTTP Error 429: Too Many Requests",
-   "n": 0
+   "line": "[ok] Refurb.io (US): 62 comparable laptops of 70 available",
+   "n": 62
   },
   {
    "line": "[ok] craigslist 'latitude 5420': 18 listings",
@@ -159,21 +198,61 @@
   }
  ],
  "counts": {
-  "anchor_rows": 50,
+  "anchor_rows": 89,
   "craigslist_rows": 83,
   "craigslist_requests": 32,
-  "qualifying": 101,
-  "rankable": 56
+  "qualifying": 138,
+  "rankable": 71
  },
  "rejects": {
+  "unrecognised": 190,
   "parts": 68,
-  "not_a_laptop": 8,
-  "unrecognised": 183,
+  "not_a_laptop": 10,
   "implausible_price": 2,
-  "below_min_spec": 16,
-  "duplicate": 16
+  "below_min_spec": 17,
+  "duplicate": 17
  },
  "reject_samples": [
+  {
+   "reason": "unrecognised",
+   "title": "TERRA Laptop Bag PRO818 (17.3\")",
+   "price": 30.0
+  },
+  {
+   "reason": "unrecognised",
+   "title": "TERRA Laptop Bag PRO813 (14.1\")",
+   "price": 30.0
+  },
+  {
+   "reason": "unrecognised",
+   "title": "TERRA Laptop Bag PRO811 (13.3\")",
+   "price": 30.0
+  },
+  {
+   "reason": "unrecognised",
+   "title": "ASUS BR12CT-C81XA-3Y Intel N150 | 8GB RAM | 128GB SSD | Windows 11 Pro | 3 Year Warranty |",
+   "price": 499.0
+  },
+  {
+   "reason": "parts",
+   "title": "Manhattan Laptop and Tablet Stand, Adjustable (5 positions), Suitable for all tablets and ",
+   "price": 25.0
+  },
+  {
+   "reason": "unrecognised",
+   "title": "Manhattan London Laptop Bag 15.6\"",
+   "price": 15.0
+  },
+  {
+   "reason": "parts",
+   "title": "V7 J153400 33.8 cm (13.3\") Sleeve case Black",
+   "price": 10.0
+  },
+  {
+   "reason": "unrecognised",
+   "title": "V7 CTP16-ECO2 laptop case 39.6 cm (15.6\") Briefcase Black",
+   "price": 18.0
+  },
   {
    "reason": "parts",
    "title": "Microsoft Surface Pro 6 12.3\" Touch Laptop Intel i5-8250U 1.6 GHz 8 GB  256 GB SSD Windows",
@@ -193,46 +272,6 @@
    "reason": "unrecognised",
    "title": "Dell Latitude 3190 Pentium N4100  4 GB 64 GB SSD Windows 10 Pro 11.6\" Touch- Refurbished",
    "price": 179.0
-  },
-  {
-   "reason": "unrecognised",
-   "title": "Dell Latitude 5450 14\" Ultra 7 165U 32GB 512GB SSD 14\" Windows 11 Pro - Refurbished",
-   "price": 939.0
-  },
-  {
-   "reason": "unrecognised",
-   "title": "Dell Latitude Laptop 5420 i7 16gb Ram 512gb NVMe Drive 3.0ghz 14\" Touch Win 11Pr",
-   "price": 280.0
-  },
-  {
-   "reason": "unrecognised",
-   "title": "Dell Latitude Laptop 5420 i7 16gb Ram 512gb NVMe SSD Drive 14\"Touchscreen 11th G",
-   "price": 280.0
-  },
-  {
-   "reason": "parts",
-   "title": "Dell Latitude 5420 14\u201d i5 8GB 256G NVMe SSD Laptop Win11 USB-C Charger",
-   "price": 240.0
-  },
-  {
-   "reason": "parts",
-   "title": "DELL 130W 19.5V 6.7A  AC Adapter Dell XPS15 XPS1 ALIENWARE",
-   "price": 35.0
-  },
-  {
-   "reason": "parts",
-   "title": "2021 Dell Laptop|11th Gen i5|16gb RAM|NVMe SSD|Good Battery|Win 11 Pro",
-   "price": 270.0
-  },
-  {
-   "reason": "implausible_price",
-   "title": "Dell Latitude 5420 14\" Windows 11 laptop",
-   "price": 170.0
-  },
-  {
-   "reason": "unrecognised",
-   "title": "Dell Refurbished, In the box Dell Latitude Laptop i7, 16GB RAM,",
-   "price": 320.0
   }
  ],
  "solution": {
@@ -683,7 +722,7 @@
    "charger_cost": 30,
    "delivered_per_unit": 230.0,
    "anchor": 204.0,
-   "anchor_basis": "cheapest warranted observed $529.00 (3 listings) vs configured $204.00 - using the lower",
+   "anchor_basis": "cheapest warranted observed $449.00 (6 listings) vs configured $204.00 - using the lower",
    "ratio": 1.127,
    "band": "pass",
    "vs_anchor_pct": 12.7,
@@ -759,6 +798,40 @@
    "ceiling_breach": true
   },
   {
+   "cpu_gen": 11,
+   "gen_source": "cpu",
+   "cpu": "Core I7-1185G7",
+   "ram_gb": 16,
+   "storage_gb": 512,
+   "lot_size": 1,
+   "model": "Dell Latitude 5420",
+   "family": "latitude_5400",
+   "source": "Craigslist sfbay",
+   "source_kind": "craigslist",
+   "title": "Dell Latitude 5420 Intel Core I7-1185G7 @ 3.0GHz/16GB/512GB SSD",
+   "price": 240.0,
+   "region": "sfbay",
+   "url": "https://www.craigslist.org/view/d/santa-clara-dell-latitude-5420-intel/naxafJcvEefnbn6FUVhaX6",
+   "lat": 37.3492,
+   "lon": -121.953,
+   "shipping_usd": 0.0,
+   "shipping_known": true,
+   "chargers_included": false,
+   "slug": "santa-clara-dell-latitude-5420-intel",
+   "spec_complete": true,
+   "unit_price": 240.0,
+   "unit_shipping": 0.0,
+   "charger_cost": 30,
+   "delivered_per_unit": 270.0,
+   "anchor": 204.0,
+   "anchor_basis": "cheapest warranted observed $449.00 (6 listings) vs configured $204.00 - using the lower",
+   "ratio": 1.324,
+   "band": "pass",
+   "vs_anchor_pct": 32.4,
+   "doa_per_unit": null,
+   "ceiling_breach": true
+  },
+  {
    "cpu_gen": 8,
    "gen_source": "model",
    "cpu": null,
@@ -819,7 +892,7 @@
    "charger_cost": 30,
    "delivered_per_unit": 280.0,
    "anchor": 204.0,
-   "anchor_basis": "cheapest warranted observed $529.00 (3 listings) vs configured $204.00 - using the lower",
+   "anchor_basis": "cheapest warranted observed $449.00 (6 listings) vs configured $204.00 - using the lower",
    "ratio": 1.373,
    "band": "pass",
    "vs_anchor_pct": 37.3,
@@ -1125,7 +1198,7 @@
    "charger_cost": 30,
    "delivered_per_unit": 359.0,
    "anchor": 204.0,
-   "anchor_basis": "configured benchmark (11 gen)",
+   "anchor_basis": "cheapest warranted observed $569.00 (4 listings) vs configured $204.00 - using the lower",
    "ratio": 1.76,
    "band": "pass",
    "vs_anchor_pct": 76.0,
@@ -1159,41 +1232,7 @@
    "charger_cost": 30,
    "delivered_per_unit": 359.0,
    "anchor": 204.0,
-   "anchor_basis": "configured benchmark (11 gen)",
-   "ratio": 1.76,
-   "band": "pass",
-   "vs_anchor_pct": 76.0,
-   "doa_per_unit": null,
-   "ceiling_breach": true
-  },
-  {
-   "cpu_gen": 11,
-   "gen_source": "cpu",
-   "cpu": "Core i5-11th",
-   "ram_gb": 16,
-   "storage_gb": null,
-   "lot_size": 1,
-   "model": "HP EliteBook 840",
-   "family": "elitebook_800",
-   "source": "Craigslist seattle",
-   "source_kind": "craigslist",
-   "title": "Hp Elitebook 840 G8 intel Core i5-11th Gen 16GB RAM/256G SSD with 3 Mo",
-   "price": 329.0,
-   "region": "seattle",
-   "url": "https://www.craigslist.org/view/d/surrey-hp-elitebook-840-g8-intel-core/gEkgTjEj34JcTqCBA4X9Z4",
-   "lat": 49.1596,
-   "lon": -122.8903,
-   "shipping_usd": 0.0,
-   "shipping_known": true,
-   "chargers_included": false,
-   "slug": "surrey-hp-elitebook-840-g8-intel-core",
-   "spec_complete": false,
-   "unit_price": 329.0,
-   "unit_shipping": 0.0,
-   "charger_cost": 30,
-   "delivered_per_unit": 359.0,
-   "anchor": 204.0,
-   "anchor_basis": "configured benchmark (11 gen)",
+   "anchor_basis": "cheapest warranted observed $569.00 (4 listings) vs configured $204.00 - using the lower",
    "ratio": 1.76,
    "band": "pass",
    "vs_anchor_pct": 76.0,
