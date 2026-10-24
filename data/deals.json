@@ -1,5 +1,5 @@
 {
- "generated_utc": "2026-10-24 01:44 UTC",
+ "generated_utc": "2026-10-24 16:03 UTC",
  "config": {
   "want_units": 3,
   "budget_usd": 700,
@@ -119,18 +119,6 @@
     "configured": 204.0,
     "basis": "cheapest warranted observed $449.00 (6 listings) vs configured $204.00 - using the lower"
    },
-   "latitude_7400|10": {
-    "family": "latitude_7400",
-    "gen": 10,
-    "label": "Latitude 7400-series",
-    "usd": 245.0,
-    "n": 3,
-    "live": true,
-    "observed_min": 399.0,
-    "observed_median": 469.0,
-    "configured": 245.0,
-    "basis": "cheapest warranted observed $399.00 (3 listings) vs configured $245.00 - using the lower"
-   },
    "latitude_7400|11": {
     "family": "latitude_7400",
     "gen": 11,
@@ -167,10 +155,9 @@
    "elitebook_800|11",
    "latitude_5400|10",
    "latitude_5400|11",
-   "latitude_7400|10",
    "latitude_7400|11"
   ],
-  "updated_utc": "2026-10-24T01:41:50Z"
+  "updated_utc": "2026-10-24T16:00:52Z"
  },
  "family_labels": {
   "latitude_5400": "Latitude 5400-series",
@@ -184,16 +171,16 @@
  },
  "source_health": [
   {
-   "line": "[ok] GreenIT (IE): 28 comparable laptops of 36 available",
-   "n": 28
+   "line": "[ok] GreenIT (IE): 27 comparable laptops of 35 available",
+   "n": 27
   },
   {
    "line": "[ok] Refurb.io (US): 62 comparable laptops of 68 available",
    "n": 62
   },
   {
-   "line": "[ok] craigslist 'latitude 5420': 18 listings",
-   "n": 18
+   "line": "[ok] craigslist 'latitude 5420': 17 listings",
+   "n": 17
   },
   {
    "line": "[ok] craigslist 'latitude 7490': 9 listings",
@@ -212,32 +199,32 @@
    "n": 41
   },
   {
-   "line": "[ok] craigslist 'laptop lot': 19 listings",
-   "n": 19
-  },
-  {
-   "line": "[ok] craigslist 'latitude lot': 1 listings",
-   "n": 1
-  },
-  {
-   "line": "[ok] craigslist 'thinkpad lot': 18 listings",
+   "line": "[ok] craigslist 'laptop lot': 18 listings",
    "n": 18
+  },
+  {
+   "line": "[ok] craigslist 'latitude lot': 4 listings",
+   "n": 4
+  },
+  {
+   "line": "[ok] craigslist 'thinkpad lot': 17 listings",
+   "n": 17
   }
  ],
  "counts": {
-  "anchor_rows": 90,
+  "anchor_rows": 89,
   "craigslist_rows": 113,
   "craigslist_requests": 32,
-  "qualifying": 138,
+  "qualifying": 139,
   "rankable": 72
  },
  "rejects": {
-  "unrecognised": 181,
-  "not_a_laptop": 9,
-  "parts": 31,
+  "unrecognised": 221,
+  "not_a_laptop": 10,
+  "parts": 30,
   "implausible_price": 4,
   "below_min_spec": 17,
-  "duplicate": 47,
+  "duplicate": 45,
   "condition:bios_locked": 1
  },
  "reject_samples": [
@@ -542,41 +529,6 @@
    "ceiling_breach": true
   },
   {
-   "cpu_gen": 8,
-   "gen_source": "model",
-   "cpu": null,
-   "ram_gb": null,
-   "storage_gb": null,
-   "lot_size": 1,
-   "model": "Lenovo ThinkPad T480",
-   "family": "thinkpad_t",
-   "source": "Craigslist sfbay",
-   "source_kind": "craigslist",
-   "title": "Lenovo Thinkpad T480 14\u201d FHD IPS 4-Core i5 16GB 256GB Win11 MSOffice21",
-   "price": 180.0,
-   "region": "sfbay",
-   "url": "https://www.craigslist.org/view/d/pleasanton-lenovo-thinkpad-fhd-ips-core/gjx4tkuBWFF5ihpECAYaw6",
-   "lat": 37.6873,
-   "lon": -121.8957,
-   "shipping_usd": 0.0,
-   "shipping_known": true,
-   "chargers_included": false,
-   "slug": "pleasanton-lenovo-thinkpad-fhd-ips-core",
-   "price_basis": "lot",
-   "spec_complete": false,
-   "unit_price": 180.0,
-   "unit_shipping": 0.0,
-   "charger_cost": 30,
-   "delivered_per_unit": 210.0,
-   "anchor": 240.0,
-   "anchor_basis": "configured benchmark (8 gen)",
-   "ratio": 0.875,
-   "band": "pass",
-   "vs_anchor_pct": -12.5,
-   "doa_per_unit": null,
-   "ceiling_breach": true
-  },
-  {
    "cpu_gen": 11,
    "gen_source": "model",
    "cpu": null,
@@ -608,6 +560,41 @@
    "ratio": 1.127,
    "band": "pass",
    "vs_anchor_pct": 12.7,
+   "doa_per_unit": null,
+   "ceiling_breach": true
+  },
+  {
+   "cpu_gen": 8,
+   "gen_source": "cpu",
+   "cpu": "i7-8650U",
+   "ram_gb": 16,
+   "storage_gb": 256,
+   "lot_size": 1,
+   "model": "Lenovo ThinkPad T480",
+   "family": "thinkpad_t",
+   "source": "Craigslist losangeles",
+   "source_kind": "craigslist",
+   "title": "Lenovo ThinkPad T480s i7-8650U, 16GB, 256GB NVMe, Win 11 Pro",
+   "price": 200.0,
+   "region": "losangeles",
+   "url": "https://www.craigslist.org/view/d/northridge-lenovo-thinkpad-t480s-i7/8Hdvpmznof1SdN9PDX9cDi",
+   "lat": 34.2353,
+   "lon": -118.5188,
+   "shipping_usd": 0.0,
+   "shipping_known": true,
+   "chargers_included": false,
+   "slug": "northridge-lenovo-thinkpad-t480s-i7",
+   "price_basis": "lot",
+   "spec_complete": true,
+   "unit_price": 200.0,
+   "unit_shipping": 0.0,
+   "charger_cost": 30,
+   "delivered_per_unit": 230.0,
+   "anchor": 240.0,
+   "anchor_basis": "configured benchmark (8 gen)",
+   "ratio": 0.958,
+   "band": "pass",
+   "vs_anchor_pct": -4.2,
    "doa_per_unit": null,
    "ceiling_breach": true
   },
@@ -1214,6 +1201,41 @@
    "cpu_gen": 11,
    "gen_source": "model",
    "cpu": null,
+   "ram_gb": 16,
+   "storage_gb": null,
+   "lot_size": 1,
+   "model": "Dell Latitude 7420",
+   "family": "latitude_7400",
+   "source": "Craigslist seattle",
+   "source_kind": "craigslist",
+   "title": "2025 Dell Latitude 7420 | Slim, Fast & Built for Work | 16GB RAM",
+   "price": 330.0,
+   "region": "seattle",
+   "url": "https://www.craigslist.org/view/d/burnaby-2025-dell-latitude-slim-fast/19au51h7AYn7xNEqEmNtGK",
+   "lat": 49.2293,
+   "lon": -122.9684,
+   "shipping_usd": 0.0,
+   "shipping_known": true,
+   "chargers_included": false,
+   "slug": "burnaby-2025-dell-latitude-slim-fast",
+   "price_basis": "lot",
+   "spec_complete": false,
+   "unit_price": 330.0,
+   "unit_shipping": 0.0,
+   "charger_cost": 30,
+   "delivered_per_unit": 360.0,
+   "anchor": 204.0,
+   "anchor_basis": "cheapest warranted observed $469.00 (3 listings) vs configured $204.00 - using the lower",
+   "ratio": 1.765,
+   "band": "pass",
+   "vs_anchor_pct": 76.5,
+   "doa_per_unit": null,
+   "ceiling_breach": true
+  },
+  {
+   "cpu_gen": 11,
+   "gen_source": "model",
+   "cpu": null,
    "ram_gb": null,
    "storage_gb": null,
    "lot_size": 1,
@@ -1242,37 +1264,6 @@
    "ratio": 1.814,
    "band": "pass",
    "vs_anchor_pct": 81.4,
-   "doa_per_unit": null,
-   "ceiling_breach": true
-  },
-  {
-   "cpu_gen": 8,
-   "gen_source": "cpu",
-   "cpu": "Core i7-8665U",
-   "ram_gb": null,
-   "storage_gb": null,
-   "lot_size": 1,
-   "model": "Dell Latitude 7400",
-   "family": "latitude_7400",
-   "source": "Refurb.io (US)",
-   "source_kind": "shopify",
-   "title": "Dell Latitude  7400 14\" Touch Laptop Core i7-8665U 1.9 GHz 16 GB 256 GB Windows 11 Pro - Refurbished",
-   "url": "https://www.refurb.io/products/dell-latitude-7400-14-touch-laptop-core-i7-8665u-1-9-ghz-16-gb-256-gb-windows-10-pro-refurbished",
-   "price": 379.0,
-   "region": "ships",
-   "shipping_usd": 0.0,
-   "shipping_known": false,
-   "chargers_included": null,
-   "spec_complete": false,
-   "unit_price": 379.0,
-   "unit_shipping": 0.0,
-   "charger_cost": 0,
-   "delivered_per_unit": 379.0,
-   "anchor": 240.0,
-   "anchor_basis": "configured benchmark (8 gen)",
-   "ratio": 1.579,
-   "band": "pass",
-   "vs_anchor_pct": 57.9,
    "doa_per_unit": null,
    "ceiling_breach": true
   }
