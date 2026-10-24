@@ -239,7 +239,9 @@ const DATA = /*__DATA__*/null;
       '<td><span class="spec">' + esc(r.source) + "</span>" +
         (r.region ? '<div class="spec">' + esc(r.region) + "</div>" : "") + "</td>" +
       '<td><span class="spec">' + esc(spec) + "</span></td>" +
-      '<td class="num">' + money(r.price) + "</td>" +
+      '<td class="num">' + money(r.price) + 
+        (r.price_basis && /^per_unit/.test(r.price_basis)
+          ? '<div class="spec">ad price was per-unit ×' + (r.lot_size || 1) + "</div>" : "") + "</td>" +
       '<td class="num' + (r.lot_size > 1 ? " lot" : "") + '">' + (r.lot_size || 1) + "</td>" +
       '<td class="num">' + money(r.delivered_per_unit) + "</td>" +
       '<td class="num">' + pct(r.vs_anchor_pct) + "</td>" +

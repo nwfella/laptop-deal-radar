@@ -90,13 +90,29 @@ FAMILY_LABEL = {
 }
 
 # anything matching this is a part, not a machine
-PARTS_RE = re.compile(
-    r"\b(battery|charger|ac adapter|power adapter|keyboard|palmrest|"
-    r"hinge|lcd|screen assembly|bezel|trackpad|touchpad|motherboard|"
-    r"system board|heatsink|thermal|fan|bottom case|base cover|"
-    r"dock|docking station|replicator|memory module|ram stick|"
-    r"hard drive only|caddy|carry bag|sleeve|case only|stand|"
+PARTS_ALWAYS_RE = re.compile(
+    r"\b(palmrest|hinge|lcd|screen assembly|bezel|trackpad|touchpad|motherboard|"
+    r"system board|heatsink|bottom case|base cover|"
+    r"replicator|memory module|ram stick|"
+    r"hard drive only|caddy|carry bag|sleeve|case only|"
     r"replacement|for parts|salvage|bare chassis)\b", re.I)
+
+# Words that are a part when the listing IS the part, but a bundled accessory when the
+# listing is a laptop: "Latitude 7490 Battery" is a battery, "Lot of 3 X1 Carbon
+# 11th gen i5 16/512GB + Dock" is three laptops that include a dock. Rejecting on these
+# unconditionally threw away a genuine 3-unit X1 Carbon lot as "parts".
+PARTS_AMBIGUOUS_RE = re.compile(
+    r"\b(battery|charger|ac adapter|power adapter|keyboard|thermal|fan|"
+    r"dock|docking station|stand)\b", re.I)
+
+# Craigslist has ONE price field and no way to say whether it means the lot or one unit.
+# "Pricing is set at $295 per unit, or $250 each when purchased as a complete set of
+# three" was read as $295 for three laptops - a 2.5x understatement of the real cost.
+PER_UNIT_RE = re.compile(
+    r"\bper\s*(?:unit|laptop|machine|computer|pc|piece)\b"
+    r"|\$\s?\d[\d,]*(?:\.\d{2})?\s*(?:each|per\b)"
+    r"|\b\d+\s*each\b"
+    r"|\beach\b[^.]{0,40}\b(?:set|together)\b", re.I)
 
 NOT_A_LAPTOP_RE = re.compile(
     r"\b(desktop|optiplex|elitedesk|prodesk|monitor|printer|chromebook|"
@@ -260,6 +276,12 @@ def screen_conditions(pool, cfg, rejects):
                 continue
             flags = condition_flags(title, body)
             desc = posting_description(body)
+            # the ad text is the only place a lot says "per unit" - re-price before valuing
+            if (r.get("lot_size") or 1) > 1 and PER_UNIT_RE.search(desc or ""):
+                if r.get("price_basis") != "per_unit_x%d" % r["lot_size"]:
+                    r["price"] = round(float(r["price"]) * r["lot_size"], 2)
+                    r["price_basis"] = "per_unit_x%d" % r["lot_size"]
+                value_listing(r, r["anchor"], r["anchor_basis"], cfg)
             b_ram, b_sto = ram_gb(desc), storage_gb(desc)
             if b_ram or b_sto:
                 r["spec_source"] = "body"
@@ -396,12 +418,24 @@ def classify(title):
     kept for display but returns reason 'no_model', which bars it from ever
     being a ranked buy candidate.
     """
-    if PARTS_RE.search(title):
+    if PARTS_ALWAYS_RE.search(title):
         return None, "parts"
     if NOT_A_LAPTOP_RE.search(title):
         return None, "not_a_laptop"
     name, family, dgen = model_of(title)
     title_gen, cpu_label = cpu_gen(title)
+    # An ambiguous part word means the listing IS the part unless the title also shows an
+    # explicit laptop spec (CPU generation, RAM or storage) or marks the part as a bundled
+    # extra ("+Dock", "with charger"). The model's *known* generation cannot count - every
+    # "Latitude 7490 <part>" title would pass on that alone.
+    m_amb = PARTS_AMBIGUOUS_RE.search(title)
+    if m_amb:
+        has_spec = bool(title_gen or ram_gb(title) or storage_gb(title))
+        bundled = bool(name) and bool(re.search(
+            r"(?:\+|\bwith\b|\bw/|\bincludes?\b|\bcomes\s+with\b)[^.]{0,24}\b"
+            + re.escape(m_amb.group(0).lower()), title, re.I))
+        if not (has_spec or bundled):
+            return None, "parts"
     if not name and not title_gen:
         return None, "unrecognised"
     if title_gen is not None:
@@ -592,7 +626,13 @@ def scan_craigslist(cfg, rejects):
                     rejects[why] = rejects.get(why, 0) + 1
                     note_reject(why, title, price)
                     continue
-                unit = price / (row["lot_size"] or 1)
+                lot = row["lot_size"] or 1
+                price_basis = "lot"
+                # a lot priced "per unit / each" is advertised as the price of ONE machine
+                if lot > 1 and PER_UNIT_RE.search(title):
+                    price = round(price * lot, 2)
+                    price_basis = "per_unit_x%d" % lot
+                unit = price / lot
                 if unit < MIN_PLAUSIBLE_UNIT_USD or unit > MAX_PLAUSIBLE_UNIT_USD:
                     rejects["implausible_price"] = rejects.get("implausible_price", 0) + 1
                     note_reject("implausible_price", title, price)
@@ -614,7 +654,7 @@ def scan_craigslist(cfg, rejects):
                     title=title, price=price, region=region.split(".")[0],
                     url=cl_permalink(slug, token, region, title),
                     lat=lat, lon=lon, shipping_usd=0.0, shipping_known=True,
-                    chargers_included=False, slug=slug)
+                    chargers_included=False, slug=slug, price_basis=price_basis)
                 rows.append(row)
                 got += 1
             time.sleep(delay)

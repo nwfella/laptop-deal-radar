@@ -107,6 +107,17 @@ if (data) {
   ok(belowFloor.length === 0,
     "no published buy candidate sits below min_spec on a known RAM/storage field ("
       + belowFloor.length + ")");
+  // a lot's price basis must always be stated: Craigslist has one price field and no way
+  // to say "this is per unit". Reading a $295-per-unit 3-pack as $295 for three dropped
+  // the delivered cost from $325/unit to $128/unit - a 2.5x understatement.
+  const lotRows = (data.deals || []).filter((r) => (r.lot_size || 1) > 1);
+  ok(lotRows.every((r) => !!r.price_basis),
+    "every lot row records whether its price was the whole lot or per-unit ("
+      + lotRows.length + " lots)");
+  const perUnitLot = lotRows.filter((r) => /^per_unit/.test(r.price_basis || ""));
+  ok(perUnitLot.every((r) => r.price >= r.price_basis.match(/x(\d+)/)[1] * 45),
+    "a per-unit lot price was multiplied by its unit count before valuation ("
+      + perUnitLot.length + " re-priced)");
 }
 
 // ---- 2. boot the page ----

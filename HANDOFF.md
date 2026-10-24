@@ -21,8 +21,34 @@ days it correctly reports that nothing beats the benchmark.
 ## Current verified state (2026-10-24)
 
 - `python scripts/collect.py` → exit 0. 89 anchor rows + 78 Craigslist rows across 32 requests.
-- `node scripts/verify_site.js` → **42 assertions, exit 0**. This gate has caught 5 real bugs; never bypass it.
+- `node scripts/verify_site.js` → **44 assertions, exit 0**. This gate has caught 7 real bugs; never bypass it.
 - Cron end-to-end proven: collect → verify → deploy → CDN serving the deployed commit byte-identical.
+
+### Lots are accepted, and lot prices are not what Craigslist's price field says (2026-10-24)
+
+Two bugs stood between the ask and a multi-unit lot:
+
+1. **`+Dock` made a 3-pack look like a dock.** `PARTS_RE` rejected any title containing
+   `dock|battery|charger|keyboard|fan|stand`, so "Lot of 3 ThinkPad X1 Carbon 11th gen i5 16/512GB
+   + Dock" was binned as `parts` — three laptops with a bundled docking station, thrown away by the
+   accessory. Split into `PARTS_ALWAYS_RE` (unambiguous: palmrest, system board, cpu, screen assembly…)
+   and `PARTS_AMBIGUOUS_RE` (battery/charger/keyboard/dock/fan/stand), where an ambiguous word only
+   means "this listing *is* the part" when the title shows no explicit CPU gen / RAM / storage — the
+   model's *known* generation does not count, or every "Latitude 7490 Battery" would pass.
+2. **A lot's price field may be per-unit.** The first lot the fix surfaced read
+   "Pricing is set at **$295 per unit**, or **$250 each** when purchased as a complete set of three".
+   Taken as the lot price that is $128.33/unit and a fake `ASK SOLVED: 3 units for $384.99`; the real
+   delivered cost is $325/unit. `PER_UNIT_RE` now detects per-unit language in the title **and** in the
+   ad body and multiplies by `lot_size` before valuation, recording `price_basis` (`lot` |
+   `per_unit_xN`), which the table prints. The ad's bundle discount is deliberately *not* applied —
+   conservative by design.
+
+Verified: classifier 12/12 on planted cases (real lots accepted, battery/charger/keyboard/dock/fan
+listings rejected), 44 assertions green, live == blob.
+
+**Outcome on 2026-10-24:** accepting lots did not buy a third unit. The three X1 Carbon lots on the
+board deliver at $180, $195 and $325 per unit — all `pass` and all above the $175 ceiling. The ask
+stays honestly `2 of 3 units for $370` until a lot lands under ~$145/unit.
 
 ### Condition screen: read the ad body before calling something a deal (2026-10-24)
 
