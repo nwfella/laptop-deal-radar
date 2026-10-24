@@ -1,5 +1,5 @@
 {
- "generated_utc": "2026-10-24 00:56 UTC",
+ "generated_utc": "2026-10-24 01:14 UTC",
  "config": {
   "want_units": 3,
   "budget_usd": 700,
@@ -11,6 +11,7 @@
    "storage_gb": 256
   },
   "max_results": 25,
+  "condition_screen_max": 20,
   "purchase_ceiling": {
    "_comment": "Delivered per-unit hard ceiling from the used-laptop-agent-fleet valuation method. Listings above it are marked as breaching the ceiling.",
    "hard_pass_above_usd": 175
@@ -169,7 +170,7 @@
    "latitude_7400|10",
    "latitude_7400|11"
   ],
-  "updated_utc": "2026-10-24T00:54:38Z"
+  "updated_utc": "2026-10-24T01:12:13Z"
  },
  "family_labels": {
   "latitude_5400": "Latitude 5400-series",
@@ -227,16 +228,17 @@
   "anchor_rows": 89,
   "craigslist_rows": 78,
   "craigslist_requests": 32,
-  "qualifying": 136,
-  "rankable": 71
+  "qualifying": 135,
+  "rankable": 70
  },
  "rejects": {
-  "unrecognised": 179,
-  "parts": 69,
-  "not_a_laptop": 7,
+  "unrecognised": 184,
+  "parts": 68,
+  "not_a_laptop": 9,
   "implausible_price": 4,
   "below_min_spec": 15,
-  "duplicate": 16
+  "duplicate": 16,
+  "condition:bios_locked": 1
  },
  "reject_samples": [
   {
@@ -304,46 +306,12 @@
   "want_units": 3,
   "budget_usd": 700.0,
   "units_found": 3,
-  "spent_usd": 490.0,
-  "per_unit": 163.33,
+  "spent_usd": 550.0,
+  "per_unit": 183.33,
   "feasible": true,
   "blocked_by_budget": false,
-  "candidates_considered": 4,
+  "candidates_considered": 3,
   "picks": [
-   {
-    "cpu_gen": 8,
-    "gen_source": "model",
-    "cpu": null,
-    "ram_gb": null,
-    "storage_gb": null,
-    "lot_size": 1,
-    "model": "HP EliteBook 840",
-    "family": "elitebook_800",
-    "source": "Craigslist seattle",
-    "source_kind": "craigslist",
-    "title": "HP EliteBook 840 G11 Notebook PC (BIOS ISSUE)",
-    "price": 100.0,
-    "region": "seattle",
-    "url": "https://www.craigslist.org/view/d/seattle-hp-elitebook-840-g11-notebook/hg2sF3fmkAetHXQkuvFhSJ",
-    "lat": 47.699,
-    "lon": -122.3482,
-    "shipping_usd": 0.0,
-    "shipping_known": true,
-    "chargers_included": false,
-    "slug": "seattle-hp-elitebook-840-g11-notebook",
-    "spec_complete": false,
-    "unit_price": 100.0,
-    "unit_shipping": 0.0,
-    "charger_cost": 30,
-    "delivered_per_unit": 130.0,
-    "anchor": 240.0,
-    "anchor_basis": "configured benchmark (8 gen)",
-    "ratio": 0.542,
-    "band": "good",
-    "vs_anchor_pct": -45.8,
-    "doa_per_unit": null,
-    "ceiling_breach": false
-   },
    {
     "cpu_gen": 8,
     "gen_source": "model",
@@ -376,7 +344,10 @@
     "band": "fair",
     "vs_anchor_pct": -25.0,
     "doa_per_unit": null,
-    "ceiling_breach": true
+    "ceiling_breach": true,
+    "body_checked": true,
+    "condition_flags": [],
+    "condition_soft": []
    },
    {
     "cpu_gen": 8,
@@ -410,45 +381,51 @@
     "band": "fair",
     "vs_anchor_pct": -25.0,
     "doa_per_unit": null,
-    "ceiling_breach": true
+    "ceiling_breach": true,
+    "body_checked": true,
+    "condition_flags": [],
+    "condition_soft": []
+   },
+   {
+    "cpu_gen": 8,
+    "gen_source": "model",
+    "cpu": null,
+    "ram_gb": null,
+    "storage_gb": null,
+    "lot_size": 1,
+    "model": "Dell Latitude 5490",
+    "family": "latitude_5400",
+    "source": "Craigslist seattle",
+    "source_kind": "craigslist",
+    "title": "Dell Latitude 5490 Laptop",
+    "price": 160.0,
+    "region": "seattle",
+    "url": "https://www.craigslist.org/view/d/seattle-dell-latitude-5490-laptop/oKDHFuGMXWsGumWbkpEEnR",
+    "lat": 47.6673,
+    "lon": -122.2907,
+    "shipping_usd": 0.0,
+    "shipping_known": true,
+    "chargers_included": false,
+    "slug": "seattle-dell-latitude-5490-laptop",
+    "spec_complete": false,
+    "unit_price": 160.0,
+    "unit_shipping": 0.0,
+    "charger_cost": 30,
+    "delivered_per_unit": 190.0,
+    "anchor": 240.0,
+    "anchor_basis": "configured benchmark (8 gen)",
+    "ratio": 0.792,
+    "band": "fair",
+    "vs_anchor_pct": -20.8,
+    "doa_per_unit": null,
+    "ceiling_breach": true,
+    "body_checked": true,
+    "condition_flags": [],
+    "condition_soft": []
    }
   ]
  },
  "deals": [
-  {
-   "cpu_gen": 8,
-   "gen_source": "model",
-   "cpu": null,
-   "ram_gb": null,
-   "storage_gb": null,
-   "lot_size": 1,
-   "model": "HP EliteBook 840",
-   "family": "elitebook_800",
-   "source": "Craigslist seattle",
-   "source_kind": "craigslist",
-   "title": "HP EliteBook 840 G11 Notebook PC (BIOS ISSUE)",
-   "price": 100.0,
-   "region": "seattle",
-   "url": "https://www.craigslist.org/view/d/seattle-hp-elitebook-840-g11-notebook/hg2sF3fmkAetHXQkuvFhSJ",
-   "lat": 47.699,
-   "lon": -122.3482,
-   "shipping_usd": 0.0,
-   "shipping_known": true,
-   "chargers_included": false,
-   "slug": "seattle-hp-elitebook-840-g11-notebook",
-   "spec_complete": false,
-   "unit_price": 100.0,
-   "unit_shipping": 0.0,
-   "charger_cost": 30,
-   "delivered_per_unit": 130.0,
-   "anchor": 240.0,
-   "anchor_basis": "configured benchmark (8 gen)",
-   "ratio": 0.542,
-   "band": "good",
-   "vs_anchor_pct": -45.8,
-   "doa_per_unit": null,
-   "ceiling_breach": false
-  },
   {
    "cpu_gen": 8,
    "gen_source": "model",
@@ -481,7 +458,10 @@
    "band": "fair",
    "vs_anchor_pct": -25.0,
    "doa_per_unit": null,
-   "ceiling_breach": true
+   "ceiling_breach": true,
+   "body_checked": true,
+   "condition_flags": [],
+   "condition_soft": []
   },
   {
    "cpu_gen": 8,
@@ -515,7 +495,10 @@
    "band": "fair",
    "vs_anchor_pct": -25.0,
    "doa_per_unit": null,
-   "ceiling_breach": true
+   "ceiling_breach": true,
+   "body_checked": true,
+   "condition_flags": [],
+   "condition_soft": []
   },
   {
    "cpu_gen": 8,
@@ -549,7 +532,10 @@
    "band": "fair",
    "vs_anchor_pct": -20.8,
    "doa_per_unit": null,
-   "ceiling_breach": true
+   "ceiling_breach": true,
+   "body_checked": true,
+   "condition_flags": [],
+   "condition_soft": []
   },
   {
    "cpu_gen": 8,
@@ -1262,6 +1248,40 @@
    "ratio": 1.76,
    "band": "pass",
    "vs_anchor_pct": 76.0,
+   "doa_per_unit": null,
+   "ceiling_breach": true
+  },
+  {
+   "cpu_gen": 11,
+   "gen_source": "model",
+   "cpu": null,
+   "ram_gb": null,
+   "storage_gb": null,
+   "lot_size": 1,
+   "model": "Dell Latitude 5420",
+   "family": "latitude_5400",
+   "source": "Craigslist sfbay",
+   "source_kind": "craigslist",
+   "title": "Good condition Dell Latitude 5420 laptop with Microsoft Office",
+   "price": 340.0,
+   "region": "sfbay",
+   "url": "https://www.craigslist.org/view/d/hayward-good-condition-dell-latitude/9X1CpqYkcfH14KeiCAdeZw",
+   "lat": 37.6332,
+   "lon": -122.0971,
+   "shipping_usd": 0.0,
+   "shipping_known": true,
+   "chargers_included": false,
+   "slug": "hayward-good-condition-dell-latitude",
+   "spec_complete": false,
+   "unit_price": 340.0,
+   "unit_shipping": 0.0,
+   "charger_cost": 30,
+   "delivered_per_unit": 370.0,
+   "anchor": 204.0,
+   "anchor_basis": "cheapest warranted observed $449.00 (6 listings) vs configured $204.00 - using the lower",
+   "ratio": 1.814,
+   "band": "pass",
+   "vs_anchor_pct": 81.4,
    "doa_per_unit": null,
    "ceiling_breach": true
   }
