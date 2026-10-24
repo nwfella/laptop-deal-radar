@@ -1,5 +1,5 @@
 {
- "generated_utc": "2026-10-22 16:02 UTC",
+ "generated_utc": "2026-10-24 00:56 UTC",
  "config": {
   "want_units": 3,
   "budget_usd": 700,
@@ -70,6 +70,18 @@
  },
  "anchors": {
   "families": {
+   "elitebook_800|10": {
+    "family": "elitebook_800",
+    "gen": 10,
+    "label": "EliteBook 8xx",
+    "usd": 245.0,
+    "n": 3,
+    "live": true,
+    "observed_min": 469.0,
+    "observed_median": 499.0,
+    "configured": 245.0,
+    "basis": "cheapest warranted observed $469.00 (3 listings) vs configured $245.00 - using the lower"
+   },
    "elitebook_800|11": {
     "family": "elitebook_800",
     "gen": 11,
@@ -106,6 +118,18 @@
     "configured": 204.0,
     "basis": "cheapest warranted observed $449.00 (6 listings) vs configured $204.00 - using the lower"
    },
+   "latitude_7400|10": {
+    "family": "latitude_7400",
+    "gen": 10,
+    "label": "Latitude 7400-series",
+    "usd": 245.0,
+    "n": 3,
+    "live": true,
+    "observed_min": 399.0,
+    "observed_median": 469.0,
+    "configured": 245.0,
+    "basis": "cheapest warranted observed $399.00 (3 listings) vs configured $245.00 - using the lower"
+   },
    "latitude_7400|11": {
     "family": "latitude_7400",
     "gen": 11,
@@ -138,12 +162,14 @@
    }
   },
   "live_keys": [
+   "elitebook_800|10",
    "elitebook_800|11",
    "latitude_5400|10",
    "latitude_5400|11",
+   "latitude_7400|10",
    "latitude_7400|11"
   ],
-  "updated_utc": "2026-10-22T16:01:00Z"
+  "updated_utc": "2026-10-24T00:54:38Z"
  },
  "family_labels": {
   "latitude_5400": "Latitude 5400-series",
@@ -157,32 +183,32 @@
  },
  "source_health": [
   {
-   "line": "[ok] GreenIT (IE): 29 comparable laptops of 37 available",
-   "n": 29
+   "line": "[ok] GreenIT (IE): 28 comparable laptops of 36 available",
+   "n": 28
   },
   {
    "line": "[ok] Refurb.io (US): 61 comparable laptops of 68 available",
    "n": 61
   },
   {
-   "line": "[ok] craigslist 'latitude 5420': 18 listings",
-   "n": 18
+   "line": "[ok] craigslist 'latitude 5420': 17 listings",
+   "n": 17
   },
   {
-   "line": "[ok] craigslist 'latitude 7490': 8 listings",
-   "n": 8
+   "line": "[ok] craigslist 'latitude 7490': 9 listings",
+   "n": 9
   },
   {
    "line": "[ok] craigslist 'latitude 5490': 1 listings",
    "n": 1
   },
   {
-   "line": "[ok] craigslist 'thinkpad t480': 8 listings",
-   "n": 8
+   "line": "[ok] craigslist 'thinkpad t480': 7 listings",
+   "n": 7
   },
   {
-   "line": "[ok] craigslist 'elitebook 840': 39 listings",
-   "n": 39
+   "line": "[ok] craigslist 'elitebook 840': 40 listings",
+   "n": 40
   },
   {
    "line": "[ok] craigslist 'laptop lot': 2 listings",
@@ -198,16 +224,16 @@
   }
  ],
  "counts": {
-  "anchor_rows": 90,
+  "anchor_rows": 89,
   "craigslist_rows": 78,
   "craigslist_requests": 32,
-  "qualifying": 137,
-  "rankable": 69
+  "qualifying": 136,
+  "rankable": 71
  },
  "rejects": {
-  "unrecognised": 182,
+  "unrecognised": 179,
   "parts": 69,
-  "not_a_laptop": 9,
+  "not_a_laptop": 7,
   "implausible_price": 4,
   "below_min_spec": 15,
   "duplicate": 16
@@ -722,44 +748,10 @@
    "charger_cost": 30,
    "delivered_per_unit": 230.0,
    "anchor": 245.0,
-   "anchor_basis": "configured benchmark (10 gen)",
+   "anchor_basis": "cheapest warranted observed $469.00 (3 listings) vs configured $245.00 - using the lower",
    "ratio": 0.939,
    "band": "pass",
    "vs_anchor_pct": -6.1,
-   "doa_per_unit": null,
-   "ceiling_breach": true
-  },
-  {
-   "cpu_gen": 11,
-   "gen_source": "cpu",
-   "cpu": "Core I7-1185G7",
-   "ram_gb": 16,
-   "storage_gb": 512,
-   "lot_size": 1,
-   "model": "Dell Latitude 5420",
-   "family": "latitude_5400",
-   "source": "Craigslist sfbay",
-   "source_kind": "craigslist",
-   "title": "Dell Latitude 5420 Intel Core I7-1185G7 @ 3.0GHz/16GB/512GB SSD",
-   "price": 240.0,
-   "region": "sfbay",
-   "url": "https://www.craigslist.org/view/d/santa-clara-dell-latitude-5420-intel/naxafJcvEefnbn6FUVhaX6",
-   "lat": 37.3492,
-   "lon": -121.953,
-   "shipping_usd": 0.0,
-   "shipping_known": true,
-   "chargers_included": false,
-   "slug": "santa-clara-dell-latitude-5420-intel",
-   "spec_complete": true,
-   "unit_price": 240.0,
-   "unit_shipping": 0.0,
-   "charger_cost": 30,
-   "delivered_per_unit": 270.0,
-   "anchor": 204.0,
-   "anchor_basis": "cheapest warranted observed $449.00 (6 listings) vs configured $204.00 - using the lower",
-   "ratio": 1.324,
-   "band": "pass",
-   "vs_anchor_pct": 32.4,
    "doa_per_unit": null,
    "ceiling_breach": true
   },
@@ -935,6 +927,40 @@
   },
   {
    "cpu_gen": 8,
+   "gen_source": "model",
+   "cpu": null,
+   "ram_gb": null,
+   "storage_gb": null,
+   "lot_size": 1,
+   "model": "HP EliteBook 840",
+   "family": "elitebook_800",
+   "source": "Craigslist seattle",
+   "source_kind": "craigslist",
+   "title": "HP EliteBook 840 G6",
+   "price": 275.0,
+   "region": "seattle",
+   "url": "https://www.craigslist.org/view/d/bellevue-hp-elitebook-840-g6/2BJq6ivV1q3D2L5XztYNoo",
+   "lat": 47.5614,
+   "lon": -122.1552,
+   "shipping_usd": 0.0,
+   "shipping_known": true,
+   "chargers_included": false,
+   "slug": "bellevue-hp-elitebook-840-g6",
+   "spec_complete": false,
+   "unit_price": 275.0,
+   "unit_shipping": 0.0,
+   "charger_cost": 30,
+   "delivered_per_unit": 305.0,
+   "anchor": 240.0,
+   "anchor_basis": "configured benchmark (8 gen)",
+   "ratio": 1.271,
+   "band": "pass",
+   "vs_anchor_pct": 27.1,
+   "doa_per_unit": null,
+   "ceiling_breach": true
+  },
+  {
+   "cpu_gen": 8,
    "gen_source": "cpu",
    "cpu": "Gen 8",
    "ram_gb": null,
@@ -968,37 +994,6 @@
    "ceiling_breach": true
   },
   {
-   "cpu_gen": 8,
-   "gen_source": "cpu",
-   "cpu": "Core i5 8th",
-   "ram_gb": 16,
-   "storage_gb": 256,
-   "lot_size": 1,
-   "model": "Dell Latitude 7400",
-   "family": "latitude_7400",
-   "source": "GreenIT (IE)",
-   "source_kind": "shopify",
-   "title": "Dell Latitude 7400 Touch | Core i5 8th Gen | 16GB RAM | 256GB SSD | Touchscreen | Windows 11 Pro | Webcam | Standard | 1 Year Warranty | Refurbished | Excellent",
-   "url": "https://www.greenit.ie/products/dell-latitude-7400-touch-core-i5-8365u-16gb-256gb-ssd-windows-11-pro",
-   "price": 319.0,
-   "region": "ships",
-   "shipping_usd": 0.0,
-   "shipping_known": false,
-   "chargers_included": null,
-   "spec_complete": true,
-   "unit_price": 319.0,
-   "unit_shipping": 0.0,
-   "charger_cost": 0,
-   "delivered_per_unit": 319.0,
-   "anchor": 240.0,
-   "anchor_basis": "configured benchmark (8 gen)",
-   "ratio": 1.329,
-   "band": "pass",
-   "vs_anchor_pct": 32.9,
-   "doa_per_unit": null,
-   "ceiling_breach": true
-  },
-  {
    "cpu_gen": 10,
    "gen_source": "cpu",
    "cpu": "Core i5 10th",
@@ -1025,10 +1020,44 @@
    "charger_cost": 30,
    "delivered_per_unit": 329.0,
    "anchor": 245.0,
-   "anchor_basis": "configured benchmark (10 gen)",
+   "anchor_basis": "cheapest warranted observed $469.00 (3 listings) vs configured $245.00 - using the lower",
    "ratio": 1.343,
    "band": "pass",
    "vs_anchor_pct": 34.3,
+   "doa_per_unit": null,
+   "ceiling_breach": true
+  },
+  {
+   "cpu_gen": 8,
+   "gen_source": "model",
+   "cpu": null,
+   "ram_gb": null,
+   "storage_gb": null,
+   "lot_size": 1,
+   "model": "Dell Latitude 7490",
+   "family": "latitude_7400",
+   "source": "Craigslist sfbay",
+   "source_kind": "craigslist",
+   "title": "DELL LATITUDE 7490 i7 512GB 32GB",
+   "price": 300.0,
+   "region": "sfbay",
+   "url": "https://www.craigslist.org/view/d/san-jose-dell-latitude-7490-i7-512gb/cE9xPdzozH47m4PnqvDDw9",
+   "lat": 37.296,
+   "lon": -121.8939,
+   "shipping_usd": 0.0,
+   "shipping_known": true,
+   "chargers_included": false,
+   "slug": "san-jose-dell-latitude-7490-i7-512gb",
+   "spec_complete": false,
+   "unit_price": 300.0,
+   "unit_shipping": 0.0,
+   "charger_cost": 30,
+   "delivered_per_unit": 330.0,
+   "anchor": 240.0,
+   "anchor_basis": "configured benchmark (8 gen)",
+   "ratio": 1.375,
+   "band": "pass",
+   "vs_anchor_pct": 37.5,
    "doa_per_unit": null,
    "ceiling_breach": true
   },
@@ -1093,7 +1122,7 @@
    "charger_cost": 30,
    "delivered_per_unit": 330.0,
    "anchor": 245.0,
-   "anchor_basis": "configured benchmark (10 gen)",
+   "anchor_basis": "cheapest warranted observed $469.00 (3 listings) vs configured $245.00 - using the lower",
    "ratio": 1.347,
    "band": "pass",
    "vs_anchor_pct": 34.7,
