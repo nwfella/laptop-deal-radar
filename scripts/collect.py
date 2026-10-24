@@ -246,17 +246,22 @@ def screen_conditions(pool, cfg, rejects):
     states overrides the title. A title that omits RAM is not evidence of 16GB -
     one listing advertised 'Latitude 7490 Laptop' and described 8GB DDR4 in the body.
 
+    Every multi-unit LOT is read regardless of band, because only the body says
+    whether its price is the lot or per unit - a "$450" 3-pack turned out to be
+    "$450 each", i.e. $1,350, three times what the price field implies.
+
     Only rows that could actually be published as a deal or picked by the solver
-    are fetched (band <= fair, family known), so this costs a handful of requests,
-    not one per listing.
+    are fetched (band <= fair, family known) plus all lots, so this costs a handful
+    of requests, not one per listing.
     """
     cap = int(cfg.get("condition_screen_max", 20))
     delay = float((cfg.get("craigslist") or {}).get("request_delay_s", 1.0))
     mins = cfg.get("min_spec") or {}
     cands = [r for r in pool
              if r.get("source_kind") == "craigslist" and r.get("family")
-             and r.get("band") in ("steal", "good", "fair")]
-    cands.sort(key=lambda r: r["delivered_per_unit"])
+             and (r["band"] in ("steal", "good", "fair") or (r.get("lot_size") or 1) > 1)]
+    cands.sort(key=lambda r: (0 if (r.get("lot_size") or 1) > 1 else 1,
+                              r["delivered_per_unit"]))
 
     drop, hits = set(), {}
     checked = unread = under = 0
