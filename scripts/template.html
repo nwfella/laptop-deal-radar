@@ -96,8 +96,12 @@
   <p class="note"><strong>gen8*</strong> means the generation was inferred from the model itself — the
     listing did not name a CPU, so the anchor is the benchmark for that model's known generation, not a
     spec the seller verified. <strong>⚠ incomplete</strong> means the listing omitted RAM or storage, so it
-    cleared the min spec only on the fields it did state. Both are judgement calls, not confirmations;
-    the 1-dead column is what the mistake costs you.</p>
+    cleared the min spec only on the fields it did state. <strong>⚠ condition unread</strong> means the ad
+    body could not be fetched, so nobody has read it for "SSD and RAM removed" or a locked BIOS. Both are
+    judgement calls, not confirmations; the 1-dead column is what the mistake costs you.</p>
+  <p class="note">Every deal at <em>fair</em> or better has had its ad body read. Units with the RAM/SSD
+    pulled, a locked BIOS/Secure Boot, Computrace/Autopilot enrolment, or a salvage/parts condition are
+    dropped before ranking — a $100 laptop that needs RAM, an SSD and a new mainboard is not a $100 laptop.</p>
 
   <h2>Generation benchmarks <span class="sub">what a tested, warranted machine of that generation costs</span></h2>
   <table><thead><tr><th>Tier</th><th>Anchor</th><th>Basis</th></tr></thead>
@@ -225,7 +229,8 @@ const DATA = /*__DATA__*/null;
     const spec = [genTxt,
                   r.ram_gb ? r.ram_gb + "GB" : "?GB",
                   r.storage_gb ? r.storage_gb + "GB" : "?GB"].join(" · ") +
-                 (r.spec_complete ? "" : "  ⚠ incomplete");
+                 (r.spec_complete ? "" : "  ⚠ incomplete") +
+                 (r.condition_unverified ? "  ⚠ condition unread" : "");
     tr.innerHTML =
       '<td><span class="band ' + esc(r.band) + '">' + esc(String(r.band).toUpperCase()) + "</span></td>" +
       '<td><a href="' + esc(r.url) + '" target="_blank" rel="noopener">' + esc(r.model) + "</a>" +

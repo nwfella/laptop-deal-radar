@@ -14,6 +14,9 @@
 
   "max_results": 25,
 
+  "condition_screen_max": 20,
+  "_condition_comment": "How many buy candidates (band <= fair, known family) get their Craigslist ad body read each run. A unit with the RAM/SSD pulled or a locked BIOS is a parts donor and is dropped, not ranked. Anything above this cap is published marked 'condition unread' rather than trusted.",
+
   "purchase_ceiling": {
     "_comment": "Delivered per-unit hard ceiling from the used-laptop-agent-fleet valuation method. Listings above it are marked as breaching the ceiling.",
     "hard_pass_above_usd": 175

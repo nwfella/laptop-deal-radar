@@ -66,7 +66,8 @@ def main():
                 or line.startswith("cfg ") or line.startswith("live ")
                 or line.startswith("scanned:") or line.startswith("filtered:")
                 or line.startswith("ASK ") or line.startswith("baked:")
-                or line.startswith("  cfg") or line.startswith("  live")):
+                or line.startswith("  cfg") or line.startswith("  live")
+                or line.startswith("condition")):
             report.append(line)
 
     # ---- 2. verify gate ----

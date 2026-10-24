@@ -81,6 +81,32 @@ if (data) {
   ok(clRows.length === 0 || permalink.length === clRows.length,
     "every craigslist deal carries a real posting permalink ("
       + permalink.length + "/" + clRows.length + ")");
+  // condition integrity: a cheap laptop with the RAM and SSD pulled, or a BIOS
+  // nobody can log into, is a parts donor. A salvage EliteBook 840 G11 was ranked
+  // the best deal on the board at -46% of anchor because only title/price/geo were
+  // read. Nothing banded fair-or-better may be published without its body read and
+  // without clearing the condition screen.
+  const buyRows = (data.deals || []).filter(
+    (r) => ["steal", "good", "fair"].indexOf(r.band) !== -1);
+  const flagged = buyRows.filter(
+    (r) => Array.isArray(r.condition_flags) && r.condition_flags.length);
+  ok(flagged.length === 0,
+    "no published buy candidate carries a stripped/locked condition flag ("
+      + flagged.length + "/" + buyRows.length + ")");
+  const unreadBuy = buyRows.filter((r) => r.source_kind === "craigslist" && !r.body_checked);
+  ok(unreadBuy.length === 0,
+    "every craigslist buy candidate had its ad body read before publishing ("
+      + (buyRows.filter((r) => r.source_kind === "craigslist").length - unreadBuy.length)
+      + "/" + buyRows.filter((r) => r.source_kind === "craigslist").length + " read)");
+  // a title that omits RAM is not evidence of 16GB: the body states it, and a
+  // body-stated spec below the floor disqualifies the unit just like a title one
+  const mins = (data.config && data.config.min_spec) || {};
+  const belowFloor = buyRows.filter(
+    (r) => (r.ram_gb != null && r.ram_gb < (mins.ram_gb || 0))
+        || (r.storage_gb != null && r.storage_gb < (mins.storage_gb || 0)));
+  ok(belowFloor.length === 0,
+    "no published buy candidate sits below min_spec on a known RAM/storage field ("
+      + belowFloor.length + ")");
 }
 
 // ---- 2. boot the page ----

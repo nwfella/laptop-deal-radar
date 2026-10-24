@@ -16,6 +16,7 @@ Usage:
     python scripts/collect.py --dry-run --dump   # + write data/_pool.json
 """
 
+import html
 import json
 import os
 import re
@@ -132,6 +133,180 @@ def note_reject(reason, title, price):
     if len(REJECT_SAMPLES) < 12:
         REJECT_SAMPLES.append({"reason": reason, "title": (title or "")[:90],
                                "price": price})
+
+
+# --------------------------------------------------------------------------
+# condition screen: a laptop with the RAM and SSD pulled, or a BIOS nobody can
+# log into, is not a cheap laptop - it is a parts donor. Price, model and geo
+# cannot see that, so titles are screened for free and every buy candidate gets
+# its posting body read before it is allowed to be published or picked.
+# --------------------------------------------------------------------------
+
+# hard = do not publish, do not price as a fleet unit
+CONDITION_HARD = [
+    ("bios_locked", r"\bbios\s*(?:issue|problem|lock(?:ed)?|password|pw|pass)\b"
+                    r"|\bsecure\s*boot\b[^.]{0,40}\b(?:lock|password)"
+                    r"|\bmainboard\b[^.]{0,40}\b(?:lock|password)\b"),
+    ("parts_removed", r"\b(?:ram|memory|ssd|nvme|hdd|storage|hard\s*drive)\b[^.]{0,45}"
+                      r"\b(?:removed|pulled|missing|absent|not\s+included)\b"
+                      r"|\bno\s+(?:ram|memory|ssd|nvme|hdd|storage|hard\s*drive|drive)\b"),
+    ("for_parts", r"\bfor\s+parts\b|\bparts\s+only\b|\bparts\s+laptop\b|\bsalvage\b"
+                  r"|\bspares\s+or\s+repair\b|\bcondition\s*:\s*salvage\b"
+                  r"|\bnot\s+(?:working|functional|booting)\b"
+                  r"|\b(?:does\s+not|doesn'?t|won'?t|will\s+not)\s+(?:boot|power\s+on|turn\s+on)\b"
+                  r"|\bbricked\b"),
+    ("parts_category", r"\bcomputer\s+parts\b|\bcomputer\s+components\b"),
+    ("mdm_locked", r"\bcomputrace\b|\bautopilot\b|\bintune\b|\bactivation\s*lock\b"
+                   r"|\bicloud\s*lock\b"),
+]
+
+# soft = the title is hiding something, so the body must be read before trusting a price
+CONDITION_SOFT = [
+    ("read_description", r"\bread\s+(?:the\s+)?description\b|\bsee\s+(?:the\s+)?description\b"
+                         r"|\bdescription\s+below\b|\bas[\s-]is\b|\bcondition\s*:"),
+]
+
+CONDITION_HARD_RE = [(tag, re.compile(rx, re.I)) for tag, rx in CONDITION_HARD]
+CONDITION_SOFT_RE = [(tag, re.compile(rx, re.I)) for tag, rx in CONDITION_SOFT]
+
+BODY_CACHE = {}
+
+
+def condition_flags(*texts):
+    """Hard condition flags present in any of the given texts."""
+    blob = " ".join(t for t in texts if t)
+    return sorted({tag for tag, rx in CONDITION_HARD_RE if rx.search(blob)})
+
+
+def soft_flags(*texts):
+    """'Look closer' flags - never a rejection on their own, only a reason to read the body."""
+    blob = " ".join(t for t in texts if t)
+    return sorted({tag for tag, rx in CONDITION_SOFT_RE if rx.search(blob)})
+
+
+def posting_body(url, timeout=25):
+    """Visible text of a Craigslist posting, or None when it could not be read.
+
+    The search API returns no description, and the description is the only place
+    an ad says 'the SSD and RAM have been removed'. None means *unknown*, never
+    *fine* - callers must mark the row unverified rather than trust it.
+    """
+    if not url:
+        return None
+    if url in BODY_CACHE:
+        return BODY_CACHE[url]
+    txt = None
+    try:
+        req = urllib.request.Request(url, headers={"User-Agent": UA})
+        with urllib.request.urlopen(req, timeout=timeout) as r:
+            raw = r.read(400000).decode("utf-8", "replace")
+        txt = re.sub(r"<script[\s\S]*?</script>|<style[\s\S]*?</style>", " ", raw)
+        txt = html.unescape(re.sub(r"<[^>]+>", " ", txt))
+        txt = re.sub(r"\s+", " ", txt)[:30000]
+    except Exception:  # noqa: BLE001 - a dead posting must not kill the run
+        txt = None
+    BODY_CACHE[url] = txt
+    return txt
+
+
+def posting_description(body_text):
+    """Just the seller's description from a fetched posting page.
+
+    Craigslist wraps the ad as '... QR Code Link to This Post <description> post id: 123 ...'.
+    Parsing specs from the whole page would pick up breadcrumbs, other listings and
+    chrome, so narrow to the description when the markers are present.
+    """
+    if not body_text:
+        return ""
+    m = re.search(r"QR Code Link to This Post(.{0,6000}?)(?:post id:|\bposted:)", body_text, re.S)
+    return m.group(1) if m else body_text[:4000]
+
+
+def screen_conditions(pool, cfg, rejects):
+    """Drop stripped/locked units from the buy set; mark the ones we could not read.
+
+    Two things happen per buy candidate, both of which the search API cannot do:
+    the body is read for damage/parts/lock language, and any RAM or SSD the body
+    states overrides the title. A title that omits RAM is not evidence of 16GB -
+    one listing advertised 'Latitude 7490 Laptop' and described 8GB DDR4 in the body.
+
+    Only rows that could actually be published as a deal or picked by the solver
+    are fetched (band <= fair, family known), so this costs a handful of requests,
+    not one per listing.
+    """
+    cap = int(cfg.get("condition_screen_max", 20))
+    delay = float((cfg.get("craigslist") or {}).get("request_delay_s", 1.0))
+    mins = cfg.get("min_spec") or {}
+    cands = [r for r in pool
+             if r.get("source_kind") == "craigslist" and r.get("family")
+             and r.get("band") in ("steal", "good", "fair")]
+    cands.sort(key=lambda r: r["delivered_per_unit"])
+
+    drop, hits = set(), {}
+    checked = unread = under = 0
+    for r in cands[:cap]:
+        title = r.get("title") or ""
+        soft = soft_flags(title)
+        flags = condition_flags(title)
+        if not flags:
+            body = posting_body(r.get("url") or "")
+            time.sleep(delay)
+            if body is None:
+                # unknown is not the same as fine: publish it flagged, never silently
+                r["body_checked"] = False
+                r["condition_unverified"] = True
+                r["condition_soft"] = soft
+                unread += 1
+                continue
+            flags = condition_flags(title, body)
+            desc = posting_description(body)
+            b_ram, b_sto = ram_gb(desc), storage_gb(desc)
+            if b_ram or b_sto:
+                r["spec_source"] = "body"
+            if b_ram:
+                r["ram_gb"] = b_ram
+            if b_sto:
+                r["storage_gb"] = b_sto
+            r["spec_complete"] = all(v is not None for v in
+                                     (r.get("cpu_gen"), r.get("ram_gb"), r.get("storage_gb")))
+            # a body-stated spec below the floor is as disqualifying as a title one
+            if ((r.get("ram_gb") is not None and r["ram_gb"] < mins.get("ram_gb", 0))
+                    or (r.get("storage_gb") is not None
+                        and r["storage_gb"] < mins.get("storage_gb", 0))):
+                drop.add(id(r))
+                under += 1
+                rejects["below_min_spec"] = rejects.get("below_min_spec", 0) + 1
+                note_reject("below_min_spec(body)", title, r.get("price"))
+                continue
+        if flags:
+            drop.add(id(r))
+            for f in flags:
+                hits[f] = hits.get(f, 0) + 1
+                key = "condition:" + f
+                rejects[key] = rejects.get(key, 0) + 1
+            note_reject("condition:" + flags[0], title, r.get("price"))
+            continue
+        r["body_checked"] = True
+        r["condition_flags"] = []
+        r["condition_soft"] = soft
+        checked += 1
+
+    # a buy candidate we never got to read is not silently trusted either
+    for r in cands[cap:]:
+        r["body_checked"] = False
+        r["condition_unverified"] = True
+        unread += 1
+
+    lines = []
+    if hits:
+        lines.append("condition screen: dropped %d stripped/locked listing(s) [%s]"
+                     % (sum(hits.values()), ", ".join("%s=%d" % kv for kv in sorted(hits.items()))))
+    if under:
+        lines.append("condition screen: dropped %d listing(s) whose ad body states a spec"
+                     " below min_spec" % under)
+    lines.append("condition screen: %d buy candidate(s) read, %d unreadable/unscreened"
+                 % (checked, unread))
+    return [r for r in pool if id(r) not in drop], lines
 
 
 def cpu_gen(title):
@@ -625,6 +800,11 @@ def main():
     pool, dupes = dedupe(pool)
     if dupes:
         rejects["duplicate"] = dupes
+
+    # price, model and geo cannot tell a working laptop from a parts donor - read
+    # the ad body of every buy candidate before it can be published or picked
+    pool, screen_lines = screen_conditions(pool, cfg, rejects)
+    report.extend(screen_lines)
 
     pool.sort(key=lambda x: x["delivered_per_unit"])
     rankable = [r for r in pool if r.get("family")]

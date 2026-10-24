@@ -18,11 +18,37 @@ days it correctly reports that nothing beats the benchmark.
 | Cron | `7c70756fcd22` `laptop-deal-radar-daily`, `no_agent`, daily 09:00, `deliver=origin` |
 | Cost | **$0** — script-only, zero model calls. 32 Craigslist + 8 Shopify requests per run, ~160s |
 
-## Current verified state (2026-10-20)
+## Current verified state (2026-10-24)
 
-- `python scripts/collect.py` → exit 0. 87 anchor rows + 88 Craigslist rows across 32 requests.
-- `node scripts/verify_site.js` → **39 assertions, exit 0**. This gate has caught 4 real bugs; never bypass it.
+- `python scripts/collect.py` → exit 0. 89 anchor rows + 78 Craigslist rows across 32 requests.
+- `node scripts/verify_site.js` → **42 assertions, exit 0**. This gate has caught 5 real bugs; never bypass it.
 - Cron end-to-end proven: collect → verify → deploy → CDN serving the deployed commit byte-identical.
+
+### Condition screen: read the ad body before calling something a deal (2026-10-24)
+
+The board's best pick was an HP EliteBook 840 G11 at $100, −46% of anchor, band `good`. Its ad said
+`condition: salvage`, "The SSD and RAM have been removed as the mainboard is Secure Boot/ BIOS
+Locked", and the seller had lost the BIOS password — HP's only quoted fix was a new mainboard. It sat
+in Craigslist's **computer parts** category. The real cost is not $100: it is a brick.
+
+Nothing about price, model or geo can see that, and the search API returns **no description**. So:
+
+1. **Titles are screened for free** (`CONDITION_HARD`): bios locked/issue/password, RAM/SSD
+   removed/pulled/missing, for-parts/salvage/not working, computer-parts category, Computrace /
+   Autopilot / Intune / activation lock. `CONDITION_SOFT` ("read description", "as-is") is not a
+   rejection, just a reason to read the body.
+2. **Every buy candidate's body is fetched** (`screen_conditions`) — rows with a known family and
+   band ≤ fair, capped by `config.condition_screen_max` (20). Hard flags drop the row and land in the
+   reject ledger as `condition:<flag>`. Rows beyond the cap or with an unreadable body are published
+   marked `⚠ condition unread` — unknown is never treated as fine.
+3. **The body's own specs override the title** (`posting_description` → `ram_gb`/`storage_gb`), and a
+   body-stated spec below `min_spec` disqualifies the unit exactly like a title one. This caught a
+   second bogus pick in the same run: "Lenovo Latitude 7490 Laptop", $150, title gave no RAM, body
+   said **8GB DDR4**. Dropping it is why the ask now reads `ASK NOT MET: 2 of 3 units` — honest.
+
+Three assertions guard it (no published buy candidate carries a condition flag, every Craigslist buy
+candidate was body-read, none sits below min_spec on a known field). Verified RED against the previous
+bake (1 failure at 40) before going green at 42.
 
 ### Deal links are real permalinks (fixed 2026-10-20)
 
