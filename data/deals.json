@@ -1,5 +1,5 @@
 {
- "generated_utc": "2026-10-24 16:03 UTC",
+ "generated_utc": "2026-10-25 23:50 UTC",
  "config": {
   "want_units": 3,
   "budget_usd": 700,
@@ -157,7 +157,7 @@
    "latitude_5400|11",
    "latitude_7400|11"
   ],
-  "updated_utc": "2026-10-24T16:00:52Z"
+  "updated_utc": "2026-10-25T23:48:37Z"
  },
  "family_labels": {
   "latitude_5400": "Latitude 5400-series",
@@ -171,16 +171,16 @@
  },
  "source_health": [
   {
-   "line": "[ok] GreenIT (IE): 27 comparable laptops of 35 available",
-   "n": 27
+   "line": "[ok] GreenIT (IE): 26 comparable laptops of 34 available",
+   "n": 26
   },
   {
-   "line": "[ok] Refurb.io (US): 62 comparable laptops of 68 available",
-   "n": 62
+   "line": "[ok] Refurb.io (US): 61 comparable laptops of 67 available",
+   "n": 61
   },
   {
-   "line": "[ok] craigslist 'latitude 5420': 17 listings",
-   "n": 17
+   "line": "[ok] craigslist 'latitude 5420': 18 listings",
+   "n": 18
   },
   {
    "line": "[ok] craigslist 'latitude 7490': 9 listings",
@@ -191,40 +191,40 @@
    "n": 1
   },
   {
-   "line": "[ok] craigslist 'thinkpad t480': 6 listings",
-   "n": 6
+   "line": "[ok] craigslist 'thinkpad t480': 5 listings",
+   "n": 5
   },
   {
-   "line": "[ok] craigslist 'elitebook 840': 41 listings",
-   "n": 41
+   "line": "[ok] craigslist 'elitebook 840': 45 listings",
+   "n": 45
   },
   {
-   "line": "[ok] craigslist 'laptop lot': 18 listings",
-   "n": 18
+   "line": "[ok] craigslist 'laptop lot': 19 listings",
+   "n": 19
   },
   {
    "line": "[ok] craigslist 'latitude lot': 4 listings",
    "n": 4
   },
   {
-   "line": "[ok] craigslist 'thinkpad lot': 17 listings",
-   "n": 17
+   "line": "[ok] craigslist 'thinkpad lot': 18 listings",
+   "n": 18
   }
  ],
  "counts": {
-  "anchor_rows": 89,
-  "craigslist_rows": 113,
+  "anchor_rows": 87,
+  "craigslist_rows": 119,
   "craigslist_requests": 32,
   "qualifying": 139,
-  "rankable": 72
+  "rankable": 73
  },
  "rejects": {
-  "unrecognised": 221,
+  "unrecognised": 218,
   "not_a_laptop": 10,
-  "parts": 30,
-  "implausible_price": 4,
-  "below_min_spec": 17,
-  "duplicate": 45,
+  "parts": 33,
+  "implausible_price": 5,
+  "below_min_spec": 18,
+  "duplicate": 48,
   "condition:bios_locked": 1
  },
  "reject_samples": [
@@ -988,41 +988,6 @@
    "ceiling_breach": true
   },
   {
-   "cpu_gen": 8,
-   "gen_source": "model",
-   "cpu": null,
-   "ram_gb": 32,
-   "storage_gb": 1024,
-   "lot_size": 1,
-   "model": "Lenovo ThinkPad T480",
-   "family": "thinkpad_t",
-   "source": "Craigslist seattle",
-   "source_kind": "craigslist",
-   "title": "Lenovo Thinkpad T480 - i7, 32GB RAM, 1TB SSD",
-   "price": 300.0,
-   "region": "seattle",
-   "url": "https://www.craigslist.org/view/d/lynnwood-lenovo-thinkpad-t480-i7-32gb/p4k9rYn3S9cmgJBcrTswY4",
-   "lat": 47.8392,
-   "lon": -122.2855,
-   "shipping_usd": 0.0,
-   "shipping_known": true,
-   "chargers_included": false,
-   "slug": "lynnwood-lenovo-thinkpad-t480-i7-32gb",
-   "price_basis": "lot",
-   "spec_complete": true,
-   "unit_price": 300.0,
-   "unit_shipping": 0.0,
-   "charger_cost": 30,
-   "delivered_per_unit": 330.0,
-   "anchor": 240.0,
-   "anchor_basis": "configured benchmark (8 gen)",
-   "ratio": 1.375,
-   "band": "pass",
-   "vs_anchor_pct": 37.5,
-   "doa_per_unit": null,
-   "ceiling_breach": true
-  },
-  {
    "cpu_gen": 10,
    "gen_source": "model",
    "cpu": null,
@@ -1264,6 +1229,41 @@
    "ratio": 1.814,
    "band": "pass",
    "vs_anchor_pct": 81.4,
+   "doa_per_unit": null,
+   "ceiling_breach": true
+  },
+  {
+   "cpu_gen": 11,
+   "gen_source": "model",
+   "cpu": null,
+   "ram_gb": 16,
+   "storage_gb": 512,
+   "lot_size": 1,
+   "model": "HP EliteBook 840",
+   "family": "elitebook_800",
+   "source": "Craigslist seattle",
+   "source_kind": "craigslist",
+   "title": "HP EliteBook 840 G8 Business Laptop | Core i5 | 16GB | 512GB SSD",
+   "price": 349.0,
+   "region": "seattle",
+   "url": "https://www.craigslist.org/view/d/burnaby-hp-elitebook-840-g8-business/ok5e26Np4o9zy7x718yYmE",
+   "lat": 49.203,
+   "lon": -122.968,
+   "shipping_usd": 0.0,
+   "shipping_known": true,
+   "chargers_included": false,
+   "slug": "burnaby-hp-elitebook-840-g8-business",
+   "price_basis": "lot",
+   "spec_complete": true,
+   "unit_price": 349.0,
+   "unit_shipping": 0.0,
+   "charger_cost": 30,
+   "delivered_per_unit": 379.0,
+   "anchor": 204.0,
+   "anchor_basis": "cheapest warranted observed $569.00 (4 listings) vs configured $204.00 - using the lower",
+   "ratio": 1.858,
+   "band": "pass",
+   "vs_anchor_pct": 85.8,
    "doa_per_unit": null,
    "ceiling_breach": true
   }
