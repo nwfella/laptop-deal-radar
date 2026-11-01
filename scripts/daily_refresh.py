@@ -16,6 +16,7 @@ import re
 import shutil
 import subprocess
 import sys
+import time
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PAGES_DIR = os.path.join(os.path.dirname(ROOT), "laptop-deal-radar-pages")
@@ -34,19 +35,75 @@ def find_node():
 
 
 def run(cmd, cwd=None, timeout=900):
+    """Run a command with a hard, tree-killing timeout and a no-prompt git env.
+
+    `subprocess.run(timeout=)` does NOT kill grandchildren on Windows: a hung
+    `git push` whose credential helper is waiting on a GUI dialog leaves the pipe
+    open, the parent blocks reading it, and the job runs until the scheduler's own
+    cap (observed: 3600s, and one run that spanned three days). So the child is
+    killed with `taskkill /T`, and git is told never to prompt in the first place.
+    """
     env = os.environ.copy()
     env.pop("PYTHONPATH", None)
     env["GIT_TERMINAL_PROMPT"] = "0"   # a missing credential must fail fast
+    env["GCM_INTERACTIVE"] = "never"   # Git Credential Manager: never open a dialog
+    env["GIT_ASKPASS"] = ""            # no askpass popup
+    env["SSH_ASKPASS"] = ""
+    env["GIT_CONFIG_PARAMETERS"] = "'credential.interactive=false'"
+    flags = 0
+    if os.name == "nt":
+        flags = getattr(subprocess, "CREATE_NEW_PROCESS_GROUP", 0)
+    p = subprocess.Popen(cmd, cwd=cwd or ROOT, env=env, text=True,
+                         stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+                         creationflags=flags)
     try:
-        p = subprocess.run(cmd, cwd=cwd or ROOT, env=env, capture_output=True,
-                           text=True, timeout=timeout)
-        return p.returncode, (p.stdout or ""), (p.stderr or "")
+        out, err = p.communicate(timeout=timeout)
+        return p.returncode, out or "", err or ""
     except subprocess.TimeoutExpired:
-        return -1, "", "TIMEOUT after %ss" % timeout
+        if os.name == "nt":
+            subprocess.run(["taskkill", "/F", "/T", "/PID", str(p.pid)],
+                           capture_output=True)
+        else:
+            p.kill()
+        try:
+            out, err = p.communicate(timeout=30)
+        except subprocess.TimeoutExpired:
+            out, err = "", ""
+        return -1, out or "", ((err or "") + "\nTIMEOUT after %ss (process tree killed)"
+                               % timeout).strip()
 
 
 def git(*args, cwd=PAGES_DIR):
-    return run(["git"] + list(args), cwd=cwd, timeout=180)
+    return run(["git"] + list(args), cwd=cwd, timeout=120)
+
+
+# a network-shaped git failure is worth retrying; an auth rejection is not
+TRANSIENT_GIT = re.compile(
+    r"could not resolve host|connection (?:timed out|reset|refused)|failed to connect"
+    r"|network is unreachable|remote end hung up|early eof|rpc failed"
+    r"|tls|ssl|timed out|timeout", re.I)
+
+
+def git_push(retries=(0, 15, 45)):
+    """Push gh-pages, retrying only transient network faults.
+
+    The site is stale until this succeeds, so a transient failure here silently
+    freezes the deploy for days - worth three attempts. Anything that looks like a
+    credential problem must fail on the first attempt, loudly.
+    """
+    last = (-1, "", "")
+    for i, wait in enumerate(retries):
+        if wait:
+            time.sleep(wait)
+        rc, out, err = git("push", "origin", "gh-pages")
+        if rc == 0:
+            if i:
+                out += "\n(push succeeded on attempt %d)" % (i + 1)
+            return rc, out, err
+        last = (rc, out, err)
+        if not TRANSIENT_GIT.search(err or out or ""):
+            break
+    return last
 
 
 def main():
@@ -137,7 +194,7 @@ def main():
         report.append("deploy: nothing to commit")
         print("\n".join(report))
         return 0
-    rc, o, e = git("push", "origin", "gh-pages")
+    rc, o, e = git_push()
     if rc != 0:
         # a failed push is a real failure: the site is stale
         print("laptop-deal-radar: PUSH FAILED - site is stale")
