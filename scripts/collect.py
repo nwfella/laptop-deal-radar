@@ -22,6 +22,7 @@ import os
 import re
 import sys
 import time
+import urllib.error
 import urllib.parse
 import urllib.request
 from datetime import datetime, timezone
@@ -511,25 +512,87 @@ def value_listing(listing, anchor, anchor_basis, cfg):
 # --------------------------------------------------------------------------
 
 def http_json(url, timeout=25, retries=2):
+    """JSON GET with retries. A 429 backs off (honouring Retry-After) instead of
+    retrying in one second, which just burns the budget while the host is sulking."""
     last = None
-    for _ in range(retries + 1):
+    for attempt in range(retries + 1):
         try:
             req = urllib.request.Request(
                 url, headers={"User-Agent": UA, "Accept": "application/json, */*"})
             with urllib.request.urlopen(req, timeout=timeout) as r:
                 return json.loads(r.read().decode("utf-8", "replace"))
+        except urllib.error.HTTPError as e:
+            last = e
+            wait = 1.0
+            if e.code == 429:
+                ra = e.headers.get("Retry-After")
+                try:
+                    wait = min(float(ra), 45.0) if ra else 20.0
+                except (TypeError, ValueError):
+                    wait = 20.0
+                wait *= (attempt + 1)
+            time.sleep(wait)
         except Exception as e:  # noqa: BLE001 - adapters must fail soft
             last = e
             time.sleep(1.0)
     raise last
 
 
+ANCHOR_ROWS_CACHE = os.path.join(DATA_DIR, "anchor_rows_cache.json")
+ANCHOR_CACHE_MAX_AGE_H = 72   # a cached scan older than this is reported, not used
+
+
+def load_anchor_cache():
+    try:
+        with open(ANCHOR_ROWS_CACHE, encoding="utf-8") as fh:
+            blob = json.load(fh)
+        return blob if isinstance(blob, dict) else {}
+    except (OSError, ValueError):
+        return {}
+
+
+def save_anchor_cache(cache):
+    try:
+        os.makedirs(DATA_DIR, exist_ok=True)
+        with open(ANCHOR_ROWS_CACHE, "w", encoding="utf-8") as fh:
+            json.dump(cache, fh)
+    except OSError:
+        pass
+
+
+def cached_rows_for(cache, host):
+    """Rows from the last successful scan of this host, if fresh enough to trust."""
+    entry = (cache.get("hosts") or {}).get(host) or {}
+    rows, saved = entry.get("rows") or [], entry.get("saved_utc")
+    if not rows or not saved:
+        return [], None
+    try:
+        age_h = (datetime.now(timezone.utc)
+                 - datetime.strptime(saved, "%Y-%m-%d %H:%M UTC").replace(tzinfo=timezone.utc)
+                 ).total_seconds() / 3600.0
+    except ValueError:
+        return [], saved
+    if age_h > ANCHOR_CACHE_MAX_AGE_H:
+        return [], saved
+    return rows, saved
+
+
 def scan_shopify(cfg, rejects):
-    """Warranted-refurb rows. These both DEFINE the anchor and are buyable."""
+    """Warranted-refurb rows. These both DEFINE the anchor and are buyable.
+
+    A rate-limited day must not gut the benchmarks: both hosts answering 429 once
+    dropped the run from 89 anchor rows and 6 live family anchors to 10 and 0, so
+    the page silently lost its corroboration. Each host's rows are cached on a
+    successful scan and reused for up to 72h when that host fails, clearly marked
+    in the source-health line.
+    """
     anchor_rows, results = [], []
+    cache = load_anchor_cache()
+    cache.setdefault("hosts", {})
     for entry in cfg.get("shopify_hosts", []):
         host, label = entry["host"], entry.get("label", entry["host"])
         n_ok = n_raw = 0
+        host_rows = []
         try:
             for page in range(1, int(entry.get("pages", 3)) + 1):
                 blob = http_json("https://%s/products.json?limit=250&page=%d" % (host, page))
@@ -562,12 +625,26 @@ def scan_shopify(cfg, rejects):
                         price=price, region="ships", shipping_usd=0.0,
                         shipping_known=False, chargers_included=None)
                     anchor_rows.append(row)
+                    host_rows.append(row)
                     n_ok += 1
                 time.sleep(0.5)
             results.append(("[ok] %s: %d comparable laptops of %d available"
                             % (label, n_ok, n_raw), n_ok))
+            if host_rows:
+                cache["hosts"][host] = {
+                    "rows": host_rows,
+                    "saved_utc": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
+                }
+                cache["updated_utc"] = cache["hosts"][host]["saved_utc"]
         except Exception as e:  # noqa: BLE001
-            results.append(("[FAIL] %s: %s" % (label, str(e)[:70]), 0))
+            rows, saved = cached_rows_for(cache, host)
+            if rows:
+                anchor_rows.extend(rows)
+                results.append(("[warn] %s: %s - using %d cached rows from %s"
+                                % (label, str(e)[:40], len(rows), saved), len(rows)))
+            else:
+                results.append(("[FAIL] %s: %s" % (label, str(e)[:70]), 0))
+    save_anchor_cache(cache)
     return anchor_rows, results
 
 
