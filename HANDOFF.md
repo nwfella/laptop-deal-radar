@@ -18,11 +18,27 @@ days it correctly reports that nothing beats the benchmark.
 | Cron | `7c70756fcd22` `laptop-deal-radar-daily`, `no_agent`, daily 09:00, `deliver=origin` |
 | Cost | **$0** — script-only, zero model calls. 32 Craigslist + 8 Shopify requests per run, ~160s |
 
-## Current verified state (2026-10-24)
+## Current verified state (2026-10-31)
 
-- `python scripts/collect.py` → exit 0. 89 anchor rows + 78 Craigslist rows across 32 requests.
 - `node scripts/verify_site.js` → **44 assertions, exit 0**. This gate has caught 7 real bugs; never bypass it.
 - Cron end-to-end proven: collect → verify → deploy → CDN serving the deployed commit byte-identical.
+
+### The deploy froze for 8 days while the collector kept working (2026-10-31)
+
+Every scheduled run from 2026-10-18 on ended `error`, and the live page sat on 2026-10-24 data — but the
+collector was fine. The pages clone read `[ahead 5]` with five complete bakes (Oct 24-31), each carrying a
+fresh `generated_utc`. What failed was `git push`: it hung on a Git Credential Manager dialog nobody could
+answer, `subprocess.run(timeout=180)` fired without killing the helper child on Windows, and the script
+blocked until the scheduler's 3600s cap (one run spanned three days).
+
+Fixed in `scripts/daily_refresh.py`: `Popen` + `taskkill /F /T` on timeout, `GCM_INTERACTIVE=never` with
+empty `GIT_ASKPASS` and `credential.interactive=false`, and `git_push()` with 3 attempts that retry only
+network-shaped errors. **Diagnostic rule that found it in four commands:** compare the live artifact hash
+to `origin/gh-pages`, then look at `git status -sb` in the pages clone — `ahead N` means the work is
+happening and only the publish is stuck. `last_status` alone will not tell you which.
+
+SSH is not an option on this host (port 22 to github.com times out), so GitHub over HTTPS with GCM is the
+only unattended path; keep the push non-interactive rather than adding a token to the environment.
 
 ### Lots are accepted, and lot prices are not what Craigslist's price field says (2026-10-24)
 
