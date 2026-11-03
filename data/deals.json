@@ -1,5 +1,5 @@
 {
- "generated_utc": "2026-11-02 17:36 UTC",
+ "generated_utc": "2026-11-03 17:03 UTC",
  "config": {
   "want_units": 3,
   "budget_usd": 700,
@@ -131,7 +131,7 @@
    "latitude_5400|11",
    "latitude_5400|12"
   ],
-  "updated_utc": "2026-11-02T17:33:55Z"
+  "updated_utc": "2026-11-03T17:01:29Z"
  },
  "family_labels": {
   "latitude_5400": "Latitude 5400-series",
@@ -145,16 +145,16 @@
  },
  "source_health": [
   {
-   "line": "[ok] GreenIT (IE): 30 comparable laptops of 40 available",
-   "n": 30
+   "line": "[ok] GreenIT (IE): 28 comparable laptops of 38 available",
+   "n": 28
   },
   {
-   "line": "[ok] Refurb.io (US): 51 comparable laptops of 58 available",
-   "n": 51
+   "line": "[ok] Refurb.io (US): 50 comparable laptops of 56 available",
+   "n": 50
   },
   {
-   "line": "[ok] craigslist 'latitude 5420': 21 listings",
-   "n": 21
+   "line": "[ok] craigslist 'latitude 5420': 22 listings",
+   "n": 22
   },
   {
    "line": "[ok] craigslist 'latitude 7490': 8 listings",
@@ -169,8 +169,8 @@
    "n": 3
   },
   {
-   "line": "[ok] craigslist 'elitebook 840': 41 listings",
-   "n": 41
+   "line": "[ok] craigslist 'elitebook 840': 45 listings",
+   "n": 45
   },
   {
    "line": "[ok] craigslist 'laptop lot': 17 listings",
@@ -181,20 +181,20 @@
    "n": 8
   },
   {
-   "line": "[ok] craigslist 'thinkpad lot': 17 listings",
-   "n": 17
+   "line": "[ok] craigslist 'thinkpad lot': 16 listings",
+   "n": 16
   }
  ],
  "counts": {
-  "anchor_rows": 81,
-  "craigslist_rows": 116,
+  "anchor_rows": 78,
+  "craigslist_rows": 120,
   "craigslist_requests": 32,
-  "qualifying": 133,
-  "rankable": 70
+  "qualifying": 134,
+  "rankable": 75
  },
  "rejects": {
-  "unrecognised": 219,
-  "not_a_laptop": 11,
+  "unrecognised": 217,
+  "not_a_laptop": 10,
   "parts": 30,
   "implausible_price": 5,
   "below_min_spec": 18,
@@ -708,6 +708,41 @@
    "ceiling_breach": true
   },
   {
+   "cpu_gen": 11,
+   "gen_source": "model",
+   "cpu": null,
+   "ram_gb": null,
+   "storage_gb": null,
+   "lot_size": 1,
+   "model": "Dell Latitude 5420",
+   "family": "latitude_5400",
+   "source": "Craigslist seattle",
+   "source_kind": "craigslist",
+   "title": "Dell Latitude 5420 14\" Business Touchscreen Laptop",
+   "price": 275.0,
+   "region": "seattle",
+   "url": "https://www.craigslist.org/view/d/husum-dell-latitude-business/sGbJr6zcnnMFBmL1fwQZM3",
+   "lat": 45.7551,
+   "lon": -121.4795,
+   "shipping_usd": 0.0,
+   "shipping_known": true,
+   "chargers_included": false,
+   "slug": "husum-dell-latitude-business",
+   "price_basis": "lot",
+   "spec_complete": false,
+   "unit_price": 275.0,
+   "unit_shipping": 0.0,
+   "charger_cost": 30,
+   "delivered_per_unit": 305.0,
+   "anchor": 204.0,
+   "anchor_basis": "cheapest warranted observed $449.00 (8 listings) vs configured $204.00 - using the lower",
+   "ratio": 1.495,
+   "band": "pass",
+   "vs_anchor_pct": 49.5,
+   "doa_per_unit": null,
+   "ceiling_breach": true
+  },
+  {
    "cpu_gen": 8,
    "gen_source": "model",
    "cpu": null,
@@ -1023,6 +1058,37 @@
    "ceiling_breach": true
   },
   {
+   "cpu_gen": 8,
+   "gen_source": "cpu",
+   "cpu": "Core i5-8365U",
+   "ram_gb": null,
+   "storage_gb": null,
+   "lot_size": 1,
+   "model": "Dell Latitude 7400",
+   "family": "latitude_7400",
+   "source": "Refurb.io (US)",
+   "source_kind": "shopify",
+   "title": "Dell Latitude  7400 14\" Laptop Core i5-8365U 1.6 GHz 16 GB 256 GB Windows 11 Pro - Refurbished",
+   "url": "https://www.refurb.io/products/dell-latitude-7400-14-laptop-core-i5-8365u-1-6-ghz-16-gb-256-gb-windows-11-pro-refurbished",
+   "price": 359.0,
+   "region": "ships",
+   "shipping_usd": 0.0,
+   "shipping_known": false,
+   "chargers_included": null,
+   "spec_complete": false,
+   "unit_price": 359.0,
+   "unit_shipping": 0.0,
+   "charger_cost": 0,
+   "delivered_per_unit": 359.0,
+   "anchor": 240.0,
+   "anchor_basis": "configured benchmark (8 gen)",
+   "ratio": 1.496,
+   "band": "pass",
+   "vs_anchor_pct": 49.6,
+   "doa_per_unit": null,
+   "ceiling_breach": true
+  },
+  {
    "cpu_gen": 11,
    "gen_source": "model",
    "cpu": null,
@@ -1124,72 +1190,6 @@
    "ratio": 1.765,
    "band": "pass",
    "vs_anchor_pct": 76.5,
-   "doa_per_unit": null,
-   "ceiling_breach": true
-  },
-  {
-   "cpu_gen": 10,
-   "gen_source": "cpu",
-   "cpu": "Core i5 10th",
-   "ram_gb": 16,
-   "storage_gb": 256,
-   "lot_size": 1,
-   "model": "Dell Latitude 5410",
-   "family": "latitude_5400",
-   "source": "GreenIT (IE)",
-   "source_kind": "shopify",
-   "title": "Dell Latitude 5410 | Core i5 10th Gen | 16GB RAM | 256GB SSD | Windows 11 Pro | Webcam | Standard | 1 Year Warranty | Refurbished | Excellent",
-   "url": "https://www.greenit.ie/products/dell-latitude-5410-core-i5-10th-gen-16gb-ram-256gb-ssd-windows-11-pro",
-   "price": 369.0,
-   "region": "ships",
-   "shipping_usd": 0.0,
-   "shipping_known": false,
-   "chargers_included": null,
-   "spec_complete": true,
-   "unit_price": 369.0,
-   "unit_shipping": 0.0,
-   "charger_cost": 0,
-   "delivered_per_unit": 369.0,
-   "anchor": 245.0,
-   "anchor_basis": "configured benchmark (10 gen)",
-   "ratio": 1.506,
-   "band": "pass",
-   "vs_anchor_pct": 50.6,
-   "doa_per_unit": null,
-   "ceiling_breach": true
-  },
-  {
-   "cpu_gen": 11,
-   "gen_source": "model",
-   "cpu": null,
-   "ram_gb": null,
-   "storage_gb": null,
-   "lot_size": 1,
-   "model": "Dell Latitude 5420",
-   "family": "latitude_5400",
-   "source": "Craigslist sfbay",
-   "source_kind": "craigslist",
-   "title": "Good condition Dell Latitude 5420 laptop with Microsoft Office",
-   "price": 340.0,
-   "region": "sfbay",
-   "url": "https://www.craigslist.org/view/d/hayward-good-condition-dell-latitude/9X1CpqYkcfH14KeiCAdeZw",
-   "lat": 37.6332,
-   "lon": -122.0971,
-   "shipping_usd": 0.0,
-   "shipping_known": true,
-   "chargers_included": false,
-   "slug": "hayward-good-condition-dell-latitude",
-   "price_basis": "lot",
-   "spec_complete": false,
-   "unit_price": 340.0,
-   "unit_shipping": 0.0,
-   "charger_cost": 30,
-   "delivered_per_unit": 370.0,
-   "anchor": 204.0,
-   "anchor_basis": "cheapest warranted observed $449.00 (8 listings) vs configured $204.00 - using the lower",
-   "ratio": 1.814,
-   "band": "pass",
-   "vs_anchor_pct": 81.4,
    "doa_per_unit": null,
    "ceiling_breach": true
   }
