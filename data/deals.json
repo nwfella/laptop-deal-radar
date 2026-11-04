@@ -1,5 +1,5 @@
 {
- "generated_utc": "2026-11-03 17:03 UTC",
+ "generated_utc": "2026-11-04 17:03 UTC",
  "config": {
   "want_units": 3,
   "budget_usd": 700,
@@ -71,41 +71,17 @@
  },
  "anchors": {
   "families": {
-   "elitebook_800|11": {
-    "family": "elitebook_800",
-    "gen": 11,
-    "label": "EliteBook 8xx",
-    "usd": 204.0,
-    "n": 4,
-    "live": true,
-    "observed_min": 569.0,
-    "observed_median": 687.88,
-    "configured": 204.0,
-    "basis": "cheapest warranted observed $569.00 (4 listings) vs configured $204.00 - using the lower"
-   },
    "latitude_5400|11": {
     "family": "latitude_5400",
     "gen": 11,
     "label": "Latitude 5400-series",
     "usd": 204.0,
-    "n": 8,
+    "n": 5,
     "live": true,
     "observed_min": 449.0,
-    "observed_median": 514.0,
+    "observed_median": 499.0,
     "configured": 204.0,
-    "basis": "cheapest warranted observed $449.00 (8 listings) vs configured $204.00 - using the lower"
-   },
-   "latitude_5400|12": {
-    "family": "latitude_5400",
-    "gen": 12,
-    "label": "Latitude 5400-series",
-    "usd": 204.0,
-    "n": 3,
-    "live": true,
-    "observed_min": 529.0,
-    "observed_median": 599.0,
-    "configured": 204.0,
-    "basis": "cheapest warranted observed $529.00 (3 listings) vs configured $204.00 - using the lower"
+    "basis": "cheapest warranted observed $449.00 (5 listings) vs configured $204.00 - using the lower"
    }
   },
   "by_gen": {
@@ -127,11 +103,9 @@
    }
   },
   "live_keys": [
-   "elitebook_800|11",
-   "latitude_5400|11",
-   "latitude_5400|12"
+   "latitude_5400|11"
   ],
-  "updated_utc": "2026-11-03T17:01:29Z"
+  "updated_utc": "2026-11-04T17:01:30Z"
  },
  "family_labels": {
   "latitude_5400": "Latitude 5400-series",
@@ -145,16 +119,16 @@
  },
  "source_health": [
   {
-   "line": "[ok] GreenIT (IE): 28 comparable laptops of 38 available",
-   "n": 28
+   "line": "[ok] GreenIT (IE): 19 comparable laptops of 27 available",
+   "n": 19
   },
   {
-   "line": "[ok] Refurb.io (US): 50 comparable laptops of 56 available",
-   "n": 50
+   "line": "[ok] Refurb.io (US): 48 comparable laptops of 54 available",
+   "n": 48
   },
   {
-   "line": "[ok] craigslist 'latitude 5420': 22 listings",
-   "n": 22
+   "line": "[ok] craigslist 'latitude 5420': 21 listings",
+   "n": 21
   },
   {
    "line": "[ok] craigslist 'latitude 7490': 8 listings",
@@ -169,8 +143,8 @@
    "n": 3
   },
   {
-   "line": "[ok] craigslist 'elitebook 840': 45 listings",
-   "n": 45
+   "line": "[ok] craigslist 'elitebook 840': 44 listings",
+   "n": 44
   },
   {
    "line": "[ok] craigslist 'laptop lot': 17 listings",
@@ -186,16 +160,16 @@
   }
  ],
  "counts": {
-  "anchor_rows": 78,
-  "craigslist_rows": 120,
+  "anchor_rows": 67,
+  "craigslist_rows": 118,
   "craigslist_requests": 32,
-  "qualifying": 134,
-  "rankable": 75
+  "qualifying": 121,
+  "rankable": 64
  },
  "rejects": {
-  "unrecognised": 217,
-  "not_a_laptop": 10,
-  "parts": 30,
+  "unrecognised": 228,
+  "not_a_laptop": 9,
+  "parts": 28,
   "implausible_price": 5,
   "below_min_spec": 18,
   "duplicate": 45,
@@ -246,16 +220,6 @@
    "price": 25.0
   },
   {
-   "reason": "unrecognised",
-   "title": "Manhattan London Laptop Bag 15.6\"",
-   "price": 15.0
-  },
-  {
-   "reason": "parts",
-   "title": "V7 J153400 33.8 cm (13.3\") Sleeve case Black",
-   "price": 10.0
-  },
-  {
    "reason": "not_a_laptop",
    "title": "HP Chromebook 11 G8 EE AMD A4-9120C 32GB eMMC 4GB RAM 11.6\" Chrome OS - Refurbished",
    "price": 149.0
@@ -264,6 +228,16 @@
    "reason": "not_a_laptop",
    "title": "Dell Chromebook 3100 2-in-1 11.6\"  Celeron N4000 1.1 GHz 8 GB 32GB Chrome OS - Refurbished",
    "price": 229.0
+  },
+  {
+   "reason": "not_a_laptop",
+   "title": "\ud83d\udd25 Mystery Surprise! Receive a Windows 11 Laptop or Tablet A-Grade",
+   "price": 189.0
+  },
+  {
+   "reason": "unrecognised",
+   "title": "Dell Latitude 3190 Pentium N4100  4 GB 64 GB SSD Windows 10 Pro 11.6\" Touch- Refurbished",
+   "price": 179.0
   }
  ],
  "solution": {
@@ -351,6 +325,45 @@
    "band": "fair",
    "vs_anchor_pct": -25.0,
    "doa_per_unit": null,
+   "ceiling_breach": true,
+   "spec_source": "body",
+   "body_checked": true,
+   "condition_flags": [],
+   "condition_soft": []
+  },
+  {
+   "cpu_gen": 11,
+   "gen_source": "cpu",
+   "cpu": "Gen 11",
+   "ram_gb": null,
+   "storage_gb": 512,
+   "lot_size": 3,
+   "model": "Lenovo ThinkPad X1 Carbon",
+   "family": "thinkpad_x1",
+   "source": "Craigslist sfbay",
+   "source_kind": "craigslist",
+   "title": "Lot of 3 ThinkPad X1 Carbon 11th gen i5 16/512GB WUXGA Touchscrn+Dock",
+   "price": 450.0,
+   "region": "sfbay",
+   "url": "https://www.craigslist.org/view/d/san-francisco-lot-of-thinkpad-x1-carbon/uK8mVq2JnXn4jCPouYaKkZ",
+   "lat": 37.7211,
+   "lon": -122.4754,
+   "shipping_usd": 0.0,
+   "shipping_known": true,
+   "chargers_included": false,
+   "slug": "san-francisco-lot-of-thinkpad-x1-carbon",
+   "price_basis": "lot",
+   "spec_complete": false,
+   "unit_price": 150.0,
+   "unit_shipping": 0.0,
+   "charger_cost": 30,
+   "delivered_per_unit": 180.0,
+   "anchor": 204.0,
+   "anchor_basis": "configured benchmark (11 gen)",
+   "ratio": 0.882,
+   "band": "pass",
+   "vs_anchor_pct": -11.8,
+   "doa_per_unit": 270.0,
    "ceiling_breach": true,
    "spec_source": "body",
    "body_checked": true,
@@ -525,7 +538,7 @@
    "charger_cost": 30,
    "delivered_per_unit": 250.0,
    "anchor": 204.0,
-   "anchor_basis": "cheapest warranted observed $449.00 (8 listings) vs configured $204.00 - using the lower",
+   "anchor_basis": "cheapest warranted observed $449.00 (5 listings) vs configured $204.00 - using the lower",
    "ratio": 1.225,
    "band": "pass",
    "vs_anchor_pct": 22.5,
@@ -595,7 +608,7 @@
    "charger_cost": 30,
    "delivered_per_unit": 280.0,
    "anchor": 204.0,
-   "anchor_basis": "cheapest warranted observed $449.00 (8 listings) vs configured $204.00 - using the lower",
+   "anchor_basis": "cheapest warranted observed $449.00 (5 listings) vs configured $204.00 - using the lower",
    "ratio": 1.373,
    "band": "pass",
    "vs_anchor_pct": 37.3,
@@ -735,7 +748,7 @@
    "charger_cost": 30,
    "delivered_per_unit": 305.0,
    "anchor": 204.0,
-   "anchor_basis": "cheapest warranted observed $449.00 (8 listings) vs configured $204.00 - using the lower",
+   "anchor_basis": "cheapest warranted observed $449.00 (5 listings) vs configured $204.00 - using the lower",
    "ratio": 1.495,
    "band": "pass",
    "vs_anchor_pct": 49.5,
@@ -852,41 +865,6 @@
    "condition_soft": []
   },
   {
-   "cpu_gen": 10,
-   "gen_source": "cpu",
-   "cpu": "Core i5 10th",
-   "ram_gb": 16,
-   "storage_gb": 256,
-   "lot_size": 1,
-   "model": "HP EliteBook 840",
-   "family": "elitebook_800",
-   "source": "Craigslist seattle",
-   "source_kind": "craigslist",
-   "title": "HP EliteBook 840 G7 Core i5 10th Gen + 16GB RAM + 256GB SSD",
-   "price": 299.0,
-   "region": "seattle",
-   "url": "https://www.craigslist.org/view/d/surrey-hp-elitebook-840-g7-core-i5-10th/uHSf7YqzTqvxtAUR49aHyN",
-   "lat": 49.1596,
-   "lon": -122.8903,
-   "shipping_usd": 0.0,
-   "shipping_known": true,
-   "chargers_included": false,
-   "slug": "surrey-hp-elitebook-840-g7-core-i5-10th",
-   "price_basis": "lot",
-   "spec_complete": true,
-   "unit_price": 299.0,
-   "unit_shipping": 0.0,
-   "charger_cost": 30,
-   "delivered_per_unit": 329.0,
-   "anchor": 245.0,
-   "anchor_basis": "configured benchmark (10 gen)",
-   "ratio": 1.343,
-   "band": "pass",
-   "vs_anchor_pct": 34.3,
-   "doa_per_unit": null,
-   "ceiling_breach": true
-  },
-  {
    "cpu_gen": 8,
    "gen_source": "model",
    "cpu": null,
@@ -897,16 +875,16 @@
    "family": "latitude_7400",
    "source": "Craigslist sfbay",
    "source_kind": "craigslist",
-   "title": "Dell Latitude 7490 i7, 32g ram, 512g SSD, TOUCHSCREEN",
+   "title": "DELL LATITUDE 7490 i7 512GB 32GB",
    "price": 300.0,
    "region": "sfbay",
-   "url": "https://www.craigslist.org/view/d/pleasanton-dell-latitude-7490-i7-32g/9k5PwA8dvx4FSbCweisPfE",
-   "lat": 37.683,
-   "lon": -121.763,
+   "url": "https://www.craigslist.org/view/d/san-jose-dell-latitude-7490-i7-512gb/qQuZF38tWR98MJHkTyaQuL",
+   "lat": 37.2827,
+   "lon": -121.8265,
    "shipping_usd": 0.0,
    "shipping_known": true,
    "chargers_included": false,
-   "slug": "pleasanton-dell-latitude-7490-i7-32g",
+   "slug": "san-jose-dell-latitude-7490-i7-512gb",
    "price_basis": "lot",
    "spec_complete": false,
    "unit_price": 300.0,
@@ -932,16 +910,16 @@
    "family": "latitude_7400",
    "source": "Craigslist sfbay",
    "source_kind": "craigslist",
-   "title": "DELL LATITUDE 7490 i7 512GB 32GB",
+   "title": "Dell Latitude 7490 i7, 32g ram, 512g SSD, TOUCHSCREEN",
    "price": 300.0,
    "region": "sfbay",
-   "url": "https://www.craigslist.org/view/d/san-jose-dell-latitude-7490-i7-512gb/qQuZF38tWR98MJHkTyaQuL",
-   "lat": 37.2827,
-   "lon": -121.8265,
+   "url": "https://www.craigslist.org/view/d/pleasanton-dell-latitude-7490-i7-32g/9k5PwA8dvx4FSbCweisPfE",
+   "lat": 37.683,
+   "lon": -121.763,
    "shipping_usd": 0.0,
    "shipping_known": true,
    "chargers_included": false,
-   "slug": "san-jose-dell-latitude-7490-i7-512gb",
+   "slug": "pleasanton-dell-latitude-7490-i7-32g",
    "price_basis": "lot",
    "spec_complete": false,
    "unit_price": 300.0,
@@ -1030,37 +1008,6 @@
    "cpu_gen": 8,
    "gen_source": "cpu",
    "cpu": "Core i5-8365U",
-   "ram_gb": 16,
-   "storage_gb": 256,
-   "lot_size": 1,
-   "model": "Lenovo ThinkPad T490",
-   "family": "thinkpad_t",
-   "source": "Refurb.io (US)",
-   "source_kind": "shopify",
-   "title": "Lenovo ThinkPad T490 14\" Laptop Intel Core i5-8365U 1.6 GHz 16 GB 256 GB SSD  Windows 11 Pro - Refurbished",
-   "url": "https://www.refurb.io/products/lenovo-thinkpad-t490-14-laptop-intel-core-i5-8350u-1-7-ghz-16-gb-256-gb-ssd-windows-10-pro-refurbished",
-   "price": 349.0,
-   "region": "ships",
-   "shipping_usd": 0.0,
-   "shipping_known": false,
-   "chargers_included": null,
-   "spec_complete": true,
-   "unit_price": 349.0,
-   "unit_shipping": 0.0,
-   "charger_cost": 0,
-   "delivered_per_unit": 349.0,
-   "anchor": 240.0,
-   "anchor_basis": "configured benchmark (8 gen)",
-   "ratio": 1.454,
-   "band": "pass",
-   "vs_anchor_pct": 45.4,
-   "doa_per_unit": null,
-   "ceiling_breach": true
-  },
-  {
-   "cpu_gen": 8,
-   "gen_source": "cpu",
-   "cpu": "Core i5-8365U",
    "ram_gb": null,
    "storage_gb": null,
    "lot_size": 1,
@@ -1116,7 +1063,7 @@
    "charger_cost": 30,
    "delivered_per_unit": 359.0,
    "anchor": 204.0,
-   "anchor_basis": "cheapest warranted observed $569.00 (4 listings) vs configured $204.00 - using the lower",
+   "anchor_basis": "configured benchmark (11 gen)",
    "ratio": 1.76,
    "band": "pass",
    "vs_anchor_pct": 76.0,
@@ -1151,7 +1098,7 @@
    "charger_cost": 30,
    "delivered_per_unit": 359.0,
    "anchor": 204.0,
-   "anchor_basis": "cheapest warranted observed $569.00 (4 listings) vs configured $204.00 - using the lower",
+   "anchor_basis": "configured benchmark (11 gen)",
    "ratio": 1.76,
    "band": "pass",
    "vs_anchor_pct": 76.0,
@@ -1190,6 +1137,41 @@
    "ratio": 1.765,
    "band": "pass",
    "vs_anchor_pct": 76.5,
+   "doa_per_unit": null,
+   "ceiling_breach": true
+  },
+  {
+   "cpu_gen": 11,
+   "gen_source": "model",
+   "cpu": null,
+   "ram_gb": null,
+   "storage_gb": null,
+   "lot_size": 1,
+   "model": "Dell Latitude 5420",
+   "family": "latitude_5400",
+   "source": "Craigslist sfbay",
+   "source_kind": "craigslist",
+   "title": "Good condition Dell Latitude 5420 laptop with Microsoft Office",
+   "price": 340.0,
+   "region": "sfbay",
+   "url": "https://www.craigslist.org/view/d/hayward-good-condition-dell-latitude/9X1CpqYkcfH14KeiCAdeZw",
+   "lat": 37.6332,
+   "lon": -122.0971,
+   "shipping_usd": 0.0,
+   "shipping_known": true,
+   "chargers_included": false,
+   "slug": "hayward-good-condition-dell-latitude",
+   "price_basis": "lot",
+   "spec_complete": false,
+   "unit_price": 340.0,
+   "unit_shipping": 0.0,
+   "charger_cost": 30,
+   "delivered_per_unit": 370.0,
+   "anchor": 204.0,
+   "anchor_basis": "cheapest warranted observed $449.00 (5 listings) vs configured $204.00 - using the lower",
+   "ratio": 1.814,
+   "band": "pass",
+   "vs_anchor_pct": 81.4,
    "doa_per_unit": null,
    "ceiling_breach": true
   }
