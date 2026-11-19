@@ -1,5 +1,5 @@
 {
- "generated_utc": "2026-11-18 17:03 UTC",
+ "generated_utc": "2026-11-19 23:25 UTC",
  "config": {
   "want_units": 3,
   "budget_usd": 700,
@@ -105,7 +105,7 @@
   "live_keys": [
    "latitude_5400|11"
   ],
-  "updated_utc": "2026-11-18T17:01:05Z"
+  "updated_utc": "2026-11-19T23:22:59Z"
  },
  "family_labels": {
   "latitude_5400": "Latitude 5400-series",
@@ -119,11 +119,11 @@
  },
  "source_health": [
   {
-   "line": "[ok] GreenIT (IE): 19 comparable laptops of 28 available",
-   "n": 19
+   "line": "[ok] GreenIT (IE): 20 comparable laptops of 30 available",
+   "n": 20
   },
   {
-   "line": "[ok] Refurb.io (US): 43 comparable laptops of 51 available",
+   "line": "[ok] Refurb.io (US): 43 comparable laptops of 50 available",
    "n": 43
   },
   {
@@ -143,16 +143,16 @@
    "n": 6
   },
   {
-   "line": "[ok] craigslist 'elitebook 840': 49 listings",
-   "n": 49
+   "line": "[ok] craigslist 'elitebook 840': 50 listings",
+   "n": 50
   },
   {
    "line": "[ok] craigslist 'laptop lot': 19 listings",
    "n": 19
   },
   {
-   "line": "[ok] craigslist 'latitude lot': 10 listings",
-   "n": 10
+   "line": "[ok] craigslist 'latitude lot': 9 listings",
+   "n": 9
   },
   {
    "line": "[ok] craigslist 'thinkpad lot': 15 listings",
@@ -160,16 +160,16 @@
   }
  ],
  "counts": {
-  "anchor_rows": 62,
+  "anchor_rows": 63,
   "craigslist_rows": 133,
   "craigslist_requests": 32,
-  "qualifying": 129,
-  "rankable": 74
+  "qualifying": 130,
+  "rankable": 75
  },
  "rejects": {
-  "parts": 28,
-  "unrecognised": 246,
-  "not_a_laptop": 18,
+  "parts": 27,
+  "unrecognised": 245,
+  "not_a_laptop": 17,
   "implausible_price": 3,
   "below_min_spec": 22,
   "duplicate": 43,
@@ -186,7 +186,7 @@
   },
   {
    "reason": "unrecognised",
-   "title": "Apple Macbook Air A2337 MGN63LL/A Apple M1 | 8GB | 256GB SSD | Webcam | Excellent",
+   "title": "Apple Macbook Air A2337 MGN63LL/A | Apple M1 | 8GB | 256GB SSD | Webcam | Excellent",
    "price": 599.0
   },
   {
@@ -206,18 +206,23 @@
   },
   {
    "reason": "unrecognised",
-   "title": "ASUS BR12FT-CS81XAP-3Y 2-in-1 Touch Intel N150 | 8GB RAM | 128GB SSD | Windows 11 Pro | 3 ",
+   "title": "ASUS BR12FT-CS81XAP-3Y 2-in-1 Touch | Intel N150 | 8GB RAM | 128GB SSD | Windows 11 Pro | ",
    "price": 549.0
   },
   {
    "reason": "unrecognised",
-   "title": "ASUS BR12CT-C81XA-3Y Intel N150 | 8GB RAM | 128GB SSD | Windows 11 Pro | 3 Year Warranty |",
+   "title": "ASUS BR12CT-C81XA-3Y | Intel N150 | 8GB RAM | 128GB SSD | Windows 11 Pro | 3 Year Warranty",
    "price": 499.0
   },
   {
    "reason": "not_a_laptop",
    "title": "Manhattan Laptop and Tablet Stand, Adjustable (5 positions), Suitable for all tablets and ",
    "price": 20.0
+  },
+  {
+   "reason": "unrecognised",
+   "title": "Manhattan London Laptop Bag 15.6\"",
+   "price": 15.0
   },
   {
    "reason": "parts",
@@ -233,11 +238,6 @@
    "reason": "not_a_laptop",
    "title": "Acer 311 Chromebook 11.6\" N4020 32GB 4GB RAM Touchscreen ChromeOS",
    "price": 159.0
-  },
-  {
-   "reason": "not_a_laptop",
-   "title": "HP Chromebook 11 G8 EE AMD A4-9120C 32GB eMMC 4GB RAM 11.6\" Chrome OS - Refurbished",
-   "price": 149.0
   }
  ],
  "solution": {
