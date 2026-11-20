@@ -1,5 +1,5 @@
 {
- "generated_utc": "2026-11-19 23:25 UTC",
+ "generated_utc": "2026-11-20 17:02 UTC",
  "config": {
   "want_units": 3,
   "budget_usd": 700,
@@ -76,12 +76,12 @@
     "gen": 11,
     "label": "Latitude 5400-series",
     "usd": 204.0,
-    "n": 5,
+    "n": 3,
     "live": true,
     "observed_min": 449.0,
     "observed_median": 529.0,
     "configured": 204.0,
-    "basis": "cheapest warranted observed $449.00 (5 listings) vs configured $204.00 - using the lower"
+    "basis": "cheapest warranted observed $449.00 (3 listings) vs configured $204.00 - using the lower"
    }
   },
   "by_gen": {
@@ -105,7 +105,7 @@
   "live_keys": [
    "latitude_5400|11"
   ],
-  "updated_utc": "2026-11-19T23:22:59Z"
+  "updated_utc": "2026-11-20T17:00:33Z"
  },
  "family_labels": {
   "latitude_5400": "Latitude 5400-series",
@@ -119,12 +119,12 @@
  },
  "source_health": [
   {
-   "line": "[ok] GreenIT (IE): 20 comparable laptops of 30 available",
-   "n": 20
+   "line": "[ok] GreenIT (IE): 17 comparable laptops of 27 available",
+   "n": 17
   },
   {
-   "line": "[ok] Refurb.io (US): 43 comparable laptops of 50 available",
-   "n": 43
+   "line": "[ok] Refurb.io (US): 42 comparable laptops of 49 available",
+   "n": 42
   },
   {
    "line": "[ok] craigslist 'latitude 5420': 24 listings",
@@ -143,8 +143,8 @@
    "n": 6
   },
   {
-   "line": "[ok] craigslist 'elitebook 840': 50 listings",
-   "n": 50
+   "line": "[ok] craigslist 'elitebook 840': 49 listings",
+   "n": 49
   },
   {
    "line": "[ok] craigslist 'laptop lot': 19 listings",
@@ -160,18 +160,18 @@
   }
  ],
  "counts": {
-  "anchor_rows": 63,
-  "craigslist_rows": 133,
+  "anchor_rows": 59,
+  "craigslist_rows": 132,
   "craigslist_requests": 32,
-  "qualifying": 130,
-  "rankable": 75
+  "qualifying": 126,
+  "rankable": 73
  },
  "rejects": {
-  "parts": 27,
-  "unrecognised": 245,
+  "parts": 25,
+  "unrecognised": 244,
   "not_a_laptop": 17,
   "implausible_price": 3,
-  "below_min_spec": 22,
+  "below_min_spec": 21,
   "duplicate": 43,
   "condition:bios_locked": 1,
   "condition:for_parts": 1,
@@ -359,7 +359,7 @@
    "charger_cost": 30,
    "delivered_per_unit": 180.0,
    "anchor": 204.0,
-   "anchor_basis": "cheapest warranted observed $449.00 (5 listings) vs configured $204.00 - using the lower",
+   "anchor_basis": "cheapest warranted observed $449.00 (3 listings) vs configured $204.00 - using the lower",
    "ratio": 0.882,
    "band": "pass",
    "vs_anchor_pct": -11.8,
@@ -569,7 +569,7 @@
    "charger_cost": 30,
    "delivered_per_unit": 250.0,
    "anchor": 204.0,
-   "anchor_basis": "cheapest warranted observed $449.00 (5 listings) vs configured $204.00 - using the lower",
+   "anchor_basis": "cheapest warranted observed $449.00 (3 listings) vs configured $204.00 - using the lower",
    "ratio": 1.225,
    "band": "pass",
    "vs_anchor_pct": 22.5,
@@ -849,7 +849,7 @@
    "charger_cost": 30,
    "delivered_per_unit": 305.0,
    "anchor": 204.0,
-   "anchor_basis": "cheapest warranted observed $449.00 (5 listings) vs configured $204.00 - using the lower",
+   "anchor_basis": "cheapest warranted observed $449.00 (3 listings) vs configured $204.00 - using the lower",
    "ratio": 1.495,
    "band": "pass",
    "vs_anchor_pct": 49.5,
