@@ -1,5 +1,5 @@
 {
- "generated_utc": "2026-11-24 17:03 UTC",
+ "generated_utc": "2026-11-25 17:03 UTC",
  "config": {
   "want_units": 3,
   "budget_usd": 700,
@@ -71,6 +71,18 @@
  },
  "anchors": {
   "families": {
+   "elitebook_800|11": {
+    "family": "elitebook_800",
+    "gen": 11,
+    "label": "EliteBook 8xx",
+    "usd": 204.0,
+    "n": 3,
+    "live": true,
+    "observed_min": 599.0,
+    "observed_median": 736.77,
+    "configured": 204.0,
+    "basis": "cheapest warranted observed $599.00 (3 listings) vs configured $204.00 - using the lower"
+   },
    "latitude_5400|11": {
     "family": "latitude_5400",
     "gen": 11,
@@ -115,10 +127,11 @@
    }
   },
   "live_keys": [
+   "elitebook_800|11",
    "latitude_5400|11",
    "latitude_7400|11"
   ],
-  "updated_utc": "2026-11-24T17:00:53Z"
+  "updated_utc": "2026-11-25T17:01:17Z"
  },
  "family_labels": {
   "latitude_5400": "Latitude 5400-series",
@@ -132,16 +145,16 @@
  },
  "source_health": [
   {
-   "line": "[ok] GreenIT (IE): 20 comparable laptops of 29 available",
-   "n": 20
+   "line": "[ok] GreenIT (IE): 19 comparable laptops of 28 available",
+   "n": 19
   },
   {
-   "line": "[ok] Refurb.io (US): 45 comparable laptops of 52 available",
-   "n": 45
+   "line": "[ok] Refurb.io (US): 43 comparable laptops of 50 available",
+   "n": 43
   },
   {
-   "line": "[ok] craigslist 'latitude 5420': 25 listings",
-   "n": 25
+   "line": "[ok] craigslist 'latitude 5420': 27 listings",
+   "n": 27
   },
   {
    "line": "[ok] craigslist 'latitude 7490': 12 listings",
@@ -156,16 +169,16 @@
    "n": 6
   },
   {
-   "line": "[ok] craigslist 'elitebook 840': 51 listings",
-   "n": 51
+   "line": "[ok] craigslist 'elitebook 840': 50 listings",
+   "n": 50
   },
   {
-   "line": "[ok] craigslist 'laptop lot': 17 listings",
-   "n": 17
+   "line": "[ok] craigslist 'laptop lot': 16 listings",
+   "n": 16
   },
   {
-   "line": "[ok] craigslist 'latitude lot': 9 listings",
-   "n": 9
+   "line": "[ok] craigslist 'latitude lot': 8 listings",
+   "n": 8
   },
   {
    "line": "[ok] craigslist 'thinkpad lot': 15 listings",
@@ -173,16 +186,16 @@
   }
  ],
  "counts": {
-  "anchor_rows": 65,
-  "craigslist_rows": 135,
+  "anchor_rows": 62,
+  "craigslist_rows": 134,
   "craigslist_requests": 32,
-  "qualifying": 135,
-  "rankable": 82
+  "qualifying": 131,
+  "rankable": 80
  },
  "rejects": {
-  "parts": 28,
-  "unrecognised": 249,
-  "not_a_laptop": 17,
+  "parts": 29,
+  "unrecognised": 251,
+  "not_a_laptop": 16,
   "implausible_price": 3,
   "below_min_spec": 23,
   "duplicate": 41,
@@ -941,41 +954,6 @@
   },
   {
    "cpu_gen": 8,
-   "gen_source": "model",
-   "cpu": null,
-   "ram_gb": null,
-   "storage_gb": null,
-   "lot_size": 1,
-   "model": "HP EliteBook 840",
-   "family": "elitebook_800",
-   "source": "Craigslist seattle",
-   "source_kind": "craigslist",
-   "title": "HP EliteBook 840 G6",
-   "price": 275.0,
-   "region": "seattle",
-   "url": "https://www.craigslist.org/view/d/bellevue-hp-elitebook-840-g6/2BJq6ivV1q3D2L5XztYNoo",
-   "lat": 47.5614,
-   "lon": -122.1552,
-   "shipping_usd": 0.0,
-   "shipping_known": true,
-   "chargers_included": false,
-   "slug": "bellevue-hp-elitebook-840-g6",
-   "price_basis": "lot",
-   "spec_complete": false,
-   "unit_price": 275.0,
-   "unit_shipping": 0.0,
-   "charger_cost": 30,
-   "delivered_per_unit": 305.0,
-   "anchor": 240.0,
-   "anchor_basis": "configured benchmark (8 gen)",
-   "ratio": 1.271,
-   "band": "pass",
-   "vs_anchor_pct": 27.1,
-   "doa_per_unit": null,
-   "ceiling_breach": true
-  },
-  {
-   "cpu_gen": 8,
    "gen_source": "cpu",
    "cpu": "Gen 8",
    "ram_gb": null,
@@ -1037,7 +1015,7 @@
    "charger_cost": 30,
    "delivered_per_unit": 318.0,
    "anchor": 204.0,
-   "anchor_basis": "configured benchmark (11 gen)",
+   "anchor_basis": "cheapest warranted observed $599.00 (3 listings) vs configured $204.00 - using the lower",
    "ratio": 1.559,
    "band": "pass",
    "vs_anchor_pct": 55.9,
@@ -1185,6 +1163,37 @@
    "ratio": 1.375,
    "band": "pass",
    "vs_anchor_pct": 37.5,
+   "doa_per_unit": null,
+   "ceiling_breach": true
+  },
+  {
+   "cpu_gen": 10,
+   "gen_source": "cpu",
+   "cpu": "Core i5 10th",
+   "ram_gb": 16,
+   "storage_gb": 256,
+   "lot_size": 1,
+   "model": "Dell Latitude 5410",
+   "family": "latitude_5400",
+   "source": "GreenIT (IE)",
+   "source_kind": "shopify",
+   "title": "Dell Latitude 5410 | Core i5 10th Gen | 16GB RAM | 256GB SSD | Windows 11 Pro",
+   "url": "https://www.greenit.ie/products/dell-latitude-5410-core-i5-10th-gen-16gb-ram-256gb-ssd-windows-11-pro",
+   "price": 349.0,
+   "region": "ships",
+   "shipping_usd": 0.0,
+   "shipping_known": false,
+   "chargers_included": null,
+   "spec_complete": true,
+   "unit_price": 349.0,
+   "unit_shipping": 0.0,
+   "charger_cost": 0,
+   "delivered_per_unit": 349.0,
+   "anchor": 245.0,
+   "anchor_basis": "configured benchmark (10 gen)",
+   "ratio": 1.424,
+   "band": "pass",
+   "vs_anchor_pct": 42.4,
    "doa_per_unit": null,
    "ceiling_breach": true
   }
